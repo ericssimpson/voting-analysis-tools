@@ -1,0 +1,92 @@
+{
+    "notes": {
+        "type":	"str",
+        "default": ""
+    },
+    "state": {
+        "type":	"str",
+        "default": ""
+    },
+    "jurisdiction": {
+        "type": "str",
+        "default": ""
+    },
+    "year": {
+        "type":	"str",
+        "default": ""
+    },
+    "date": {
+        "type":	"str",
+        "default": ""
+    },
+    "office": {
+        "type":	"str",
+        "default": ""
+    },
+    "ignore_contest": {
+        "type":	"bool",
+        "default": false
+    },
+
+
+    "exhaust_on_overvote_marks": {
+        "type":	"bool",
+        "default": false
+    },
+    "exhaust_on_N_repeated_skipped_marks": {
+        "type":	"int",
+        "default": 0
+    },
+    "exhaust_on_duplicate_candidate_marks": {
+        "type":	"bool",
+        "default": false
+    },
+    "exclude_writein_marks": {
+        "type":	"bool",
+        "default": false
+    },
+    "combine_writein_marks": {
+        "type":	"bool",
+        "default": false
+    },
+    "treat_combined_writeins_as_exhaustable_duplicates": {
+        "type":	"bool",
+        "default": false
+    },
+    "multi_winner_rounds": {
+        "type":	"bool",
+        "default": true
+    },
+
+
+    "n_winners": {
+        "type":	"int",
+        "default": "1"
+    },
+    "rcv_type": {
+        "type":	"func",
+        "default": "None"
+    },
+    "bottoms_up_threshold": {
+        "type": "float",
+        "default": "np.NAN"
+    },
+    "split_fields":{
+        "type": "list",
+        "default": ""
+    },
+
+
+    "parser_func": {
+        "type":	"func",
+        "default": "None"
+    },
+    "cvr_path": {
+        "type":	"str",
+        "default": "None"
+    },
+    "extra_parser_args":{
+        "type": "dict",
+        "default": ""
+    }
+}
