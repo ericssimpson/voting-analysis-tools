@@ -72,9 +72,9 @@ docs/_build
 
 # Mypy Cache
 .mypy_cache/
-
 /conda-env
-team_arrow/.DS_Store
-.DS_Store
-team_arrow/tabulator_input/.DS_Store
-team_arrow/tabulator_output/.DS_Store
+
+# Other stuff
+**/.DS_Store
+team_arrow/tabulator_input/*
+team_arrow/tabulator_output/*
