@@ -377,17 +377,29 @@ def condorcet(ballots, candidates):
                     pairs[t] = 0
         for b in ballots:
             n = ballots[b]
-            ranking = ()
+            ranking = () 
 
             for i in range (len(b)):
-                c1 = b[i]
+
+                for c1 in candidates:
+                    if c1 in b:
+                        for c2 in candidates:
+                            if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
+                                t = (c1, c2)
+                                if t not in pairs:
+                                    pairs[t] = n
+                                else:
+                                    pairs[t] += n
+
+                """c1 = b[i]
                 for j in range (i + 1, len(b)):
                     c2 = b[j]
-                    t = (c1, c2)
-                    if t not in pairs:
-                        pairs[t] = n
-                    else:
-                        pairs[t] += n
+                    if c1 != c2:
+                        t = (c1, c2)
+                        if t not in pairs:
+                            pairs[t] = n
+                        else:
+                            pairs[t] += n"""
         return pairs 
     pairs = get_pairs(ballots, candidates)
     flag = True
@@ -407,9 +419,9 @@ def read_file(file, candidates):
     
     #number of voters
     n = len(data)
+
     ballots = {}
     for i in range(1,n):
-        #print(i, " ", n)
         ranking = ()
         for j in range(1,C+1):
             c =data.at[i, "rank"+str(j)]
