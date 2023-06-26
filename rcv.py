@@ -370,14 +370,16 @@ def main():
     print("Original candidates: ")
     for m in methods:
         print(m, ": " , eval(m)(ballots, candidates))
+    print()
     candidates_t = []
     for c in candidates:
         candidates_t.append(c)
     for i in range(2, len(candidates)):
         candidates_t = top_n(ballots, candidates, i)
-        print("runnig for top_", i, " candidates: ")
+        print("runnig for top_", i, " candidates: ", candidates_t)
         for m in methods:
             print(m, ": " , eval(m)(ballots, candidates_t))
+        print()
 
 
 main()
