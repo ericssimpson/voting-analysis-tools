@@ -254,7 +254,6 @@ def copeland(ballots, candidates):
     return winner
 
 def mini_max(ballots, candidates):
-
     pairs = get_pairs(ballots, candidates)
     tie = False
     scores = {}
@@ -270,6 +269,20 @@ def mini_max(ballots, candidates):
         if c != winner and scores[c] == scores[winner]:
             tie = True 
     return winner
+
+
+def condorcet(ballots, candidates): 
+    pairs = get_pairs(ballots, candidates)
+    flag = True
+    for c1 in candidates:
+        flag = True
+        for c2 in candidates:
+            if (c1 != c2):
+                if (pairs[(c2, c1)] > pairs[(c1, c2)]):
+                    flag = False
+        if (flag):
+            return c1
+    return -1
 
 def get_pairs(ballots, candidates):
     pairs = {}
@@ -293,52 +306,6 @@ def get_pairs(ballots, candidates):
                         else:
                             pairs[t] += n
     return pairs
-
-
-def condorcet(ballots, candidates):
-    def get_pairs(ballots, candidates):
-        pairs = {}
-        C = len(candidates)
-        for i in range (C):
-            for j in range(C):
-                if (i != j):
-                    t = (candidates[i], candidates[j])
-                    pairs[t] = 0
-        for b in ballots:
-            n = ballots[b]
-            ranking = () 
-
-            for c1 in candidates:
-                if c1 in b:
-                    for c2 in candidates:
-                        if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
-                            t = (c1, c2)
-                            if t not in pairs:
-                                pairs[t] = n
-                            else:
-                                pairs[t] += n
-
-                """c1 = b[i]
-                for j in range (i + 1, len(b)):
-                    c2 = b[j]
-                    if c1 != c2:
-                        t = (c1, c2)
-                        if t not in pairs:
-                            pairs[t] = n
-                        else:
-                            pairs[t] += n"""
-        return pairs 
-    pairs = get_pairs(ballots, candidates)
-    flag = True
-    for c1 in candidates:
-        flag = True
-        for c2 in candidates:
-            if (c1 != c2):
-                if (pairs[(c2, c1)] > pairs[(c1, c2)]):
-                    flag = False
-        if (flag):
-            return c1
-    return -1
 
 def read_file(file):
     data = pd.read_csv(str(file))
@@ -374,7 +341,8 @@ def main():
     file = input("Enter Files Name: ")
     ballots, candidates = read_file(file)
 
-    methods = input("Methods: ").split()
+    #will add ant_plurality later, its not working correctly now  
+    methods = ["irv", "condorcet", "copeland", "black", "bucklin", "borda", "mini_max", "ranked_pairs"]
     for m in methods:
         print(m, ": " , eval(m)(ballots, candidates))
 main()
