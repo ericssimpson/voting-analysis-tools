@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np 
+import operator as op
 
 def anti_plurality(ballots, candidates):
     can = []
@@ -160,7 +161,8 @@ def irv(ballots, candidates):
             stacks.append([])
             ranking = ()
             for c in b:
-                ranking += (c,)
+                if c in candidates:
+                    ranking += (c,)
             for j in range(len(ranking) - 1, -1, -1):
                 if (ranking[j], j + 1) not in rankings:
                     rankings[(ranking[j], j + 1)] = 0
@@ -336,14 +338,47 @@ def read_file(file):
         ballots[ranking] += 1
     return ballots, candidates
 
+def top_n(ballots, candidates, n):
+
+    first_place = {}
+    for b in ballots:
+        if (len(b) > 0):
+            candidate = b[0]
+            if candidate not in first_place:
+                first_place[candidate] = 0
+            first_place[candidate] += ballots[b]
+    first_place = dict( sorted(first_place.items(), key=op.itemgetter(1),reverse=True))
+
+    #getting top n
+    top_candidates = []
+    for i, c in enumerate(first_place.keys()):
+        if i == n:
+            break
+        top_candidates.append(c)
+
+    return top_candidates
+
+
+
+
 def main():
 
     file = input("Enter Files Name: ")
     ballots, candidates = read_file(file)
-
     #will add ant_plurality later, its not working correctly now  
     methods = ["irv", "condorcet", "copeland", "black", "bucklin", "borda", "mini_max", "ranked_pairs"]
+    print("Original candidates: ")
     for m in methods:
         print(m, ": " , eval(m)(ballots, candidates))
+    candidates_t = []
+    for c in candidates:
+        candidates_t.append(c)
+    for i in range(2, len(candidates)):
+        candidates_t = top_n(ballots, candidates, i)
+        print("runnig for top_", i, " candidates: ")
+        for m in methods:
+            print(m, ": " , eval(m)(ballots, candidates_t))
+
+
 main()
 
