@@ -2,9 +2,12 @@ import pandas as pd
 import numpy as np 
 
 def anti_plurality(ballots, candidates):
+    can = []
+    for c in candidates:
+        can.append(c)
     positions = {}
     tie = False 
-    C = len(candidates)
+    C = len(can)
     V = 0
     for b in ballots:
         n = ballots[b]
@@ -19,86 +22,23 @@ def anti_plurality(ballots, candidates):
                 positions[(i, ranking[i])] += 1
     for i in range(C - 1, -1, -1):
         mini = V 
-        for c in candidates:
+        for c in can:
             if (i, c) not in positions:
                 positions[(i, c)] = 0
             if positions[(i, c)] < mini:
                 mini = positions[(i , c)]
-        for c in candidates:
+        for c in can:
             if positions[(i, c)] != mini:
-                candidates.remove(c)
-        if len(candidates) == 1:
+                can.remove(c)
+        if len(can) == 1:
             break
-    return candidates[0]
+    return can[0]
 
 def black(ballots, candidates):
-
-    def condorcet(pairs, candidates):
-        flag = True
-        for c1 in candidates:
-            flag = True
-            for c2 in candidates:
-                if (c1 != c2):
-                    if (pairs[(c2, c1)] >= pairs[(c1, c2)]):
-                        flag = False
-            if (flag):
-                return c1
-        return -1
-
-    def get_pairs(ballots, candidates):
-        pairs = {}
-        C = len(candidates)
-        for i in range (C):
-            for j in range(C):
-                if (i != j):
-                    t = (candidates[i], candidates[j])
-                    pairs[t] = 0
-        for b in ballots:
-            n = ballots[b]
-            ranking = ()
-            for c in b:
-                ranking += (c,)
-
-            for i in range (len(ranking)):
-                c1 = ranking[i]
-                for j in range (i + 1, len(ranking)):
-                    c2 = ranking[j]
-                    t = (c1, c2)
-                    if t not in pairs:
-                        pairs[t] = 0
-                    pairs[t] += n
-        #print(pairs)
-        return pairs 
-        
-    def Borda(ballots, candidates):
-        scores = {}
-        tie = False
-        for b in ballots:
-            n = ballots[b]
-            ranking = ()
-            for c in b:
-                ranking += (c,)
-            score = len(candidates) - 1
-            for c in ranking:
-                if c not in scores:
-                    scores[c] = 0
-                scores[c] += score * n
-                score -= 1
-        
-        winner = max(scores, key=scores.get)
-        for c in scores:
-            if c != winner and scores[c] == scores[winner]:
-                tie = True
-        return winner
-
-    def main(ballots, candidates):
-        pairs = get_pairs(ballots, candidates)
-        return_val = condorcet(pairs, candidates)
-        if return_val == -1:
-            return Borda(ballots, candidates)
-        return return_val
-
-    return main(ballots, candidates)
+    return_val = condorcet(ballots, candidates)
+    if return_val == -1:
+        return borda(ballots, candidates)
+    return return_val
 
 def borda(ballots, candidates):
     scores = {}
@@ -240,24 +180,8 @@ def ranked_pairs(ballots, candidates):
     con = condorcet(ballots, candidates)
     if con != -1:
         return con
-    pairs = {}
-    tie = False 
-    C = len(candidates)
-    for b in ballots:
-        n = ballots[b]
-        ranking = ()
-        for c in b:
-            ranking += (c,)
-
-        for i in range (len(ranking)):
-            c1 = ranking[i]
-            for j in range (i + 1, len(ranking)):
-                c2 = ranking[j]
-                t = (c1, c2)
-                if t not in pairs:
-                    pairs[t] = 0
-                pairs[t] += n
     sorted_majorities = []
+    pairs = get_pairs(ballots, candidates)
     for t in pairs:
         c1 = t[0]
         c2 = t[1]
@@ -330,28 +254,9 @@ def copeland(ballots, candidates):
     return winner
 
 def mini_max(ballots, candidates):
-    pairs = {}
-    tie = False
-    for i in range (len(candidates)):
-        for j in range(len(candidates)):
-            if (i != j):
-                t = (candidates[i], candidates[j])
-                pairs[t] = 0
-    
-    for b in ballots:
-        n = ballots[b]
-        ranking = ()
-        for c in b:
-            ranking += (c,)
 
-        for i in range (len(ranking)):
-            c1 = ranking[i]
-            for j in range (i + 1, len(ranking)):
-                c2 = ranking[j]
-                t = (c1, c2)
-                if t not in pairs:
-                    pairs[t] = 0
-                pairs[t] += n
+    pairs = get_pairs(ballots, candidates)
+    tie = False
     scores = {}
     for c1 in candidates:
         scores[c1] = 0
@@ -366,6 +271,30 @@ def mini_max(ballots, candidates):
             tie = True 
     return winner
 
+def get_pairs(ballots, candidates):
+    pairs = {}
+    C = len(candidates)
+    for i in range (C):
+        for j in range(C):
+            if (i != j):
+                t = (candidates[i], candidates[j])
+                pairs[t] = 0
+    for b in ballots:
+        n = ballots[b]
+        ranking = () 
+
+        for c1 in candidates:
+            if c1 in b:
+                for c2 in candidates:
+                    if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
+                        t = (c1, c2)
+                        if t not in pairs:
+                            pairs[t] = n
+                        else:
+                            pairs[t] += n
+    return pairs
+
+
 def condorcet(ballots, candidates):
     def get_pairs(ballots, candidates):
         pairs = {}
@@ -379,17 +308,15 @@ def condorcet(ballots, candidates):
             n = ballots[b]
             ranking = () 
 
-            for i in range (len(b)):
-
-                for c1 in candidates:
-                    if c1 in b:
-                        for c2 in candidates:
-                            if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
-                                t = (c1, c2)
-                                if t not in pairs:
-                                    pairs[t] = n
-                                else:
-                                    pairs[t] += n
+            for c1 in candidates:
+                if c1 in b:
+                    for c2 in candidates:
+                        if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
+                            t = (c1, c2)
+                            if t not in pairs:
+                                pairs[t] = n
+                            else:
+                                pairs[t] += n
 
                 """c1 = b[i]
                 for j in range (i + 1, len(b)):
@@ -413,9 +340,9 @@ def condorcet(ballots, candidates):
             return c1
     return -1
 
-def read_file(file, candidates):
+def read_file(file):
     data = pd.read_csv(str(file))
-    C = len(candidates) 
+    candidates = []
     
     #number of voters
     n = len(data)
@@ -423,21 +350,29 @@ def read_file(file, candidates):
     ballots = {}
     for i in range(1,n):
         ranking = ()
-        for j in range(1,C+1):
-            c =data.at[i, "rank"+str(j)]
-            if c != "skipped" and c != "Write-in"  and c != "Write-Ins" and c != "overvote" and c != "undervote":
-                ranking += (c,)
+        j = 1
+        flag = True
+        while flag:
+            try:
+
+                c =data.at[i, "rank"+str(j)]
+                if c != "skipped" and c != "Write-in"  and c != "Write-Ins" and c != "overvote" and c != "undervote":
+                    ranking += (c,)
+                    if c not in candidates:
+                        candidates.append(c)
+                j += 1
+            except:
+                flag = False
        
         if ranking not in ballots:
             ballots[ranking] = 0
         ballots[ranking] += 1
-    return ballots
+    return ballots, candidates
 
 def main():
 
     file = input("Enter Files Name: ")
-    candidates = input("Canddiates Names: ").split("/")
-    ballots = read_file(file, candidates)
+    ballots, candidates = read_file(file)
 
     methods = input("Methods: ").split()
     for m in methods:
