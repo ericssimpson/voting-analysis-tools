@@ -51,38 +51,66 @@ def anti_plurality(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
     return candidates[0]
 
 
-def black(ballots, candidates):
-    return_val = condorcet(ballots, candidates)
-    if return_val == -1:
-        return borda(ballots, candidates)
-    return return_val
+def black(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
+    """
+    This function implements the Black voting method.
+
+    Parameters:
+    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) 
+                    and the value is the number of such ballots.
+    candidates (list): A list of candidates.
+
+    Returns:
+    winner: The winner of the election.
+
+    """
+    # Try to find a Condorcet winner
+    winner = condorcet(ballots, candidates)
+
+    # If there is no Condorcet winner, fall back to the Borda Count method
+    if winner == -1:
+        winner = borda(ballots, candidates)
+
+    return winner
 
 
-def borda(ballots, candidates):
-    scores = {}
-    tie = False
-    for b in ballots:
-        n = ballots[b]
-        ranking = ()
-        for c in b:
-            ranking += (c,)
-        score = len(candidates) - 1
-        for c in ranking:
-            if c not in scores:
-                scores[c] = 0
-            scores[c] += score * n
-            score -= 1
-    
-    winner = max(scores, key=scores.get)
-    for c in scores:
-        if c != winner and scores[c] == scores[winner]:
-            tie = True
+def borda(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
+    """
+    This function implements the Borda Count voting method.
+
+    Parameters:
+    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
+    candidates (list): A list of candidates.
+
+    Returns:
+    winner: The winner of the election.
+
+    """
+    # Initialize an empty dictionary to store the scores of each candidate
+    candidate_scores = {}
+
+    # Iterate over the ballots
+    for ballot, count in ballots.items():
+        for rank, candidate in enumerate(reversed(ballot)):
+            candidate_scores.setdefault(candidate, 0)
+            candidate_scores[candidate] += rank * count
+
+    # Find the candidate with the maximum score
+    winner = max(candidate_scores, key=candidate_scores.get)
+
+    # Check for a tie
+    for candidate, score in candidate_scores.items():
+        if candidate != winner and score == candidate_scores[winner]:
+            print('Tie detected between candidates.')
+            break
+
+    # Return the winner
     return winner
 
 
 def bucklin(ballots, candidates):
 
-    def count(ballots, round, scores):
+    def count(ballots, round, scores): #! is count really needed here?
         for b in ballots:
             n = ballots[b]
             ranking = ()
@@ -118,7 +146,7 @@ def bucklin(ballots, candidates):
     return main(ballots, candidates)
 
 
-def irv(ballots, candidates):
+def irv(ballots, candidates): #! are the helper functions needed here?
 
     number_of_candidates = len(candidates)
     def find_last_candidate(rankings, tie):
@@ -196,42 +224,65 @@ def irv(ballots, candidates):
     return main(ballots, candidates)
 
 
-def ranked_pairs(ballots, candidates):
-    con = condorcet(ballots, candidates)
-    if con != -1:
-        return con
-    sorted_majorities = []
-    pairs = get_pairs(ballots, candidates)
-    for t in pairs:
-        c1 = t[0]
-        c2 = t[1]
-        if pairs[t] >= pairs[(c2, c1)] and (pairs[t] - pairs[(c2, c1)], t) not in sorted_majorities:
-            if pairs[t] == pairs[(c2, c1)]:
-                tie = True
-            sorted_majorities.append((pairs[t] - pairs[(c2, c1)], t))
-    sorted_majorities.sort()
-    sorted_majorities.reverse()
+def ranked_pairs(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
+    """
+    This function implements the Ranked Pairs (Tideman method) voting method.
+
+    Parameters:
+    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
+    candidates (list): A list of candidates.
+
+    Returns:
+    winner: The winner of the election.
+
+    Note:
+    The function assumes that `condorcet` and `get_pairs` functions are defined and they have the same signature 
+    as this function.
+    """
+    # Try to find a Condorcet winner
+    winner = condorcet(ballots, candidates)
+
+    # If there is a Condorcet winner, return the winner
+    if winner != -1:
+        return winner
+
+    # Calculate pairwise preferences
+    pairwise_preferences = get_pairs(ballots, candidates)
+
+    # Order the pairs by the strength of the win
+    ordered_pairs = sorted([(pairwise_preferences[pair] - pairwise_preferences[pair[::-1]], pair) 
+                            for pair in pairwise_preferences 
+                            if pairwise_preferences[pair] >= pairwise_preferences[pair[::-1]]], reverse=True)
+
+    # Initialize the lock dictionary
     lock = {}
-    for p in sorted_majorities:
-        c1 = p[1][0]
-        c2 = p[1][1]
-        if c1 not in lock:
-            lock[c1] = set()
-        if c2 not in lock:
-            lock [c2] = set()
-        if c1 not in lock[c2]:
-            lock[c1].add(c2)
-            for c in lock[c2]:
-                lock[c1].add(c)
-    #winner 
-    winner = None  
-    for c in lock:
-        if len(lock[c]) == C - 1:
-            winner = c
+
+    # Lock in pairs from strongest to weakest, skipping any pair that would create a cycle
+    for margin, pair in ordered_pairs:
+        candidate1, candidate2 = pair
+        if candidate1 not in lock:
+            lock[candidate1] = set()
+        if candidate2 not in lock:
+            lock[candidate2] = set()
+        if candidate1 not in lock[candidate2]:
+            lock[candidate1].add(candidate2)
+            for candidate in lock[candidate2]:
+                lock[candidate1].add(candidate)
+
+    # Find the candidate who beats all other candidates
+    winner = None
+    num_candidates = len(candidates)
+    for candidate, opponents in lock.items():
+        if len(opponents) == num_candidates - 1:
+            winner = candidate
             break
-    for c in lock:
-        if c != winner and len(lock[c]) == C - 1:
-            tie = True
+
+    # Check for a tie
+    for candidate, opponents in lock.items():
+        if candidate != winner and len(opponents) == num_candidates - 1:
+            print('Tie detected between candidates.')
+            break
+
     return winner
 
 
@@ -307,28 +358,39 @@ def condorcet(ballots, candidates):
     return -1
 
 
-def get_pairs(ballots, candidates):
-    pairs = {}
-    C = len(candidates)
-    for i in range (C):
-        for j in range(C):
-            if (i != j):
-                t = (candidates[i], candidates[j])
-                pairs[t] = 0
-    for b in ballots:
-        n = ballots[b]
-        ranking = () 
+def get_pairs(ballots: Dict[Tuple, int], candidates: List[str]) -> Dict[Tuple[str, str], int]:
+    """
+    This function calculates pairwise preferences between all pairs of candidates based on the given ballots.
 
-        for c1 in candidates:
-            if c1 in b:
-                for c2 in candidates:
-                    if c1 != c2 and ((c2 not in b) or b.index(c1) > b.index(c2)):
-                        t = (c1, c2)
-                        if t not in pairs:
-                            pairs[t] = n
-                        else:
-                            pairs[t] += n
-    return pairs
+    Parameters:
+    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
+    candidates (list): A list of candidates.
+
+    Returns:
+    pairs: A dictionary where each key is a tuple representing a pair of candidates and the value is the number of 
+           times the first candidate is preferred over the second one in the ballots.
+    """
+    # Initialize an empty dictionary to store the pairs
+    pairwise_preferences = {}
+
+    # Iterate over all pairs of candidates
+    for i in range(len(candidates)):
+        for j in range(len(candidates)):
+            if i != j:
+                pair = (candidates[i], candidates[j])
+                pairwise_preferences[pair] = 0
+
+    # Iterate over the ballots
+    for ballot, count in ballots.items():
+        # For each ballot, check each candidate against every other candidate
+        for candidate1 in candidates:
+            if candidate1 in ballot:
+                for candidate2 in candidates:
+                    if candidate1 != candidate2 and ((candidate2 not in ballot) or ballot.index(candidate1) > ballot.index(candidate2)):
+                        pair = (candidate1, candidate2)
+                        pairwise_preferences[pair] += count
+
+    return pairwise_preferences
 
 
 def read_file(file):
