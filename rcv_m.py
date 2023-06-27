@@ -1,6 +1,6 @@
+import operator as op
 import pandas as pd 
 import numpy as np 
-import operator as op
 
 from typing import Dict, List, Tuple, Union
 
