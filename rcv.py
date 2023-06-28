@@ -14,8 +14,7 @@ def get_pairs(ballots: Dict[Tuple, int], candidates: List[str]) -> Dict[Tuple[st
     candidates (list): A list of candidates.
 
     Returns:
-    pairs: A dictionary where each key is a tuple representing a pair of candidates and the value is the number of 
-           times the first candidate is preferred over the second one in the ballots.
+    pairs: A dictionary where each key is a tuple representing a pair of candidates and the value is the number of times the first candidate is preferred over the second one in the ballots.
     """
     # Initialize an empty dictionary to store the pairs
     pairwise_preferences = {}
@@ -132,8 +131,7 @@ def black(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
     This function implements the Black voting method.
 
     Parameters:
-    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) 
-                    and the value is the number of such ballots.
+    ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
     candidates (list): A list of candidates.
 
     Returns:
@@ -161,9 +159,6 @@ def ranked_pairs(ballots: Dict[Tuple, int], candidates: List[str]) -> str:
     Returns:
     winner: The winner of the election.
 
-    Note:
-    The function assumes that `condorcet` and `get_pairs` functions are defined and they have the same signature 
-    as this function.
     """
     # Try to find a Condorcet winner
     winner = condorcet(ballots, candidates)
