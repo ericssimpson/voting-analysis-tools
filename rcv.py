@@ -48,7 +48,8 @@ def borda(ballots, candidates):
         n = ballots[b]
         ranking = ()
         for c in b:
-            ranking += (c,)
+            if c in candidates:
+                ranking += (c,)
         score = len(candidates) - 1
         for c in ranking:
             if c not in scores:
@@ -69,7 +70,8 @@ def bucklin(ballots, candidates):
             n = ballots[b]
             ranking = ()
             for c in b:
-                ranking += (c,)
+                if c in candidates: 
+                    ranking += (c,)
             if round - 1 < len(ranking) and round - 1 >= 0:
                 if ranking[round - 1] not in scores:
                     scores[ranking[round - 1]] = 0
@@ -338,6 +340,19 @@ def read_file(file):
         ballots[ranking] += 1
     return ballots, candidates
 
+def approval(ballots, candidates):
+    
+    approved = {}
+    for b in ballots:
+        n = ballots[b]
+        for c in b:
+            if c in candidates:
+                if c not in approved:
+                    approved[c] = 0
+                approved[c] += n
+    print(approved)
+    return max(approved, key=approved.get)
+
 def top_n(ballots, candidates, n):
 
     first_place = {}
@@ -366,7 +381,7 @@ def main():
     file = input("Enter Files Name: ")
     ballots, candidates = read_file(file)
     #will add ant_plurality later, its not working correctly now  
-    methods = ["irv", "condorcet", "copeland", "black", "bucklin", "borda", "mini_max", "ranked_pairs"]
+    methods = ["irv", "condorcet", "copeland", "black", "bucklin", "borda", "mini_max", "ranked_pairs", "approval"]
     print("Original candidates: ")
     for m in methods:
         print(m, ": " , eval(m)(ballots, candidates))
