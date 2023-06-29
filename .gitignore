@@ -75,6 +75,5 @@ docs/_build
 /conda-env
 
 # Other stuff
-**/.DS_Store
-team_arrow/tabulator_input/*
-team_arrow/tabulator_output/*
+*.DS_Store
+*.cvr
