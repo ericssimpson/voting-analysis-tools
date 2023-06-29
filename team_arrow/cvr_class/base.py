@@ -5,10 +5,10 @@ TODO:
   - inherit voting rules
   - add some descriptive statistics
 """
+from election_metrics import election_metric
 
-
-class Election:
-    def __init__(self, candidates, voters, voting_rule, location, election_type):
+class Election(election_metric):
+    def __init__(self, candidates, voters, location, election_type):
         """
         Initialize an Election.
 
