@@ -1,5 +1,9 @@
 """
 This module contains the Election class.
+
+TODO:
+  - inherit voting rules
+  - add some descriptive statistics
 """
 
 
