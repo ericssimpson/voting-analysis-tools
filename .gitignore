@@ -75,5 +75,5 @@ docs/_build
 /conda-env
 
 # Other stuff
-*/.DS_Store
-*/.cvr
+*.DS_Store
+*.cvr
