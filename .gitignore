@@ -76,5 +76,4 @@ docs/_build
 
 # Other stuff
 **/.DS_Store
-team_arrow/tabulator_input/*
-team_arrow/tabulator_output/*
+**/.cvr
