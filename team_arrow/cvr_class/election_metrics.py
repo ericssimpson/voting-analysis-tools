@@ -1,16 +1,36 @@
-class election_metric:
+from voting_rules import voting_rules
+
+class election_metric(voting_rules):
 
     def __init__(self, ballots, candidates):
         self.candidates = candidates
         self.ballots = ballots
 
-
+    def condorcet_n(self, n):
+    
+        candidates = self.candidates
+        ballots = self.ballots
+        if n == 1:
+            return self.condorcet()
+        i = 1
+        new_election = voting_rules(candidates, ballots)
+        while i != n:
+            condorcet = new_election.condorcet()
+            candidates.remove(condorcet)
+            for b in ballots:
+                if condorcet in b:
+                    ballots.remove(b)
+            new_election = voting_rules(candidates, ballots)
+            i += 1
+            if i == n:
+                return new_election.condorcet()
+        
     def irv_condorcet(self):
         if (self.condorcet() != self.irv()):
             return False
         return True
     
-    
+
     #ballots that never appeared 
     #midean ballots to be added here 
 
