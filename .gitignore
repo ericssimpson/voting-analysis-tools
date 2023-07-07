@@ -76,4 +76,6 @@ docs/_build
 
 # Other stuff
 *.DS_Store
-*.cvr
+team_arrow/rcv_elections_database/proportional/*
+team_arrow/rcv_elections_database/sequential/*
+team_arrow/rcv_elections_database/single/*
