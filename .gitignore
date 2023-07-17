@@ -79,3 +79,4 @@ docs/_build
 team_arrow/rcv_elections_database/proportional/*
 team_arrow/rcv_elections_database/sequential/*
 team_arrow/rcv_elections_database/single/*
+team_arrow/cvr_class/dataverse_files/*
