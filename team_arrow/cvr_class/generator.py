@@ -8,24 +8,26 @@ def dim():
     directory = "team_arrow/cvr_class/dataverse_files"
     d = {}
     for filename in os.listdir(directory):
+
         ballots, candidates = parser.parser(os.path.join(directory, filename))
         x = len(candidates)
-        if x not in d:
-            d[x] = []
-        perms = list(itertools.permutations(candidates))
-        #most consistant permutation
-        mcp = None
-        c_mcp = 0
-        for p in perms:
-            c = 0
-            for b in ballots:
-                if (is_consistant(b, p)):
-                    c += ballots[b]
-            if mcp is None or c > c_mcp:
-                c_mcp = c
-                mcp = p
-        d[x].append(c_mcp/sum(ballots.values()))
-        '''print(filename)
+        if x <=6:
+            if x not in d:
+                d[x] = []
+            perms = list(itertools.permutations(candidates))
+            #most consistant permutation
+            mcp = None
+            c_mcp = 0
+            for p in perms:
+                c = 0
+                for b in ballots:
+                    if (is_consistant(b, p)):
+                        c += ballots[b]
+                if mcp is None or c > c_mcp:
+                    c_mcp = c
+                    mcp = p
+            d[x].append(c_mcp/sum(ballots.values()))
+            '''print(filename)
         print("MCP: ", mcp)
         print ("Consistanty: ", c_mcp, "%: ", (100*(c_mcp/sum(ballots.values()))))
         print()'''
@@ -40,7 +42,7 @@ def dim():
 def is_consistant(ballot, perm):
 
     if len(ballot) == 0:
-        return False
+        return True
     c = ballot[0]
     index = 0
     for i in range(len(perm)):
@@ -53,9 +55,13 @@ def is_consistant(ballot, perm):
         j: index in the permutation
         p = parent 
         '''
-
+        if j < 0 or j > len(perm):
+            return False
+        
+        print(i, " ", j, " ", p)
         if (i == len(ballot) - 1):
             return True
+        
         if (i == 0):
             if (j + 1 >= len(perm)):
                 if ballot[i + 1] != perm[j - 1]:
@@ -66,9 +72,9 @@ def is_consistant(ballot, perm):
             if ballot[i + 1] != perm[j - 1] and ballot[i + 1] != perm[j + 1]:
                 return False
 
-        if j + 1 < len(perm) and ballot[i + 1] == perm[j + 1]:
+        if p != j + 1 and j + 1 < len(perm) and ballot[i + 1] == perm[j + 1]:
             return dfs(i + 1, j + 1, j)
-        elif ballot[i + 1] == perm[j - 1]:
+        elif p != j - 1 and ballot[i + 1] == perm[j - 1]:
             return dfs(i + 1, j - 1, j)
         else:
             if p != j:
