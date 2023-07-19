@@ -32,6 +32,7 @@ def dim():
         print ("Consistanty: ", c_mcp, "%: ", (100*(c_mcp/sum(ballots.values()))))
         print()'''
     #print(d)
+    
     plt.figure(figsize=(10, 6))
     i = 0
     for x, y_values in d.items():
