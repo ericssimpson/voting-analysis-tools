@@ -108,7 +108,7 @@ def is_consistant2(ballot, perm):
 
 
 
-ballots, candidates = parser.parser("team_arrow/cvr_class/dataverse_files/Alaska_11082022_USRepresentative.csv")
+'''ballots, candidates = parser.parser("team_arrow/cvr_class/dataverse_files/Alaska_11082022_USRepresentative.csv")
 x = len(candidates)
 if x <=6:
     perms = list(itertools.permutations(candidates))
@@ -124,4 +124,4 @@ if x <=6:
             c_mcp = c
             mcp = p
 print (mcp)
-print(c_mcp)
+print(c_mcp)'''
