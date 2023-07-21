@@ -99,4 +99,8 @@ def is_consistant2(ballot, perm):
 
 #print(is_consistant(('d', 'b', 'a'), ['a','b','c', 'd']))
 
-dim()
+#dim()
+l = [1, 2, 3, 4]
+perms = list(itertools.permutations(l))
+for p in perms:
+    print(p, " ", is_consistant(p, l))
