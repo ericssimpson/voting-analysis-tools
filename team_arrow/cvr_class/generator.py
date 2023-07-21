@@ -107,21 +107,3 @@ def is_consistant2(ballot, perm):
 #print(is_consistant(('d', 'b', 'a'), ['a','b','c', 'd']))
 
 
-
-'''ballots, candidates = parser.parser("team_arrow/cvr_class/dataverse_files/Alaska_11082022_USRepresentative.csv")
-x = len(candidates)
-if x <=6:
-    perms = list(itertools.permutations(candidates))
-    #most consistant permutation
-    mcp = None
-    c_mcp = 0
-    for p in perms:
-        c = 0
-        for b in ballots:
-            if (is_consistant(b, p)):
-                c += ballots[b]
-        if mcp is None or c > c_mcp:
-            c_mcp = c
-            mcp = p
-print (mcp)
-print(c_mcp)'''
