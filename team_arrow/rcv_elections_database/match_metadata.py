@@ -40,7 +40,7 @@ def match(csv_path: str, dir_path: str) -> pd.DataFrame:
 
 # Replace with your local paths
 main_dir_path = 'team_arrow/rcv_elections_database'
-output_path = 'team_arrow/rcv_elections_database/MatchedMetadata.csv'
+output_path = 'team_arrow/rcv_elections_database/MatchedElections.csv'
 
 # Define subdirectories and corresponding CSV files
 sub_dirs = ['proportional', 'sequential', 'single']
