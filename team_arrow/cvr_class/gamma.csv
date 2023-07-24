@@ -1,383 +1,329 @@
-candidates,gamma,partisan
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-2,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-1,1.0,True
-3,0.8756003842459174,True
-3,0.8044224170796798,True
-3,0.9355499307571481,True
-3,0.9561283075386919,True
-3,0.9461778471138845,True
-3,0.9969266952957399,True
-3,0.9026083693000563,True
-3,0.9363352095059412,True
-3,0.8464163822525598,True
-3,0.9538972215392181,True
-3,0.9355400696864111,True
-3,0.9941990434433036,True
-3,0.8635330313648406,True
-3,0.9609397944199707,True
-3,0.8855773550995957,True
-3,0.8067109402306886,True
-3,0.9360909377960215,True
-3,0.9363694323253284,True
-3,0.8629124004550626,True
-3,0.9056495554918268,True
-3,0.9635384927889499,True
-3,0.9081854607899256,True
-3,0.9263377345378735,True
-3,0.9050544215386812,True
-3,0.9622619866941959,True
-3,0.9350927068556556,True
-3,0.9591623036649215,True
-3,0.9389952153110048,True
-3,0.8742649727767695,True
-3,0.9743150415769369,True
-3,0.9414893617021277,True
-3,0.8858909757214842,True
-3,0.9965274988172071,True
-3,0.7929571489181162,True
-3,0.9123322147651006,True
-3,0.9334473073635364,True
-4,0.7556551967353519,True
-4,0.8216898317483541,True
-4,0.8489272565697601,True
-4,0.7884360772234156,True
-4,0.7274801353158682,True
-4,0.7178341912587525,True
-4,0.8409551092646199,True
-4,0.9943344187382624,True
-4,0.9933555311558043,True
-4,0.8268977046132626,True
-4,0.8338918124709516,True
-4,0.7329857686346344,True
-4,0.9861040441099893,True
-4,0.9773331027869909,True
-4,0.9920126055422841,True
-4,0.9856478924568779,True
-7,0.9613948326087798,True
-7,0.9295785717654086,True
-7,0.9515012410658213,True
-7,0.3359571716988408,True
-7,0.9700033438156318,True
-7,0.5756414665510332,True
-7,0.9453534839571636,True
-6,0.9844155648982015,True
-6,0.963610355722527,True
-6,0.9542001854122432,True
-6,0.9864045776313792,True
-6,0.6500751350832881,True
-6,0.9869014993944696,True
-6,0.9833120656434451,True
-6,0.9410082538353419,True
-6,0.9793134282375837,True
-5,0.6267234387672344,True
-5,0.9887761144288821,True
-5,0.7132085881108915,True
-5,0.6589590832639074,True
-5,0.9911933664709219,True
-5,0.8601944682351755,True
-5,0.9725592065915035,True
-5,0.9711319301444582,True
-0,1.0,True
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-2,1.0,False
-4,0.7203606812868752,False
-4,0.5827120693129155,False
-4,0.9798539751216874,False
-4,0.7067926757235676,False
-4,0.878546882670594,False
-4,0.8116618075801749,False
-4,0.6539908065190138,False
-4,0.7496578549304905,False
-4,0.7966011683483802,False
-4,0.7410700904231403,False
-4,0.9047961343396829,False
-4,0.9013778100072516,False
-4,0.8376918089474822,False
-4,0.808916168631885,False
-4,0.6585611985483902,False
-4,0.7533317746083703,False
-4,0.7251377313179828,False
-4,0.8045911745619727,False
-4,0.6793236127987039,False
-4,0.8183991174307428,False
-4,0.8477523031100644,False
-4,0.7062038490609919,False
-4,0.8274030589832675,False
-4,0.805908750934929,False
-4,0.8967959805617329,False
-4,0.8588332987336517,False
-4,0.9079597651026222,False
-4,0.8026938023816584,False
-4,0.7403189066059226,False
-4,0.6982440248066337,False
-4,0.6406755663430421,False
-4,0.6049766718506998,False
-4,0.811828793774319,False
-4,0.8711272247857613,False
-4,0.7295452859580149,False
-4,0.8790753334695426,False
-4,0.8477566328656758,False
-4,0.7663354411321891,False
-4,0.7828041584714808,False
-4,0.7373653686826843,False
-4,0.7163673748698672,False
-4,0.6849485268015619,False
-4,0.7505626406601651,False
-4,0.9046985815602837,False
-4,0.69511675991243,False
-4,0.8130513595166163,False
-4,0.8361567635903919,False
-4,0.8252632783882784,False
-4,0.7736930962629474,False
-4,0.7943450064850843,False
-4,0.7492795389048992,False
-4,0.6161022061358152,False
-4,0.7996456227851424,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-1,1.0,False
-5,0.7066768000900748,False
-5,0.6050145624920856,False
-5,0.37307078233102714,False
-5,0.8023664854493124,False
-5,0.7880767236910317,False
-5,0.5914690841469085,False
-5,0.8152205246468723,False
-5,0.7060135323483946,False
-5,0.4935653347471924,False
-5,0.8808363187878075,False
-5,0.6203363204684209,False
-5,0.7163706878954889,False
-5,0.7998942638117896,False
-5,0.6091783485112043,False
-5,0.8042999383205569,False
-5,0.6751740256843152,False
-5,0.6579911064608945,False
-5,0.8885114268066708,False
-5,0.8144458281444583,False
-5,0.6657244387013407,False
-5,0.8223629084815194,False
-5,0.7038659448705932,False
-5,0.724925035187565,False
-5,0.782069970845481,False
-5,0.42451992711302156,False
-5,0.7485220554797636,False
-3,0.89581351094196,False
-3,0.870260663507109,False
-3,0.7975979523528254,False
-3,0.8609972677595629,False
-3,0.9698240495943112,False
-3,0.8936026176238294,False
-3,0.9229329173166927,False
-3,0.9472922096727483,False
-3,0.9115360696517413,False
-3,0.8534587378640777,False
-3,0.9737836561171469,False
-3,0.8677932405566601,False
-3,0.9317028149515459,False
-3,0.8290452383855628,False
-3,0.9621282837711694,False
-3,0.9293496203367448,False
-3,0.9323954892356761,False
-3,0.9392633890859943,False
-3,0.8572591429734286,False
-3,0.9643701032209924,False
-3,0.8568011958146488,False
-3,0.8304576144036009,False
-3,0.8874088169996829,False
-3,0.832572298325723,False
-3,0.9058666201523344,False
-3,0.8249331413289447,False
-3,0.9482506319010243,False
-3,0.9409638554216867,False
-3,0.8880706921944035,False
-3,0.9353343632752151,False
-3,0.9612324929971989,False
-3,0.9561805101373446,False
-3,0.9019343229869545,False
-3,0.9382514327521034,False
-3,0.9102066556709033,False
-3,0.8702866203195512,False
-3,0.86218879963539,False
-3,0.9293600439626317,False
-3,0.8275450261442128,False
-3,0.9134165828253537,False
-3,0.8836184094515959,False
-3,0.8909832067451745,False
-3,0.8175307814724851,False
-3,0.858368386096967,False
-3,0.9250497887016078,False
-3,0.9246889325474787,False
-3,0.8808003128258602,False
-3,0.8946564885496183,False
-3,0.9236168885191348,False
-3,0.8600823045267489,False
-3,0.8387137572327442,False
-3,0.8195074642374701,False
-3,0.8505294262496922,False
-3,0.8431512215969799,False
-3,0.9065516232816613,False
-3,0.823688874986967,False
-3,0.9115850332715174,False
-3,0.9531585478755885,False
-3,0.9403768106378064,False
-3,0.8559631945263655,False
-3,0.9498142294681972,False
-3,0.8870139398385913,False
-3,0.9982973651726046,False
-3,0.900561838219405,False
-3,0.949317738791423,False
-6,0.703877209018891,False
-6,0.7657276995305164,False
-6,0.7389830508474576,False
-6,0.7442700987306065,False
-6,0.6150224215246637,False
-6,0.6885588303550708,False
-6,0.6965821724899139,False
-6,0.7283619280241102,False
-6,0.6451287228672388,False
-6,0.6247725618631732,False
-6,0.552649930264993,False
-6,0.6533009832716128,False
-7,0.6286589876360562,False
-7,0.7051728408653052,False
-7,0.6893690931320228,False
-7,0.6387840598275802,False
-7,0.7015138023152271,False
-7,0.6421768225755055,False
-7,0.6725541851275296,False
-7,0.6325228941747857,False
-7,0.5782877604166666,False
-7,0.49027763856870804,False
-7,0.6301972114056024,False
-7,0.678227896540328,False
-7,0.6574500768049155,False
-7,0.4138629821531376,False
+,Election,candidates,Partisan,Gamma,Most Consistent Permutaition
+0,Oakland_11042014_SchoolDirectorDistrict2.csv,2,False,1.0,"('AIMEE ENG', ""WILLIAM ''BO'' GHIRARDELLI"")"
+1,Berkeley_11032020_MemberCityCouncilDist2BerkeleyRCV.csv,4,False,0.7203606812868752,"('CHERYL DAVILA', 'TERRY TAPLIN', 'ALEX SHARENKO', 'TIMOTHY W. CARTER')"
+2,Berkeley_11042014_CityAuditor.csv,1,False,1.0,"('ANN-MARIE HOGAN',)"
+3,Alaska_11082022_HouseDistrict23.csv,2,True,1.0,"('Branson, Roger L.', 'Allard, Jamie')"
+4,Berkeley_11042014_CityCouncilDistrict8.csv,4,False,0.5827120693129155,"('GEORGE BEIER', 'MIKE ALVAREZ COHEN', 'LORI DROSTE', 'JACQUELYN MCCORMICK')"
+5,Alaska_11082022_HouseDistrict37.csv,1,True,1.0,"('Edgmon, Bryce',)"
+6,Minneapolis_11072017_Ward6CityCouncil.csv,4,False,0.9798539751216874,"('Fadumo Yusuf', 'Mohamud Noor', 'Abdi Warsame', 'Tiffini Forslund')"
+7,Oakland_11082016_CouncilAtLrg.csv,5,False,0.7066768000900748,"(""FRANCIS ''MATT'' HUMMEL"", 'BRUCE QUAN', 'REBECCA KAPLAN', 'PEGGY MOORE', 'NANCY SIDEBOTHAM')"
+8,SanFrancisco_11082016_BoardofSupervisorsDistrict7.csv,5,False,0.6050145624920856,"('JOHN FARRELL', 'BEN MATRANGA', 'JOEL ENGARDIO', 'NORMAN YEE', 'MIKE YOUNG')"
+9,Berkeley_11062018_CityCouncilDistrict1.csv,4,False,0.7067926757235676,"('MARGO SCHUELER', 'RASHI KESARWANI', 'IGOR A. TREGUB', 'MARY BEHM-STEINBERG')"
+10,Minneapolis_11062009_PRBoardDistrict6.csv,4,False,0.878546882670594,"('Geneva Hanvik', 'Meg Forney', 'Brad Bourn', 'Steven Jecha')"
+11,Minneapolis_11062009_Ward10CityCouncil.csv,4,False,0.8116618075801749,"('Dan Alvin', 'Kim Vlaisavljevich', 'Meg Tuthill', 'Matthew Dowgwillo')"
+12,Minneapolis_11052013_PRBoardDistrict2.csv,2,False,1.0,"('DAVID LUCE', 'JON OLSON')"
+13,LasCruces_11052019_COUNCILORPOSITION2CITYOFLASCRUCESDISTRICT2COUNCILOR.csv,4,False,0.6539908065190138,"('PHILIP A VANVEEN', 'JACK L VALENCIA, JR', 'TESSA ABEYTA STUVE', 'JASON D ESTRADA')"
+14,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT9.csv,2,False,1.0,"('HILLARY RONEN', 'BUD RYERSON')"
+15,Oakland_11062012_CityAttorney.csv,2,False,1.0,"('BARBARA PARKER', 'JANE BRUNNER')"
+16,Alaska_11082022_HouseDistrict36.csv,2,True,1.0,"('Cronk, Mike', 'Fowler, Angela K. ""Fitch""')"
+17,Alaska_11082022_HouseDistrict22.csv,2,True,1.0,"('Eischeid, Ted J.', 'Wright, Stanley A.')"
+18,SantaFe_03062018_Mayor.csv,5,False,0.37307078233102714,"('Ronald S. Trujillo', 'Joseph M. Maestas', 'Kate I. Noble', 'Alan Webber', 'Peter N. Ives')"
+19,Maine_11082022_CongressionalDistrict2.csv,3,True,0.9355499307571481,"('Golden, Jared Forrest', 'Bond, Tiffany', 'Poliquin, Bruce')"
+20,Springville_11022021_Mayor.csv,3,False,0.89581351094196,"('RYAN MILLER', 'MATT PACKARD', 'MATTHEW NORMAN BRADLEY')"
+21,LasCruces_11052019_COUNCILORPOSITION4CITYOFLASCRUCESDISTRICT4COUNCILOR.csv,3,False,0.870260663507109,"('ROBERT J PALACIOS', 'JOHANA BENCOMO', 'ANTOINETTE M REYES')"
+22,SanLeandro_11062018_Mayor.csv,4,False,0.7496578549304905,"('JEROMEY SHAFER', 'PAULINE RUSSO CUTTER', 'BENNY LEE', 'DAN DILLMAN')"
+23,SantaFe_03062018_CityCouncilDistrict4.csv,3,False,0.7975979523528254,"('Eric John Holmes', 'JoAnne Vigil Coppler', 'Greg Scargall')"
+24,Corvallis_11082022_CityCouncilWard9.csv,3,False,0.8609972677595629,"('Cliff Feldman', 'Tony Cadena', 'Nyssa Towsley')"
+25,Oakland_11022010_SchoolDirectorDistrict6.csv,1,False,1.0,"('CHRISTOPHER DOBBINS',)"
+26,Oakland_11022010_SchoolDirectorDistrict4.csv,2,False,1.0,"('GARY D. YEE', 'BENJAMIN VISNICK')"
+27,Berkeley_11032020_MemberCityCouncilDist5BerkeleyRCV.csv,3,False,0.9698240495943112,"('TODD ANDREW', 'SOPHIE HAHN', 'PAUL DARWIN PICKLESIMER')"
+28,Alaska_08162022_HouseofRepresentativesSpecial.csv,3,True,0.9561283075386919,"('Peltola, Mary S.', 'Begich, Nick', 'Palin, Sarah')"
+29,Alaska_11082022_HouseDistrict34.csv,3,True,0.9461778471138845,"('DeMars, Nate', 'Tomaszewski, Frank J.', 'Hopkins, Grier H.')"
+30,Alaska_11082022_HouseDistrict20.csv,4,True,0.8216898317483541,"('Kohlhaas, Scott A.', 'Gray, Andrew T.', 'Harary, Jordan I.', 'Bauer, Paul A.')"
+31,Minneapolis_11072017_Ward1CityCouncil.csv,3,False,0.8936026176238294,"('John Hayden', 'Kevin Reich', 'Jillia Pessenda')"
+32,Minneapolis_11062009_PRBoardDistrict5.csv,5,False,0.8023664854493124,"('McClain Looney', 'Jason Stone', 'Carol Kummer', 'Steve Barland', 'Dan W. Peterson')"
+33,Minneapolis_11062009_PRBoardDistrict4.csv,1,False,1.0,"('Anita Tabb',)"
+34,Minneapolis_11072017_Ward9CityCouncil.csv,4,False,0.7966011683483802,"('Mohamed Farah', 'Alondra Cano', 'Gary Schiff', 'Ronald W. Peterson')"
+35,SanFrancisco_11082016_BoardofSupervisorsDistrict5.csv,2,False,1.0,"('DEAN PRESTON', 'LONDON BREED')"
+36,Burlington_03072023_CityCouncilEastDistrict.csv,2,True,1.0,"('TIMOTHY C. DOHERTY,JR', 'JAKE SCHUMANN')"
+37,SanFrancisco_11062018_BoardofSupervisorsDistrict10.csv,6,False,0.703877209018891,"('GLORIA BERRY', 'THEO ELLINGTON', 'SHAMANN WALTON', 'TONY KELLY', 'UZURI PEASE-GREENE', 'ASALE CHANDLER')"
+38,Alaska_11082022_HouseDistrict21.csv,2,True,1.0,"('Wolfe, Forrest M.', 'Mears, Donna C.')"
+39,Alaska_11082022_HouseDistrict35.csv,4,True,0.8489272565697601,"('McNeill, Ruben A. Jr.', 'McKinley, Kevin', 'Carrick, Ashley E.', 'Brown, Kieran C.')"
+40,Portland_06142022_SchoolboardAL-1.csv,7,False,0.6286589876360562,"('Albert, Stephanie G.', 'Grant, Benjamin K.', 'Lentz, Sarah M.', 'Hang, Stacey L.', 'Mancini, Kimberly A.', 'Schertz, Amber J.', 'Ward, Richard L.')"
+41,Portland_06142022_Schoolboarddistrict5-1.csv,6,False,0.7657276995305164,"('Viola, Lou A.', 'Haefele, Joshua W.', 'Goglin, Barbara E.', 'Brydon, Sarah M.', 'Capone-Newton, Elizabeth', 'Capone-Newton, Elizabeth A.')"
+42,Oakland_11042014_SchoolDirectorDistrict4.csv,4,False,0.7410700904231403,"('SALEEM SHAKIR-GILMORE', 'NINA SENN', 'KARL DEBRO', 'CHERI SPIGNER')"
+43,SanFrancisco_11082005_AssessorRecorder.csv,4,False,0.9047961343396829,"('Gerardo Sandoval', 'Phil Ting', 'Ronald Chun', 'Anthony Faber')"
+44,SanFrancisco_11062018_BoardofSupervisorsDistrict8.csv,2,False,1.0,"('RAFAEL MANDELMAN', ""LAWRENCE ''STARK'' DAGESSE"")"
+45,Minneapolis_11072017_Ward8CityCouncil.csv,4,False,0.9013778100072516,"('April Kane', 'Andrea Jenkins', 'Terry White', 'David Holsinger')"
+46,Oakland_11082022_CityAuditor.csv,1,False,1.0,"('COURTNEY RUBY',)"
+47,Alaska_11082022_HouseDistrict19.csv,2,True,1.0,"('Wyatt, Russell O.', 'Mina, Genevieve G.')"
+48,Maine_11062018_CongressionalDistrict2.csv,4,True,0.7884360772234156,"('REP Poliquin, Bruce', 'Hoar, William R.S.', 'DEM Golden, Jared F.', 'Bond, Tiffany L.')"
+49,Alaska_11082022_HouseDistrict31.csv,3,True,0.9026083693000563,"('Dibert, Maxine L.', 'LeBon, Barton S.', 'Nash, Kelly')"
+50,Alaska_11082022_HouseDistrict25.csv,2,True,1.0,"('Johnson, DeLena M.', 'Wood, Lawrence D.')"
+51,Berkeley_11062018_CityCouncilDistrict7.csv,3,False,0.9229329173166927,"(""CECILIA ''CES'' ROSALES"", 'RIGEL ROBINSON', 'AIDAN HILL')"
+52,SanFrancisco_11052019_CityAttorney.csv,1,False,1.0,"('DENNIS J. HERRERA',)"
+53,Minneapolis_11062009_PRBoardDistrict1.csv,3,False,0.9472922096727483,"('Bernie Kunza', 'Liz Wielinski', 'John Malone')"
+54,Alaska_11082022_HouseDistrict24.csv,3,True,0.9363352095059412,"('Nelson, Daryl W.', 'Saddler, Dan', 'Jackson, Sharon')"
+55,Alaska_11082022_HouseDistrict30.csv,3,True,0.9538972215392181,"('Mindiola, L. Joy', 'Holmes, Doyle E.', 'McCabe, Kevin J.')"
+56,Alaska_11082022_HouseDistrict18.csv,3,True,0.9355400696864111,"('Nelson, David', 'Groh, Cliff', 'Franks, Lyn D.')"
+57,Minneapolis_11022021_ParkBoardAtLarge.csv,7,False,0.7051728408653052,"('Katherine Kelly', 'Charles Rucker', 'Mary McKelvey', 'Meg Forney', 'Alicia D. Smith', 'Tom Olsen', 'Londel French')"
+58,SantaFe_03062018_CityCouncilDistrict2.csv,3,False,0.9115360696517413,"('Joe H. Arellano', 'Carol Romero-Wirth', 'Nate Downey')"
+59,Oakland_11022010_SchoolDirectorDistrict2.csv,1,False,1.0,"('DAVID KAKISHIBA',)"
+60,Oakland_11032020_MemberCityCouncilDist5OaklandRCV.csv,3,False,0.8534587378640777,"('NOEL GALLO', 'RICHARD SANTOS RAYA', 'ZOE LOPEZ-MERAZ')"
+61,SanFrancisco_11052019_Mayor.csv,7,False,0.6893690931320228,"('WILMA PANG', 'ELLEN LEE ZHOU', 'LONDON N. BREED', 'JOEL VENTRESCA', 'PAUL YBARRA ROBERTSON', 'ROBERT L. JORDAN, JR.', 'MARC ROTH')"
+62,Minneapolis_11062009_Ward11CityCouncil.csv,3,False,0.9737836561171469,"('David A. Alvarado', 'John Quincy', 'Gregg A Iverson')"
+63,SanFrancisco_11042008_BoardofSupervisorsDistrict9.csv,7,False,0.6387840598275802,"('TOM VALTIN', 'ERIC STOREY', 'EVA ROYALE', 'MARK SANCHEZ', 'DAVID CAMPOS', 'ERIC QUEZADA', 'VERN MATHEWS')"
+64,Alaska_11082022_HouseDistrict26.csv,2,True,1.0,"('Tilton, Cathy L.', 'Stokes, Daniel L.')"
+65,Alaska_11082022_HouseDistrict32.csv,3,True,0.9609397944199707,"('Lawrence, Van', 'Stapp, Will B.', 'Givens, Timothy W.')"
+66,Berkeley_11062018_CityCouncilDistrict4.csv,3,False,0.8677932405566601,"('KATE HARRISON', 'BEN GOULD', 'GREGORY MAGOFNA')"
+67,Minneapolis_11052013_PRBoardDistrict6.csv,2,False,1.0,"('BRAD BOURN', 'JOSH NEIMAN')"
+68,Minneapolis_11062009_PRBoardDistrict3.csv,2,False,1.0,"('Mike Wendorf', 'Scott Vreeland')"
+69,Berkeley_03072017_CityCouncilDistrict4.csv,2,False,1.0,"('KATE HARRISON', 'BEN GOULD')"
+70,Minneapolis_11062009_PRBoardDistrict2.csv,2,False,1.0,"('Michael Guest', 'Jon Olson')"
+71,Berkeley_11032020_MemberCityCouncilDist3BerkeleyRCV.csv,3,False,0.9317028149515459,"('DEBORAH MATTHEWS', 'BEN BARTLETT', 'ORLANDO MARTINEZ')"
+72,Oakland_11032020_MemberCityCouncilDist1OaklandRCV.csv,3,False,0.8290452383855628,"('STEPH DOMINGUEZ WALTON', 'DAN KALB', 'TRI NGO')"
+73,SanFrancisco_11082022_PublicDefender.csv,2,False,1.0,"('REBECCA SUSAN FENG YOUNG', 'MANO RAJU')"
+74,SanFrancisco_11082016_BoardofSupervisorsDistrict3.csv,2,False,1.0,"('AARON PESKIN', 'TIM E. DONNELLY')"
+75,Alaska_11082022_HouseDistrict33.csv,1,True,1.0,"('Prax, Glenn M. ""Mike""',)"
+76,Alaska_11082022_HouseDistrict27.csv,3,True,0.8855773550995957,"('Eastman, David', 'Carpenter, Brendan R.', 'Graham, Stuart R. ""Stu""')"
+77,Burlington_03072006_Mayor.csv,5,True,0.6267234387672344,"('Loyal Ploof', 'Bob Kiss', 'Hinda Miller', 'Kevin Curley', 'Louie the Cowman Beaudin')"
+78,Minneapolis_11072017_Ward7CityCouncil.csv,4,False,0.8376918089474822,"('Joe Kovacs', 'Lisa Goodman', 'Janne Flisrand', 'Teqen Zéa-Aida')"
+79,SanFrancisco_11052019_Treasurer.csv,1,False,1.0,"('JOSÉ CISNEROS',)"
+80,SanFrancisco_11022010_BoardofSupervisorsDistrict2.csv,6,False,0.7389830508474576,"('VILMA B. GUINTO PEORO', 'KAT ANDERSON', 'JANET REILLY', 'MARK FARRELL', 'ABRAHAM SIMMONS', 'BARBARA BERWICK')"
+81,Oakland_11042014_SchoolDirectorDistrict6.csv,2,False,1.0,"('SHANTHI GONZALES', 'RENATO ALMANZOR')"
+82,SanFrancisco_11082022_BoardofSupervisorsD8.csv,2,False,1.0,"('RAFAEL MANDELMAN', 'KATE STOIA')"
+83,Oakland_11082016_SchoolDirectorDistrict3.csv,5,False,0.7880767236910317,"('LUCKY NARAIN', 'BENJAMIN LANG', ""KHARYSHI ''MS. K'' WIGINTON"", 'JUMOKE HINTON HODGE', 'MISTY CROSS')"
+84,Oakland_11032020_SchoolDirectorDist3OaklandRCV.csv,5,False,0.5914690841469085,"('MARK HURTY', 'MAIYA EDGERLY', 'VANCEDRIC WILLIAMS', 'CHERISSE GASH', 'MAXIMO SANTANA')"
+85,Alaska_11082022_HouseDistrict40.csv,1,True,1.0,"('Patkotak, Josiah B. ""Aullaqsruaq""',)"
+86,SanFrancisco_11052019_MemberBoardofSupervisorsDistrict5.csv,4,False,0.808916168631885,"('VALLIE BROWN', 'DEAN PRESTON', 'RYAN LAM', ""NOMVULA O'MEARA"")"
+87,Minneapolis_11022021_CityCouncilWard4.csv,3,False,0.9621282837711694,"('Phillipe M. Cunningham', 'LaTrisha Vetaw', 'Leslie Davis')"
+88,Minneapolis_11022021_CityCouncilWard11.csv,5,False,0.8152205246468723,"('Kurt Michael Anderson', 'Dillon Gherna', 'Emily Koski', 'Jeremy Schroeder', 'Albert T. Ross')"
+89,Minneapolis_11062009_Ward13CityCouncil.csv,3,False,0.9293496203367448,"('Kris Broberg', 'Betsy Hodges', 'Joseph Henry')"
+90,SanFrancisco_11052019_DistrictAttorney.csv,4,False,0.6585611985483902,"('CHESA BOUDIN', 'SUZY LOFTUS', 'LEIF DAUTCH', 'NANCY TUNG')"
+91,SanFrancisco_11052019_PublicDefender.csv,1,False,1.0,"('MANOHAR ""MANO"" RAJU',)"
+92,SanFrancisco_11022004_BoardofSupervisorsDistrict2.csv,5,False,0.7060135323483946,"('Jay R. Shah', 'David Pascal', 'Michela Alioto-pier', 'Steve Braccini', 'Roger E. Schulke')"
+93,Alaska_11082022_HouseDistrict1.csv,2,True,1.0,"('Ortiz, Daniel H. ""Dan""', 'Bynum, Jeremy T.')"
+94,PierceCounty_11042008_CountyExecutiveMember.csv,4,True,0.7178341912587525,"('Calvin Goings', 'Pat McCarthy', 'Mike Lonergan', 'Shawn Bunney')"
+95,Oakland_11032020_SchoolDirectorDist7OaklandRCV.csv,5,False,0.4935653347471924,"('BRONCHÉ TAYLOR', 'CLIFFORD THOMPSON', 'BEN ""COACH"" TAPSCOTT', 'KRISTINA MOLINA', 'VICTOR JAVIER VALERIO')"
+96,Minneapolis_11072017_Ward5CityCouncil.csv,4,False,0.7533317746083703,"('Cathy Spann', 'Blong Yang', 'Jeremiah Ellison', 'Raeisha (RA) Williams')"
+97,SanFrancisco_11022004_BoardofSupervisorsDistrict3.csv,4,False,0.7251377313179828,"('Eugene Chi-ching Wong', 'Arron Peskin', ""Brian Murphy 0'flynn"", 'Sal Busalacchi')"
+98,Oakland_11062012_SchoolDirectorDistrict1.csv,2,False,1.0,"('THEARSE PECOT', 'JODY LONDON')"
+99,Oakland_11062018_SchoolDirectorDistrict6.csv,2,False,1.0,"('SHANTHI GONZALES', 'ANTHONY WILSON')"
+100,Minneapolis_11022021_CityCouncilWard10.csv,6,False,0.7442700987306065,"('David Wheeler', 'Chris Parsons', 'Alicia Gibson', 'Katie Jones', 'Aisha Chughtai', 'Ubah Nur')"
+101,Minneapolis_11022021_CityCouncilWard5.csv,7,False,0.7015138023152271,"('Suleiman Isse', 'Jeremiah Ellison', 'Kristel Porter', 'Victor Martinez', 'Cathy Spann', 'Elijah Norris-Holliday', 'James ""Jim"" Seymour')"
+102,SanFrancisco_11072006_BoardofSupervisorsDistrict8.csv,3,False,0.9323954892356761,"('Alix Amelia Rosenthal', 'Bevan Dufty', 'Starchild')"
+103,Alaska_11082022_SenateDistrictA.csv,2,True,1.0,"('Stedman, Bert K.', 'Sheldon, Mike')"
+104,Oakland_11062018_CityCouncilDistrict2.csv,3,False,0.9392633890859943,"('ABEL GUILLÉN', 'NIKKI FORTUNATO BAS', 'KENZIE DONTE SMITH')"
+105,Alaska_11082022_SenateDistrictC.csv,3,True,0.9360909377960215,"('Stevens, Gary', 'Smith, Heath', 'Jones, Walter H.')"
+106,PierceCounty_11032009_CountyAuditor.csv,3,True,0.9363694323253284,"('Will Baker', 'Julie Anderson', 'Jan Shabro')"
+107,SanLeandro_11042014_CountyCouncilDistrict5.csv,3,False,0.8572591429734286,"('LEAH HALL', 'CORINA LOPEZ', 'MIA OUSLEY')"
+108,Minneapolis_11022021_CityCouncilWard12.csv,3,False,0.9643701032209924,"('Nancy Ford', 'Andrew Johnson', 'David Rosenfeld')"
+109,Minneapolis_11022021_CityCouncilWard7.csv,4,False,0.8045911745619727,"('Teqen Zéa-Aida', 'Nick Kor', 'Lisa Goodman', 'Joanna Diaz')"
+110,Oakland_11062018_SchoolDirectorDistrict4.csv,2,False,1.0,"('GARY D. YEE', 'CLARISSA DOUTHERD')"
+111,Oakland_11062012_SchoolDirectorDistrict3.csv,3,False,0.8568011958146488,"('BENJAMIN LANG', 'JUMOKE HINTON HODGE', 'RICHARD FUENTES')"
+112,Alaska_11082022_HouseDistrict2.csv,2,True,1.0,"('Himschoot, Rebecca', 'Skaflestad, Kenny')"
+113,Alaska_11082022_HouseDistrict3.csv,1,True,1.0,"('Story, Andrea ""Andi""',)"
+114,SanLeandro_11032020_MemberCityCouncilDist4SanLeandroRCV.csv,2,False,1.0,"('CHRISTOPHER BAMMER', 'FRED SIMON')"
+115,Minneapolis_11022021_CityCouncilWard6.csv,2,False,1.0,"('Jamal Osman', 'A. Bihi')"
+116,Minneapolis_11072017_Ward2CityCouncil.csv,1,False,1.0,"('Cam Gordon',)"
+117,Minneapolis_11022021_CityCouncilWard13.csv,5,False,0.8808363187878075,"('Kati Medford', 'Mike Norton', 'Linea Palmisano', 'Bob Reuer', 'Ken Salway')"
+118,Berkeley_11032020_MemberCityCouncilDist6BerkeleyRCV.csv,2,False,1.0,"('SUSAN WENGRAF', 'RICHARD ILLGEN')"
+119,Alaska_11082022_SenateDistrictB.csv,1,True,1.0,"('Kiehl, Jesse',)"
+120,Oakland_11082016_SchoolDirectorDistrict1.csv,2,False,1.0,"('JODY LONDON', 'DON MACLEAY')"
+121,Alaska_11082022_GovernorLieutenantGovernor.csv,4,True,0.8409551092646199,"('Gara/Cook', 'Walker/Drygas', 'Dunleavy/Dahlstrom', 'Pierce/Grunwald')"
+122,SanFrancisco_11082016_BoardofSupervisorsDistrict11.csv,5,False,0.6203363204684209,"('BERTA HERNANDEZ', 'FRANCISCO HERRERA', 'KIM ALVARENGA', 'AHSHA SAFAI', 'MAGDALENA DE GUZMAN')"
+123,Minneapolis_11072017_Ward3CityCouncil.csv,4,False,0.6793236127987039,"('Tim Bildsoe', 'Steve Fletcher', 'Ginger Jentzen', 'Samantha Pree-Stinson')"
+124,Berkeley_11022010_CityCouncilDistrict8.csv,3,False,0.8304576144036009,"('JACQUELYN McCORMICK', 'GORDON WOZNIAK', 'STEWART JONES')"
+125,Burlington_03072023_CityCouncilSouthDistrict.csv,3,True,0.8629124004550626,"('WILL ""BILLY"" ANDERSON', 'FARIED MUNARSYAH', 'JOAN SHANNON')"
+126,Alaska_11082022_SenateDistrictQ.csv,3,True,0.9056495554918268,"('Serkov, Arthur P.', 'Myers, Robert H. Jr.', 'Bennett, John D.')"
+127,Springville_11022021_CityCouncil2yr.csv,3,False,0.8874088169996829,"('LYLE WERT', 'CHRIS SORENSEN', 'KELLY JENSEN')"
+128,Oakland_11082016_SchoolDirectorDistrict5.csv,4,False,0.8183991174307428,"('MIKE HUTCHINSON', 'ROSIE TORRES', 'HUBER TRENADO', 'MIKE HASSID')"
+129,Alaska_11082022_SenateDistrictF.csv,2,True,1.0,"('Kaufman, James D.', 'Park, Janice L.')"
+130,WoodlandHills_11022021_Mayor.csv,3,False,0.832572298325723,"('BRENT WINDER', 'BENJAMIN J HILLYARD', 'MIKE LAURITZEN')"
+131,Minneapolis_11022021_CityCouncilWard2.csv,5,False,0.7163706878954889,"('Cam Gordon', 'Robin Wonsley Worlobah', 'Yusra Arab', 'Tom Anderson', 'Guy T Gaskin')"
+132,Burlington_03072023_CityCouncilCentralDistrict.csv,2,True,1.0,"('AVERY MUZIKAR', 'MELO GRANT')"
+133,Alaska_11082022_HouseDistrict7.csv,2,True,1.0,"('Ruffridge, Justin', 'Gillham, Ronald D. ""Ron""')"
+134,Alaska_11082022_HouseDistrict6.csv,3,True,0.9635384927889499,"('Vance, Sarah L.', 'Flora, Louis A. ""Louie""', 'Bryant, Ginger')"
+135,Oakland_11062012_SchoolDirectorDistrict7.csv,2,False,1.0,"('ALICE A. SPEARMAN', 'JAMES HARRIS')"
+136,Minneapolis_11022021_CityCouncilWard3.csv,4,False,0.8477523031100644,"('Merv Moorhead', 'Michael Rainville', 'Steve Fletcher', 'Hope Hennessey')"
+137,Minnetonka_11022021_CityCouncilAtLargeSeatA.csv,5,False,0.7998942638117896,"('Marshall Glynn', 'Wyn Ray', 'Karen Ahlbrecht', 'Deb Calvert', 'Iola Kostrzewski')"
+138,SanLeandro_11042014_CountyCouncilDistrict1.csv,4,False,0.7062038490609919,"('DAVID L. ANDERSON, SR.', 'KENNETH PON', 'DEBORAH COX', 'MIKE KATZ-LACABE')"
+139,Oakland_11032020_CityAttorneyOaklandRCV.csv,2,False,1.0,"('BARBARA PARKER', 'ELI FERRAN')"
+140,Alaska_11082022_SenateDistrictG.csv,2,True,1.0,"('Gray-Jackson, Elvi', 'Sanders, Marcus D.')"
+141,Alaska_11082022_SenateDistrictP.csv,3,True,0.9081854607899256,"('Kawasaki, Scott', 'Matherly, Jim', 'Jafre, Alex N.')"
+142,Oakland_11062018_CityCouncilDistrict4.csv,7,False,0.6421768225755055,"('JOSEPH TANIOS', 'MATT HUMMEL', 'CHARLIE MICHELSON', 'NAYELI MAXSON', 'SHENG THAO', 'PAM HARRIS', 'JOSEPH E. SIMMONS')"
+143,SanFrancisco_11082005_Treasurer.csv,4,False,0.8274030589832675,"('Manuel B. Valle', 'Jose Cisneros', 'Calvin Louie', 'Isaac Wang')"
+144,Oakland_11062018_CityCouncilDistrict6.csv,5,False,0.6091783485112043,"('MARLO RODRIGUEZ', 'DESLEY BROOKS', 'MYA WHITAKER', 'LOREN TAYLOR', 'NATASHA MIDDLETON')"
+145,Alaska_11082022_SenateDistrictR.csv,3,True,0.9263377345378735,"('Verhagen, Elijah M.', 'Bishop, Click', 'Williams, Robert ""Bert""')"
+146,Alaska_11082022_SenateDistrictE.csv,3,True,0.9622619866941959,"('Holland, Roger', 'Giessel, Cathy', 'Cacy, Roselynn')"
+147,Burlington_03072023_CityCouncilNorthDistrict.csv,1,True,1.0,"('MARK BARLOW',)"
+148,SanLeandro_11042014_CountyCouncilDistrict3.csv,3,False,0.9058666201523344,"('LEE THOMAS', 'VICTOR AGUILAR', 'ALLEN SCHOENFELD')"
+149,Minneapolis_11072017_Ward4CityCouncil.csv,4,False,0.805908750934929,"('Dana Hansen', 'Stephanie Gasca', 'Phillipe M. Cunningham', 'Barbara A. ""Barb"" Johnson')"
+150,Oakland_11022010_CityAuditor.csv,2,False,1.0,"('MICHAEL KILIAN', 'COURTNEY RUBY')"
+151,Oakland_11062018_SchoolDirectorDistrict2.csv,1,False,1.0,"('AIMEE ENG',)"
+152,Minneapolis_11022021_CityCouncilWard1.csv,4,False,0.8967959805617329,"('Calvin L Carpenter', 'Kevin Reich', 'Elliott Payne', 'Thomas E Wortman')"
+153,Oakland_11062012_SchoolDirectorDistrict5.csv,2,False,1.0,"('ROSIE TORRES', 'MIKE HUTCHINSON')"
+154,Alaska_11082022_HouseDistrict4.csv,2,True,1.0,"('Hannan, Sara', 'Harmon, Darrell J.')"
+155,Alaska_11082022_HouseDistrict5.csv,2,True,1.0,"('Stutes, Louise B.', 'Vincent, Benjamin T.')"
+156,Minnetonka_11022021_CityCouncilAtLargeSeatB.csv,5,False,0.8042999383205569,"('Jim Hadley', 'Daniel Kral', 'Stacy Cranbrook', 'Kimberly Wilburn', 'Ash Patel')"
+157,Oakland_11082016_CityAttorney.csv,1,False,1.0,"('BARBARA J. PARKER',)"
+158,Oakland_11062018_CityAuditor.csv,2,False,1.0,"('COURTNEY RUBY', 'BRENDA ROBERTS')"
+159,Alaska_11082022_SenateDistrictD.csv,3,True,0.9591623036649215,"('Cizek, Andy', 'Bjorkman, Jesse J.', 'Babcock, Tuckerman')"
+160,Oakland_11082016_SchoolDirectorDistrict7.csv,2,False,1.0,"('CHRIS JACKSON', 'JAMES HARRIS')"
+161,Alaska_11082022_SenateDistrictS.csv,2,True,1.0,"('Hoffman, Lyman F.', 'Keppel, Willy')"
+162,Minneapolis_11062009_Ward12CityCouncil.csv,4,False,0.8588332987336517,"('Rick L. Nyhlen', 'Sandy Colvin Roy', 'Charley Underwood', 'Brent Perry')"
+163,Berkeley_11022010_CityCouncilDistrict7.csv,3,False,0.8249331413289447,"('GEORGE BEIER', 'KRISS WORTHINGTON', ""CECILIA ''CES'' ROSALES"")"
+164,Portland_11082022_SchoolBoardDistrict3.csv,3,False,0.9482506319010243,"('Burk, Adam M.', 'Opperman, Julianne R.', 'Rosenthal, Samuel H.')"
+165,SanLeandro_11082016_CountyCouncilDistrict4.csv,1,False,1.0,"('BENNY LEE',)"
+166,Alaska_11082022_SenateDistrictI.csv,2,True,1.0,"('Tobin, Löki G.', 'Herndon, Heather')"
+167,SanLeandro_11042014_Mayor.csv,4,False,0.9079597651026222,"('DIANA SOUZA', 'PAULINE RUSSO CUTTER', 'DAN DILLMAN', 'GREGG DALY')"
+168,SanFrancisco_11072006_BoardofSupervisorsDistrict10.csv,7,False,0.6725541851275296,"('Charlie Walker', 'Rodney Hampton Jr.', 'Marie L. Harrison', 'Sophie Maxwell', 'Espanola Jackson', 'Dwayne Jusino', 'Sala Chandler')"
+169,Oakland_11082016_CityCouncilDistrict3.csv,2,False,1.0,"('LYNETTE GIBSON MCELHANEY', 'NONI D. SESSION')"
+170,Minneapolis_11072017_PRBoardDistrict3.csv,3,False,0.9409638554216867,"('Abdi Gurhan Mohamed', 'AK Hassan', 'Charles Exner')"
+171,StLouisPark_11022021_CityCouncilWard3.csv,3,False,0.8880706921944035,"('Saul Eugene', 'Sue Budd', 'Jim Leuthner')"
+172,Alaska_11082022_HouseDistrict8.csv,1,True,1.0,"('Carpenter, Ben',)"
+173,SanFrancisco_11082011_DistrictAttorney.csv,5,False,0.6751740256843152,"('VU VUONG TRINH', 'DAVID ONEK', 'SHARMIN BOCK', 'GEORGE GASCÓN', 'BILL FAZIO')"
+174,Alaska_11082022_HouseDistrict9.csv,2,True,1.0,"('Schaff, David L.', 'Shaw, Laddie H.')"
+175,StLouisPark_11022021_CityCouncilWard2.csv,2,False,1.0,"('Lynette Lungay Dumalag', 'John Basill')"
+176,Minneapolis_11072017_PRBoardDistrict2.csv,2,False,1.0,"('Mike Talley Tate', 'Kale Severson')"
+177,PierceCounty_11042008_CountyAssessorTreasurer.csv,6,True,0.6500751350832881,"('Bernardo Tuma', 'Terry Lee', 'Dale Washam', 'Jan Shabro', 'Barbara Gelman', 'Beverly Davidson')"
+178,Berkeley_11032020_MayorBerkeleyRCV.csv,4,False,0.8026938023816584,"('NAOMI D. PETE', 'AIDAN HILL', 'JESSE ARREGUÍN', 'WAYNE HSIUNG')"
+179,SanLeandro_11062012_CountyCouncilDistrict6.csv,2,False,1.0,"('HERMY B. ALMONTE', 'JIM PROLA')"
+180,Alaska_11082022_SenateDistrictH.csv,2,True,1.0,"('Claman, Matt', 'Costello, Mia')"
+181,Minneapolis_11062009_Ward7CityCouncil.csv,3,False,0.9353343632752151,"('Lisa Goodman', 'Michael J. Katch', 'Jeffrey Alan Wagner')"
+182,Oakland_11062012_CityCouncilDistrict3.csv,6,False,0.6150224215246637,"('ALEX MILLER-COLE', 'SEAN SULLIVAN', 'LYNETTE GIBSON-MCELHANEY', 'NYEISHA DEWITT', 'DERRICK MUHAMMAD', 'LARRY LIONEL YOUNG, JR.')"
+183,Oakland_11082022_Schoolboarddistrict2.csv,3,False,0.9612324929971989,"('DAVID KAKISHIBA', 'JENNIFER BROUHARD', 'MAX OROZCO')"
+184,Alaska_11082022_USRepresentative.csv,4,True,0.8268977046132626,"('Bye, Chris', 'Peltola, Mary S.', 'Begich, Nick', 'Palin, Sarah')"
+185,Oakland_11042014_CityCouncilDistrict2.csv,5,False,0.6579911064608945,"('ANDREW PARK', 'ABEL GUILLEN', 'DANA KING', 'KEVIN BLACKBURN', 'KEN MAXEY')"
+186,Berkeley_11022010_CityCouncilDistrict4.csv,4,False,0.7403189066059226,"('ERIC PANZER', 'JESSE ARREGUIN', 'JIM NOVOSEL', 'BERNT RAINER WAHL')"
+187,Oakland_11062012_CityCouncilDistrict1.csv,7,False,0.6325228941747857,"('LEN RAPHAEL', 'CRAIG BRANDT', 'DONALD MACLEAY', 'DAN KALB', 'AMY LEMLEY', 'RICHARD RAYA', ""GORDON ''DON'' LINK"")"
+188,Alaska_11082022_SenateDistrictJ.csv,3,True,0.9389952153110048,"('Tarr, Geran', 'Dunbar, Forrest', 'Satterfield, Andrew E.')"
+189,Minneapolis_11062009_Ward8CityCouncil.csv,5,False,0.8885114268066708,"('Michael J. Cavlan', 'Jeanine Estime', 'Elizabeth Glidden', 'Gregory McDonald', 'David Regan')"
+190,SanLeandro_11062012_CountyCouncilDistrict4.csv,4,False,0.6982440248066337,"('DARLENE DAEVU', 'BENNY LEE', 'CHRIS CROW', 'JUSTIN HUTCHISON')"
+191,SanFrancisco_11052019_Sheriff.csv,1,False,1.0,"('PAUL MIYAMOTO',)"
+192,Oakland_11032020_SchoolDirectorDist5OaklandRCV.csv,4,False,0.6406755663430421,"('LEROY ROCHES GAINES', 'MIKE HUTCHINSON', 'SHEILA POPE-LAWRENCE', 'JORGE C. LERMA')"
+193,Minneapolis_11072017_Ward12CityCouncil.csv,3,False,0.9561805101373446,"('Harrison Bullard', 'Andrew Johnson', 'Will Jaeger')"
+194,Minneapolis_11052013_Ward9CityCouncil.csv,6,False,0.6885588303550708,"('ABDI ABDULLE', 'ALONDRA CANO', 'TY MOORE', 'CHARLES CURTIS', 'GREGORY MCDONALD', 'PAT FLEETHAM')"
+195,StLouisPark_11022021_CityCouncilWard1.csv,1,False,1.0,"('Margaret Rog',)"
+196,Minneapolis_11072017_PRBoardDistrict1.csv,3,False,0.9019343229869545,"('Mohamed Issa Barre', 'Chris Meyer', 'Billy Menz')"
+197,SanFrancisco_11062018_PublicDefender.csv,1,False,1.0,"('JEFF ADACHI',)"
+198,SanFrancisco_11022004_BoardofSupervisorsDistrict9.csv,6,False,0.6965821724899139,"('Steve Zeltzer', 'James Boris Perez', 'Miguel Bustos', 'Tom Ammiano', 'Renee Saucedo', 'Lucrecia Bermudez')"
+199,Oakland_11082016_CityCouncilDistrict1.csv,2,False,1.0,"('DAN KALB', 'KEVIN M. CORBETT')"
+200,SanFrancisco_11052004_BoardofSupervisorsDistrict1.csv,7,False,0.5782877604166666,"('David Heller', 'Rose Tsui', 'Lillian Sing', 'Jake McGoldrick', 'Matt Tuchow', 'Leanna Dawydiak', 'Jeffrey S. Freebairn')"
+201,Eastpointe_11052019_CityCouncil.csv,4,False,0.6049766718506998,"('Mary Hall-Rayford', 'Sarah A. Lucido', 'Harvey Curley', 'Larry Edwards')"
+202,Alaska_11082022_SenateDistrictK.csv,2,True,1.0,"('Wielechowski, Bill', 'Cunningham, John W.')"
+203,SanFrancisco_11072006_BoardofSupervisorsDistrict2.csv,2,False,1.0,"('Vilma Guinto Peoro', 'Michela Alioto-pier')"
+204,SanLeandro_11082016_CountyCouncilDistrict6.csv,1,False,1.0,"('PETE BALLEW',)"
+205,Oakland_11032020_SchoolDirectorDist1OaklandRCV.csv,3,False,0.9382514327521034,"('AUSTIN DANNHAUS', 'SAM DAVIS', 'STACY THOMAS')"
+206,Easthampton_11022021_Mayor.csv,0,True,1.0,()
+207,Berkeley_11022010_CityCouncilDistrict1.csv,4,False,0.811828793774319,"('MERRILIE MITCHELL', 'LINDA MAIO', 'JASPER KINGETER', 'ANTHONY Di DONATO')"
+208,Alaska_11082022_SenateDistrictO.csv,2,True,1.0,"('Shower, Michael K.', 'Massie, Doug A.')"
+209,SanLeandro_11082016_CountyCouncilDistrict2.csv,2,False,1.0,"('ED HERNANDEZ', 'BRYAN AZEVEDO')"
+210,Berkeley_11062018_CityAuditor.csv,2,False,1.0,"('JENNY WONG', 'VLADISLAV S. DAVIDZON')"
+211,Minneapolis_11072017_PRBoardDistrict5.csv,3,False,0.9102066556709033,"('Bill Shroyer', 'Steffanie Musich', 'Andrea Fahrenkrug')"
+212,Minneapolis_11062009_Ward1CityCouncil.csv,5,False,0.8144458281444583,"('Mark Fox', 'Thomas Alessi', 'Larry Ranallo', 'Kevin Reich', 'Susan Howitz Hanna')"
+213,Oakland_11082016_CityCouncilDistrict5.csv,2,False,1.0,"('NOEL GALLO', 'VIOLA GONZALES')"
+214,StLouisPark_11022021_CityCouncilWard4.csv,1,False,1.0,"('Tim Brausen',)"
+215,Minneapolis_11062009_Ward9CityCouncil.csv,4,False,0.8711272247857613,"('Todd J. Eberhardy', 'Dave Bicking', 'Gary Schiff', 'Khalif Jama')"
+216,Minneapolis_11072017_PRBoardDistrict4.csv,2,False,1.0,"('Jono Cowgill', 'Tom Nordyke')"
+217,Oakland_11032020_MemberCityCouncilAtLargeOaklandRCV.csv,3,False,0.8702866203195512,"('REBECCA KAPLAN', 'DERRECK B. JOHNSON', 'NANCY SIDEBOTHAM')"
+218,SanFrancisco_11032015_BoardofSupervisorsDistrict3.csv,3,False,0.86218879963539,"('JULIE CHRISTENSEN', 'AARON PESKIN', 'WILMA PANG')"
+219,Berkeley_11022010_CityAuditor.csv,1,False,1.0,"('ANN-MARIE HOGAN',)"
+220,SanFrancisco_11082022_AssessorRecorder.csv,1,False,1.0,"('JOAQUÍN TORRES',)"
+221,Minneapolis_11072017_Ward13CityCouncil.csv,2,False,1.0,"('Linea Palmisano', 'Bob Reuer')"
+222,Alaska_11082022_SenateDistrictN.csv,3,True,0.8742649727767695,"('Wright, Stephen', 'Wilson, David S.', 'Clayton, Scott D.')"
+223,Oakland_11062012_CityCouncilDistrict5.csv,4,False,0.7295452859580149,"('DAWN MCMAHAN', 'NOEL GALLO', 'MARIO JUAREZ', ""ARACELY ''SHELLY'' GARZA"")"
+224,Oakland_11042014_CityCouncilDistrict4.csv,3,False,0.9293600439626317,"('JILL BROADHURST', 'ANNIE CAMPBELL WASHINGTON', 'PAUL LIM')"
+225,Oakland_11082022_Schoolboarddistrict4.csv,3,False,0.8275450261442128,"('NICK RESNICK', 'MIKE HUTCHINSON', 'PECOLIA MANIGO')"
+226,Oakland_11042014_CityCouncilDistrict6.csv,5,False,0.6657244387013407,"('JAMES MOORE', 'MICHAEL V. JOHNSON', 'SHEREDA F. NOSAKHARE', 'DESLEY BROOKS', 'VICENTE CRUZ')"
+227,Oakland_11082022_Schoolboarddistrict6.csv,3,False,0.9134165828253537,"('KYRA MUNGIA', 'VALARIE BACHELOR', 'JOEL VELASQUEZ')"
+228,SanFrancisco_11082022_BoardofSupervisorsD10.csv,2,False,1.0,"('SHAMANN WALTON', 'BRIAN SAM ADAM')"
+229,SanFrancisco_11032015_Mayor.csv,6,False,0.7283619280241102,"('REED MARTIN', 'KENT GRAHAM', 'ED LEE', 'AMY FARAH WEISS', 'FRANCISCO HERRERA', 'STUART SCHUFFMAN')"
+230,Oakland_11062012_CityCouncilDistrict7.csv,3,False,0.8836184094515959,"('LARRY E. REID', 'SHERYL WALTON', 'BEVERLY WILLIAMS')"
+231,Alaska_11082022_SenateDistrictL.csv,2,True,1.0,"('Merrick, Kelly R.', 'McCarty, Ken')"
+232,SanLeandro_11062012_CountyCouncilDistrict2.csv,3,False,0.8909832067451745,"('DAN DILLMAN', 'MORGAN MACK-ROSE', 'URSULA REED')"
+233,Minneapolis_11022021_CityCouncilWard8.csv,2,False,1.0,"('Andrea Jenkins', 'Robert ""Bob"" Sullentrop')"
+234,Alaska_11082022_USSenator.csv,4,True,0.8338918124709516,"('Chesbro, Patricia R.', 'Murkowski, Lisa', 'Kelley, Buzz A.', 'Tshibaka, Kelly C.')"
+235,Minneapolis_11062009_Ward6CityCouncil.csv,6,False,0.6451287228672388,"('M. Cali', 'Andy Exley', 'Michael Tupper', 'Robert Lilligren', 'Laura Jean', 'Bruce Lundeen')"
+236,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT11.csv,4,False,0.8790753334695426,"('JOHN AVALOS', 'AHSHA SAFAI', 'MARCELO COLUSSI', 'JASON CHUYUAN ZENG')"
+237,Corvallis_11082022_Mayor.csv,3,False,0.8175307814724851,"('Charles Maughan', 'Andrew Struthers', 'Roen Hogg')"
+238,Minneapolis_11072017_PRBoardDistrict6.csv,4,False,0.8477566328656758,"('Brad Bourn', 'Bob Fine', 'Jennifer Zielinski', 'Robert M Schlosser ""Bob""')"
+239,Oakland_11082016_CityCouncilDistrict7.csv,3,False,0.858368386096967,"('LARRY E. REID', 'MARCIE HODGE', 'NEHANDA IMARA')"
+240,Minneapolis_11052013_Ward13CityCouncil.csv,5,False,0.8223629084815194,"('MISSY DURANT', 'LINEA PALMISANO', 'MATT PERRY', 'BOB REUER', 'DAVID REGAN')"
+241,SanFrancisco_11072006_BoardofSupervisorsDistrict4.csv,6,False,0.6247725618631732,"('Ron Dudum', 'Doug Chan', 'Ed Jew', 'Jaynry Mak', 'David Ferguson', 'Houston Zheng')"
+242,Alaska_11082022_SenateDistrictM.csv,2,True,1.0,"('Cooper, Jim', 'Hughes, Shelley')"
+243,SanFrancisco_11062018_AssessorRecorder.csv,2,False,1.0,"('CARMEN CHU', 'PAUL BELLAR')"
+244,Minneapolis_11062009_Ward4CityCouncil.csv,4,False,0.7663354411321891,"('Grant Cermak', 'Marcus Harcus', 'Troy Parker', 'Barbara A. Johnson')"
+245,SanFrancisco_11042008_BoardofSupervisorsDistrict5.csv,3,False,0.9250497887016078,"(""OWEN P. O''DONNELL"", 'ROSS MIRKARIMI', 'ROB ANDERSON')"
+246,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT1.csv,7,False,0.49027763856870804,"('AMANDA INOCENCIO', 'DAVID E. LEE', 'CONNIE CHAN', 'MARJAN PHILHOUR', 'VERONICA SHINZATO', ""SHERMAN R. D'SILVA"", 'ANDREW N. MAJALYA')"
+247,Alaska_11082022_HouseDistrict16.csv,2,True,1.0,"('Vazquez, Liz', 'Armstrong, Jennifer ""Jennie""')"
+248,Berkeley_11042014_CityCouncilDistrict1.csv,3,False,0.9246889325474787,"('LINDA MAIO', 'ALEJANDRO SOTO-VIGIL', 'MERRILIE MITCHELL')"
+249,TakomaPark_11082022_CityCouncilWard4.csv,1,False,1.0,"('Terry Seamens',)"
+250,SanLeandro_11032020_MemberCityCouncilDist6SanLeandroRCV.csv,1,False,1.0,"('PETE BALLEW',)"
+251,Minneapolis_11022021_ParkBoardDistrict2.csv,3,False,0.8808003128258602,"('Mike Shelton', 'Becka Thompson', 'Eric Moran')"
+252,Berkeley_11062018_CityCouncilDistrict8.csv,4,False,0.7828041584714808,"('ALFRED TWU', 'LORI DROSTE', 'MARY KAY LACEY', 'RUSS TILLEMAN')"
+253,ElkRidge_11022021_Mayor.csv,3,False,0.8946564885496183,"('GEORGE D. POTTER', 'ROBERT HADDOCK', 'GORDON REYNOLDS')"
+254,SanLeandro_11062018_CountyCouncilDistrict5.csv,2,False,1.0,"('CORINA N. LOPEZ', 'MAXINE OLIVER-BENSON')"
+255,Minneapolis_11052013_Ward5CityCouncil.csv,4,False,0.7373653686826843,"('BRETT BUCKNER', 'IAN ALEXANDER', 'BLONG YANG', 'KALE R. SEVERSON')"
+256,SanLeandro_11022010_CountyCouncilDistrict5.csv,2,False,1.0,"('CORINA N. LOPEZ', 'PAULINE RUSSO CUTTER')"
+257,Minneapolis_11022021_ParkBoardDistrict3.csv,3,False,0.9236168885191348,"('Mohamoud Hassan', 'AK Hassan', 'Becky Alper')"
+258,Oakland_11062012_CityCouncilAtLarge.csv,5,False,0.7038659448705932,"('THERESA ANDERSON', 'CAROL LEE TOLBERT', 'REBECCA KAPLAN', 'IGNACIO DE LA FUENTE', 'MICK STORM')"
+259,TakomaPark_11082022_CityCouncilWard5.csv,3,False,0.8600823045267489,"('A. J. Campbell', 'Cara Honzak', 'Yared Tebabu')"
+260,Alaska_11082022_HouseDistrict17.csv,2,True,1.0,"('Fields, William Z. ""Zack""', 'Drummond, Harriet A.')"
+261,Oakland_11022010_CityCouncilDistrict4.csv,7,False,0.6301972114056024,"('JASON GILLEN', 'CLINTON KILLIAN', 'MELANIE SHELBY', 'JILL BROADHURST', 'LIBBY SCHAAF', 'DANIEL SWAFFORD', 'RALPH KANZ')"
+262,SanFrancisco_11082022_DistrictAttorney.csv,4,False,0.7163673748698672,"('BROOKE JENKINS', 'JOHN HAMASAKI', 'JOE ALIOTO VERONESE', 'MAURICE CHENIER')"
+263,SanFrancisco_11042008_BoardofSupervisorsDistrict4.csv,3,False,0.8387137572327442,"('DAVE FERGUSON', 'RON DUDUM', 'CARMEN CHU')"
+264,SanFrancisco_11062018_BoardofSupervisorsDistrict6.csv,3,False,0.8195074642374701,"('MATT HANEY', 'CHRISTINE JOHNSON', 'SONJA TRAUSS')"
+265,Oakland_11082022_CityCouncilmemberDistrict6.csv,4,False,0.6849485268015619,"('NANCY SIDEBOTHAM', 'KENNY SESSION', 'KEVIN JENKINS', 'YAKPASUA MICHAEL GBAGBA ZAZABOI')"
+266,SanFrancisco_11082022_BoardofSupervisorsD4.csv,2,False,1.0,"('JOEL ENGARDIO', 'GORDON MAR')"
+267,SanFrancisco_11082022_BoardofSupervisorsD6.csv,4,False,0.7505626406601651,"('CHERELLE JACKSON', 'HONEY MAHOGANY', 'MATT DORSEY', 'MS BILLIE COOPER')"
+268,Minneapolis_11062009_Ward3CityCouncil.csv,4,False,0.9046985815602837,"('Jeffery Cobia', 'Diane Hofstede', 'Allen Kathir', 'Raymond Wilson Rolfe')"
+269,Oakland_11082022_CityCouncilmemberDistrict4.csv,2,False,1.0,"('NENNA JOINER', 'JANANI RAMACHANDRAN')"
+270,Berkeley_11082016_CityCouncilDistrict2.csv,3,False,0.8505294262496922,"('DARRYL MOORE', 'CHERYL DAVILA', 'NANCI IRA ARMSTRONG-TEMPLE')"
+271,Alaska_11082022_HouseDistrict15.csv,3,True,0.9414893617021277,"('Wells, Denny', 'Eibeck, David', 'McKay, Thomas W. ""Tom""')"
+272,Oakland_11022010_CityCouncilDistrict6.csv,3,False,0.8431512215969799,"('JOSE DORADO', 'DESLEY BROOKS', 'NANCY SIDEBOTHAM')"
+273,Alaska_11082022_HouseDistrict29.csv,2,True,1.0,"('Rauscher, George', 'Haase, Elijah D.')"
+274,Minneapolis_11022021_ParkBoardDistrict1.csv,1,False,1.0,"('Billy Menz',)"
+275,Berkeley_11062012_CityCouncilDistrict3.csv,2,False,1.0,"('DMITRI BELSER', 'MAX ANDERSON')"
+276,PierceCounty_11042008_CountyCouncilDistrict2.csv,3,True,0.8858909757214842,"('Joyce McDonald', 'Al Rose', 'Carolyn Merrival')"
+277,Berkeley_11062012_Mayor.csv,7,False,0.678227896540328,"(""KAHLIL ''DA MAYOR'' JACOBS-FANTAUZZI"", 'ZACHARY RUNNINGWOLF', 'KRISS WORTHINGTON', 'TOM BATES', 'JACQUELYN MCCORMICK', 'BERNT RAINER WAHL', 'MARK SCHWARTZ')"
+278,SanFrancisco_11042014_BoardofSupervisorsDistrict10.csv,5,False,0.724925035187565,"('SHAWN M. RICHARD', 'MARLENE TRAN', 'MALIA COHEN', 'TONY KELLY', 'ED DONALDSON')"
+279,Berkeley_11062012_CityCouncilDistrict2.csv,3,False,0.9065516232816613,"('DARRYL MOORE', 'DENISHA DELANE', 'ADOLFO CABRAL')"
+280,Minneapolis_11072017_Ward11CityCouncil.csv,3,False,0.823688874986967,"('John Quincy', 'Jeremy Schroeder', 'Erica Mauter')"
+281,TakomaPark_11082022_CityCouncilWard6.csv,7,False,0.6574500768049155,"('Ambroise Agosse]Raju Charles', 'Mike Moore]Jason Small', 'Raju Charles', 'Mike Moore', 'Jason Small', 'Ambroise Agosse', 'Raju Charles]Mike Moore')"
+282,Alaska_11082022_HouseDistrict28.csv,4,True,0.7329857686346344,"('Wright, Jessica', 'Allen, Rachel M.', 'Sumner, Jesse M.', 'Menard, Steve')"
+283,Alaska_11082022_HouseDistrict14.csv,2,True,1.0,"('Galvin, Alyse S.', 'Danger, Nicholas')"
+284,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT3.csv,4,False,0.69511675991243,"('AARON PESKIN', 'DANNY SAUTER', 'SPENCER SIMONSEN', 'STEPHEN (LULU) SCHWARTZ')"
+285,SanFrancisco_11042008_BoardofSupervisorsDistrict7.csv,3,False,0.9115850332715174,"('SEAN R. ELSBERND', 'JULIAN P. LAGOS', 'BILLY BOB WHITMER')"
+286,Oakland_11042014_CityAuditor.csv,2,False,1.0,"('BRENDA ROBERTS', 'LEN RAPHAEL')"
+287,Berkeley_11082016_CityCouncilDistrict3.csv,4,False,0.8130513595166163,"('DEBORAH MATTHEWS', 'BEN BARTLETT', 'MARK A. COPLAN', 'AL G. MURRAY')"
+288,Minneapolis_11072017_Ward10CityCouncil.csv,4,False,0.8361567635903919,"('Saralyn Romanishan', 'Lisa Bender', 'David Schorn', 'Bruce Lundeen')"
+289,Minneapolis_11022021_ParkBoardDistrict4.csv,2,False,1.0,"('Elizabeth Shaffer', 'Jono Cowgill')"
+290,Berkeley_11042014_CityCouncilDistrict7.csv,2,False,1.0,"('SEAN BARRY', 'KRISS WORTHINGTON')"
+291,Alaska_11082022_HouseDistrict38.csv,1,True,1.0,"('McCormick, Conrad J. ""C.J.""',)"
+292,TakomaPark_11082022_CityCouncilWard2.csv,1,False,1.0,"('Cindy Dyballa',)"
+293,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT7.csv,7,False,0.4138629821531376,"('EMILY MURASE', 'VILASKA NGUYEN', 'MYRNA MELGAR', 'JOEL ENGARDIO', 'BEN MATRANGA', 'STEPHEN W. MARTIN-PINTO', 'KEN PIPER')"
+294,Alaska_11082022_HouseDistrict10.csv,3,True,0.9123322147651006,"('Johnson, Craig W.', 'Insalaco, Mikel E.', 'Storm, Caroline')"
+295,Berkeley_11062012_CityCouncilDistrict6.csv,2,False,1.0,"('SUSAN WENGRAF', 'PHOEBE SORGEN')"
+296,SanLeandro_11062018_CountyCouncilDistrict3.csv,2,False,1.0,"('VICTOR AGUILAR, JR.', 'LEE THOMAS')"
+297,Oakland_11032020_MemberCityCouncilDist3OaklandRCV.csv,6,False,0.552649930264993,"('ALEXUS TAYLOR', 'MERON SEMEDAR', 'SENECA SCOTT', 'CARROLL FIFE', 'LYNETTE GIBSON MCELHANEY', 'FAYE TAYLOR')"
+298,SanLeandro_11022010_CountyCouncilDistrict3.csv,1,False,1.0,"('DIANA M. SOUZA',)"
+299,Minneapolis_11062009_Ward2CityCouncil.csv,2,False,1.0,"('Allen A. Aigbogun', 'Cam Gordon')"
+300,SanFrancisco_11082016_BoardofSupervisorsDistrict9.csv,4,False,0.8252632783882784,"('JOSHUA ARCE', 'HILLARY RONEN', 'MELISSA SAN MIGUEL', 'ISWARI ESPAÑA')"
+301,Oakland_11022010_CityCouncilDistrict2.csv,2,False,1.0,"('JENNIFER S. PAE', 'PATRICIA KERNIGHAN')"
+302,Alaska_11082022_HouseDistrict11.csv,3,True,0.9334473073635364,"('Bieling, Ross P.', 'Coulombe, Julie', 'Featherly, Walter T.')"
+303,SanFrancisco_11032015_Sheriff.csv,3,False,0.9531585478755885,"('JOHN ROBINSON', 'VICKI HENNESSY', 'ROSS MIRKARIMI')"
+304,Alaska_11082022_HouseDistrict39.csv,2,True,1.0,"('Ivanoff, Tyler L.', 'Foster, Neal W.')"
+305,TakomaPark_11082022_CityCouncilWard3.csv,5,False,0.782069970845481,"('Alex Hadden', 'Randy Gibson', 'Mimi Diez', 'Mimi Diez]Alex Hadden', 'Mimi Diez]Randy Gibson')"
+306,Minneapolis_11022021_ParkBoardDistrict5.csv,3,False,0.9403768106378064,"('Charles Rodgers', 'Steffanie Musich', 'Justin Cermak')"
+307,Oakland_11032020_MemberCityCouncilDist7OaklandRCV.csv,5,False,0.42451992711302156,"('ROBERT ""BOB"" JACKSON', 'TREVA REID', 'MARCIE HODGE', 'AARON CLAY', 'MARCHON TATMON')"
+308,Berkeley_11082016_CityCouncilDistrict6.csv,3,False,0.8559631945263655,"('FRED DODSWORTH', 'SUSAN WENGRAF', 'ISABELLE GASTON')"
+309,SanFrancisco_11082011_Sheriff.csv,4,False,0.7736930962629474,"('DAVID WONG', 'PAUL MIYAMOTO', 'CHRIS CUNNIE', 'ROSS MIRKARIMI')"
+310,SanFrancisco_06052018_BoardofSupervisorsDistrict8.csv,3,False,0.9498142294681972,"('JEFF SHEEHY', 'RAFAEL MANDELMAN', ""LAWRENCE ''STARK'' DAGESSE"")"
+311,SanFrancisco_11082022_BoardofSupervisorsD2.csv,1,False,1.0,"('CATHERINE STEFANI',)"
+312,SanFrancisco_11022010_BoardofSupervisorsDistrict8.csv,4,False,0.7943450064850843,"('RAFAEL MANDELMAN', 'REBECCA PROZAN', 'SCOTT WIENER', 'BILL HEMENGER')"
+313,SanLeandro_11022010_Mayor.csv,6,False,0.6533009832716128,"('SARA M. MESTAS', ""ANTHONY B. ''TONY'' SANTOS"", 'JOYCE RUTLEDGE STAROSCIAK', 'STEPHEN H. CASSIDY', 'JOHN R. PALAU', 'LOU FILIPOVICH')"
+314,SanFrancisco_11062018_BoardofSupervisorsDistrict2.csv,4,False,0.7492795389048992,"('JOHN DENNIS', 'SCHUYLER HUDAK', 'CATHERINE STEFANI', 'NICK JOSEFOWITZ')"
+315,TakomaPark_11082022_CityCouncilWard1.csv,3,False,0.8870139398385913,"('Elizabeth Wallace', 'Shana Fulcher', 'Mark Sherman')"
+316,Alaska_11082022_HouseDistrict13.csv,2,True,1.0,"('Josephson, Andy', 'Henslee, Katherine J. ""Kathy""')"
+317,Berkeley_11062012_CityCouncilDistrict5.csv,2,False,1.0,"('LAURIE CAPITELLI', 'SOPHIE HAHN')"
+318,SanLeandro_11022010_CountyCouncilDistrict1.csv,3,False,0.9982973651726046,"('MICHAEL J. GREGORY', 'DAVID L. ANDERSON, SR.', 'CAROL LIBBRECHT')"
+319,SanLeandro_11062018_CountyCouncilDistrict1.csv,3,False,0.900561838219405,"('KENNETH PON', 'DEBORAH COX', 'EVA ARCE')"
+320,Minneapolis_11062009_Ward5CityCouncil.csv,5,False,0.7485220554797636,"('Lennie Chism', 'Kenya McKnight', 'Natalie Johnson Lee', 'Don Samuels', 'Roger Smithrud')"
+321,Alaska_11082022_HouseDistrict12.csv,2,True,1.0,"('McDonald, Jay', 'Schrage, Calvin R.')"
+322,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT5.csv,4,False,0.6161022061358152,"(""NOMVULA O'MEARA"", 'DANIEL LANDRY', 'VALLIE BROWN', 'DEAN PRESTON')"
+323,Minneapolis_11022021_ParkBoardDistrict6.csv,4,False,0.7996456227851424,"('Bob Fine', 'Barb Schlaefer', 'Cathy Abene', 'Risa Hustad')"
+324,Minnetonka_11022021_Mayor.csv,2,False,1.0,"('Brad Wiersum', 'John Kuhl')"
+325,Berkeley_11082016_CityCouncilDistrict5.csv,2,False,1.0,"('SOPHIE HAHN', 'STEPHEN MURPHY')"
+326,Vineyard_11022021_Mayor.csv,3,False,0.949317738791423,"('MARC BRIMHALL', 'JULIE FULLMER', 'MARIA GUADALUPE CANE')"
+327,SanLeandro_11032020_MemberCityCouncilDist2SanLeandroRCV.csv,2,False,1.0,"('BRYAN AZEVEDO', 'ED HERNANDEZ')"
