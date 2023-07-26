@@ -1,4 +1,4 @@
-from typing import Tuple, Optional, Dict
+from typing import Dict, Optional, Tuple
 
 import rcv_parser # TODO refactor or build in a way that this import is not needed and assumptions are shared between scripts
 from rcv_dimensionality import perform_rcv_and_normalize

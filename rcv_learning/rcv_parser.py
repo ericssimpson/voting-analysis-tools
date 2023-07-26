@@ -1,5 +1,7 @@
 import pandas as pd 
 import numpy as np
+
+
 def parser(file):
     data = pd.read_csv(str(file), low_memory=False)
 
