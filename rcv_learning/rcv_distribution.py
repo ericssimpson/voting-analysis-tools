@@ -1,47 +1,9 @@
-from typing import Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
+
+import matplotlib.pyplot as plt
 
 import rcv_parser # TODO refactor or build in a way that this import is not needed and assumptions are shared between scripts
 from rcv_dimensionality import perform_rcv_and_normalize
-
-
-def calculate_ballot_consistency(filename: str, most_consistent_permutation: list, permutation_numbers: list) -> Dict[float, int]:
-    """
-    Reads a file with election data, converts the ballots from using candidate names to using corresponding numbers,
-    checks the consistency of each ballot with respect to the most consistent permutation of candidates,
-    and collects points based on this consistency.
-
-    Parameters
-    ----------
-    filename : str
-        The name of the file with election data.
-    most_consistent_permutation : list
-        A list of candidates in their most consistent permutation.
-    permutation_numbers : list
-        A list of numbers. Each number corresponds to a candidate in the 'most_consistent_permutation' list.
-
-    Returns
-    -------
-    dict
-        A dictionary that maps each point (representing a consistency value) to a corresponding count.
-    """
-    ballots, candidates = rcv_parser.parser(filename)
-
-    # Create a dictionary that maps each candidate to a corresponding number
-    candidate_to_number_map = {candidate: number for candidate, number in zip(most_consistent_permutation, permutation_numbers)}
-
-    # Convert the ballots from using candidate names to using corresponding numbers
-    ballots = [[candidate_to_number_map[candidate] for candidate in ballot] for ballot in ballots]
-
-    points = {}
-    for ballot in ballots:
-        consistency_check = calculate_ballot_consistency(ballot)
-        if consistency_check[0] is True and consistency_check[1] is not None:
-            consistency_value = consistency_check[1]
-            if consistency_value not in points:
-                points[consistency_value] = 0
-            points[consistency_value] += ballots[ballot]
-    
-    return points
 
 
 def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
@@ -95,6 +57,47 @@ def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
     return (False, consistency_value)
 
 
+def calculate_ballot_consistency(filename: str, most_consistent_permutation: list, permutation_numbers: list) -> Dict[float, int]:
+    """
+    Reads a file with election data, converts the ballots from using candidate names to using corresponding numbers,
+    checks the consistency of each ballot with respect to the most consistent permutation of candidates,
+    and collects points based on this consistency.
+
+    Parameters
+    ----------
+    filename : str
+        The name of the file with election data.
+    most_consistent_permutation : list
+        A list of candidates in their most consistent permutation.
+    permutation_numbers : list
+        A list of numbers. Each number corresponds to a candidate in the 'most_consistent_permutation' list.
+
+    Returns
+    -------
+    dict
+        A dictionary that maps each point (representing a consistency value) to a corresponding count.
+    """
+
+    ballots, candidates = rcv_parser.parser(filename)
+
+    # Create a dictionary that maps each candidate to a corresponding number
+    candidate_to_number_map = {candidate: number for candidate, number in zip(most_consistent_permutation, permutation_numbers)}
+
+    # Convert the ballots from using candidate names to using corresponding numbers
+    ballot_counts = {tuple(candidate_to_number_map[candidate] for candidate in ballot): count for ballot, count in ballots.items()}
+
+    points = {}
+    for ballot, count in ballot_counts.items():
+        consistency_check = evaluate_ballot_consistency(ballot)
+        if consistency_check[0] is True and consistency_check[1] is not None:
+            consistency_value = consistency_check[1]
+            if consistency_value not in points:
+                points[consistency_value] = 0
+            points[consistency_value] += count
+
+    return points
+
+
 def get_consistency_points(file: str) -> Dict[float, int]:
     """
     Performs RCV analysis and normalizes the distances of MDS-1D coordinates,
@@ -107,12 +110,16 @@ def get_consistency_points(file: str) -> Dict[float, int]:
 
     Returns
     -------
-    dict
-        A dictionary that maps each point (representing a consistency value) to a corresponding count.
+    tuple
+        A tuple containing a dictionary that maps each point (representing a consistency value) to a corresponding count,
+        a list of candidates in their most consistent permutation, and a list of mds-1d coordinates.
     """
-    most_common_order, mds_1d_coordinates, candidate_names = perform_rcv_and_normalize(file)
 
-    # Create a dictionary that maps each candidate to a corresponding number
-    candidate_to_number_map = {candidate: number for candidate, number in zip(most_common_order, mds_1d_coordinates)}
+    rcv_and_normalized_results = perform_rcv_and_normalize(file)
+    most_consistent_permutation = []
+    permutation_numbers = []
+    for candidate in rcv_and_normalized_results:
+        most_consistent_permutation.append(candidate)
+        permutation_numbers.append(rcv_and_normalized_results[candidate])
 
-    return calculate_ballot_consistency(file, most_common_order, candidate_to_number_map)
+    return calculate_ballot_consistency(file, most_consistent_permutation, permutation_numbers)

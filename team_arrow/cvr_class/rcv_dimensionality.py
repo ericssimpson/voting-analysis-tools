@@ -91,7 +91,7 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
     plt.show()
 
 
-def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional = None, ignore_values: Optional = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
+def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
     """
     Perform ranked-choice-voting (RCV) analysis on a CSV file of ballots.
 
