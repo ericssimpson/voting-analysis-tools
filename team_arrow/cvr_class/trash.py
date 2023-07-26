@@ -10,6 +10,6 @@ import rcv_dimensionality
 from sklearn.linear_model import LinearRegression
 
 no_condorcet = 0
-ballots, candidates = parser.parser("dataverse_files/Alaska_11082022_HouseDistrict11.csv")
+ballots, candidates = parser.parser("team_arrow/dataverse_files/Alaska_11082022_HouseDistrict11.csv")
 election = vr(ballots, candidates)
 print(election.condorcet())
