@@ -444,6 +444,10 @@ class voting_rules:
         candidates = self.candidates
         ballots = self.ballots
         approved = {}
+        if len(candidates) == 0:
+            return None 
+        if len(candidates) == 1:
+            return candidates[0]
         for b in ballots:
             if len(b) > 0:
                 l = len(b)
@@ -454,8 +458,12 @@ class voting_rules:
                         if c not in approved:
                             approved[c] = 0
                         approved[c] += n
+
+        if len(approved) == 0:
+            return None 
                 
         return max(approved, key=approved.get)
+    
     def approval2(self):
             candidates = self.candidates
             ballots = self.ballots
@@ -877,6 +885,12 @@ class voting_rules:
         candidates = self.candidates
         ballots = self.ballots
         approved = {}
+        
+        if len(candidates) == 1:
+            return candidates[0]
+        if len(candidates) == 0:
+            return None
+        
         for b in ballots:
             n = ballots[b]
             for c in b:
@@ -884,6 +898,9 @@ class voting_rules:
                     if c not in approved:
                         approved[c] = 0
                     approved[c] += n
+        if len(approved) == 0:
+            return None 
+        
         return max(approved, key=approved.get)
 
 

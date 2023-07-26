@@ -1,0 +1,445 @@
+,filename,partisan,level,type,candidates,gamma,irv ,condorcet ,approval,plurality ,irv,condorcet,plurality
+0,Alaska_04102020_PRESIDENTOFTHEUNITEDSTATES.csv,DP,3.0,E,,,,,,,,,
+1,Alaska_08162022_HouseofRepresentativesSpecial.csv,1,3.0,R,3.0,0.9561283075386919,,,"Begich, Nick",,"Peltola, Mary S.","Begich, Nick","Peltola, Mary S."
+2,Alaska_11082022_GovernorLieutenantGovernor.csv,1,2.0,E,4.0,0.8409551092646199,,,Dunleavy/Dahlstrom,,Dunleavy/Dahlstrom,Dunleavy/Dahlstrom,Dunleavy/Dahlstrom
+3,Alaska_11082022_HouseDistrict1.csv,1,2.0,R,2.0,1.0,,,"Ortiz, Daniel H. ""Dan""",,"Ortiz, Daniel H. ""Dan""","Bynum, Jeremy T.","Ortiz, Daniel H. ""Dan"""
+4,Alaska_11082022_HouseDistrict2.csv,1,2.0,R,2.0,1.0,,,"Himschoot, Rebecca",,"Himschoot, Rebecca","Himschoot, Rebecca","Himschoot, Rebecca"
+5,Alaska_11082022_HouseDistrict3.csv,1,2.0,R,1.0,1.0,,,"Story, Andrea ""Andi""",,"Story, Andrea ""Andi""","Story, Andrea ""Andi""","Story, Andrea ""Andi"""
+6,Alaska_11082022_HouseDistrict4.csv,1,2.0,R,2.0,1.0,,,"Hannan, Sara",,"Hannan, Sara","Hannan, Sara","Hannan, Sara"
+7,Alaska_11082022_HouseDistrict5.csv,1,2.0,R,2.0,1.0,,,"Stutes, Louise B.",,"Stutes, Louise B.","Stutes, Louise B.","Stutes, Louise B."
+8,Alaska_11082022_HouseDistrict6.csv,1,2.0,R,3.0,0.9635384927889499,,,"Vance, Sarah L.",,"Vance, Sarah L.","Vance, Sarah L.","Vance, Sarah L."
+9,Alaska_11082022_HouseDistrict7.csv,1,2.0,R,2.0,1.0,,,"Ruffridge, Justin",,"Ruffridge, Justin","Ruffridge, Justin","Ruffridge, Justin"
+10,Alaska_11082022_HouseDistrict8.csv,1,2.0,R,1.0,1.0,,,"Carpenter, Ben",,"Carpenter, Ben","Carpenter, Ben","Carpenter, Ben"
+11,Alaska_11082022_HouseDistrict9.csv,1,2.0,R,2.0,1.0,,,"Shaw, Laddie H.",,"Shaw, Laddie H.","Shaw, Laddie H.","Shaw, Laddie H."
+12,Alaska_11082022_HouseDistrict10.csv,1,2.0,R,,,,,,,,,
+13,Alaska_11082022_HouseDistrict11.csv,1,2.0,R,,,,,,,,,
+14,Alaska_11082022_HouseDistrict12.csv,1,2.0,R,,,,,,,,,
+15,Alaska_11082022_HouseDistrict13.csv,1,2.0,R,,,,,,,,,
+16,Alaska_11082022_HouseDistrict14.csv,1,2.0,R,,,,,,,,,
+17,Alaska_11082022_HouseDistrict15.csv,1,2.0,R,,,,,,,,,
+18,Alaska_11082022_HouseDistrict16.csv,1,2.0,R,,,,,,,,,
+19,Alaska_11082022_HouseDistrict17.csv,1,2.0,R,,,,,,,,,
+20,Alaska_11082022_HouseDistrict18.csv,1,2.0,R,3.0,0.9355400696864111,,,"Nelson, David",,"Groh, Cliff","Nelson, David","Nelson, David"
+21,Alaska_11082022_HouseDistrict19.csv,1,2.0,R,2.0,1.0,,,"Mina, Genevieve G.",,"Mina, Genevieve G.","Wyatt, Russell O.","Mina, Genevieve G."
+22,Alaska_11082022_HouseDistrict20.csv,1,2.0,R,4.0,0.8216898317483541,,,"Gray, Andrew T.",,"Gray, Andrew T.","Gray, Andrew T.","Gray, Andrew T."
+23,Alaska_11082022_HouseDistrict21.csv,1,2.0,R,2.0,1.0,,,"Wolfe, Forrest M.",,"Mears, Donna C.","Wolfe, Forrest M.","Mears, Donna C."
+24,Alaska_11082022_HouseDistrict22.csv,1,2.0,R,2.0,1.0,,,"Wright, Stanley A.",,"Wright, Stanley A.","Wright, Stanley A.","Wright, Stanley A."
+25,Alaska_11082022_HouseDistrict23.csv,1,2.0,R,2.0,1.0,,,"Allard, Jamie",,"Allard, Jamie","Allard, Jamie","Allard, Jamie"
+26,Alaska_11082022_HouseDistrict24.csv,1,2.0,R,3.0,0.9363352095059412,,,"Saddler, Dan",,"Saddler, Dan","Saddler, Dan","Saddler, Dan"
+27,Alaska_11082022_HouseDistrict25.csv,1,2.0,R,2.0,1.0,,,"Johnson, DeLena M.",,"Johnson, DeLena M.","Johnson, DeLena M.","Johnson, DeLena M."
+28,Alaska_11082022_HouseDistrict26.csv,1,2.0,R,2.0,1.0,,,"Tilton, Cathy L.",,"Tilton, Cathy L.","Tilton, Cathy L.","Tilton, Cathy L."
+29,Alaska_11082022_HouseDistrict27.csv,1,2.0,R,3.0,0.8855773550995957,,,"Eastman, David",,"Eastman, David","Eastman, David","Eastman, David"
+30,Alaska_11082022_HouseDistrict28.csv,1,2.0,R,,,,,,,,,
+31,Alaska_11082022_HouseDistrict29.csv,1,2.0,R,,,,,,,,,
+32,Alaska_11082022_HouseDistrict30.csv,1,2.0,R,3.0,0.9538972215392181,,,"McCabe, Kevin J.",,"McCabe, Kevin J.","Holmes, Doyle E.","McCabe, Kevin J."
+33,Alaska_11082022_HouseDistrict31.csv,1,2.0,R,3.0,0.9026083693000563,,,"LeBon, Barton S.",,"Dibert, Maxine L.","LeBon, Barton S.","Dibert, Maxine L."
+34,Alaska_11082022_HouseDistrict32.csv,1,2.0,R,3.0,0.9609397944199707,,,"Stapp, Will B.",,"Stapp, Will B.","Givens, Timothy W.","Stapp, Will B."
+35,Alaska_11082022_HouseDistrict33.csv,1,2.0,R,1.0,1.0,,,"Prax, Glenn M. ""Mike""",,"Prax, Glenn M. ""Mike""","Prax, Glenn M. ""Mike""","Prax, Glenn M. ""Mike"""
+36,Alaska_11082022_HouseDistrict34.csv,1,2.0,R,3.0,0.9461778471138845,,,"Tomaszewski, Frank J.",,"Tomaszewski, Frank J.",-1,"Tomaszewski, Frank J."
+37,Alaska_11082022_HouseDistrict35.csv,1,2.0,R,4.0,0.8489272565697601,,,"Carrick, Ashley E.",,"Carrick, Ashley E.","Carrick, Ashley E.","Carrick, Ashley E."
+38,Alaska_11082022_HouseDistrict36.csv,1,2.0,R,2.0,1.0,,,"Cronk, Mike",,"Cronk, Mike","Cronk, Mike","Cronk, Mike"
+39,Alaska_11082022_HouseDistrict37.csv,1,2.0,R,1.0,1.0,,,"Edgmon, Bryce",,"Edgmon, Bryce","Edgmon, Bryce","Edgmon, Bryce"
+40,Alaska_11082022_HouseDistrict38.csv,1,2.0,R,,,,,,,,,
+41,Alaska_11082022_HouseDistrict39.csv,1,2.0,R,,,,,,,,,
+42,Alaska_11082022_HouseDistrict40.csv,1,2.0,R,1.0,1.0,,,"Patkotak, Josiah B. ""Aullaqsruaq""",,"Patkotak, Josiah B. ""Aullaqsruaq""","Patkotak, Josiah B. ""Aullaqsruaq""","Patkotak, Josiah B. ""Aullaqsruaq"""
+43,Alaska_11082022_SenateDistrictA.csv,1,2.0,S,2.0,1.0,,,"Stedman, Bert K.",,"Stedman, Bert K.","Stedman, Bert K.","Stedman, Bert K."
+44,Alaska_11082022_SenateDistrictB.csv,1,2.0,S,1.0,1.0,,,"Kiehl, Jesse",,"Kiehl, Jesse","Kiehl, Jesse","Kiehl, Jesse"
+45,Alaska_11082022_SenateDistrictC.csv,1,2.0,S,3.0,0.9360909377960215,,,"Stevens, Gary",,"Stevens, Gary","Stevens, Gary","Stevens, Gary"
+46,Alaska_11082022_SenateDistrictD.csv,1,2.0,S,3.0,0.9591623036649215,,,"Bjorkman, Jesse J.",,"Bjorkman, Jesse J.","Bjorkman, Jesse J.","Bjorkman, Jesse J."
+47,Alaska_11082022_SenateDistrictE.csv,1,2.0,S,3.0,0.9622619866941959,,,"Giessel, Cathy",,"Giessel, Cathy","Giessel, Cathy","Giessel, Cathy"
+48,Alaska_11082022_SenateDistrictF.csv,1,2.0,S,2.0,1.0,,,"Kaufman, James D.",,"Kaufman, James D.","Kaufman, James D.","Kaufman, James D."
+49,Alaska_11082022_SenateDistrictG.csv,1,2.0,S,2.0,1.0,,,"Gray-Jackson, Elvi",,"Gray-Jackson, Elvi","Gray-Jackson, Elvi","Gray-Jackson, Elvi"
+50,Alaska_11082022_SenateDistrictH.csv,1,2.0,S,2.0,1.0,,,"Costello, Mia",,"Claman, Matt","Costello, Mia","Claman, Matt"
+51,Alaska_11082022_SenateDistrictI.csv,1,2.0,S,2.0,1.0,,,"Tobin, Löki G.",,"Tobin, Löki G.","Tobin, Löki G.","Tobin, Löki G."
+52,Alaska_11082022_SenateDistrictJ.csv,1,2.0,S,3.0,0.9389952153110048,,,"Dunbar, Forrest",,"Dunbar, Forrest","Tarr, Geran","Dunbar, Forrest"
+53,Alaska_11082022_SenateDistrictK.csv,1,2.0,S,2.0,1.0,,,"Wielechowski, Bill",,"Wielechowski, Bill","Cunningham, John W.","Wielechowski, Bill"
+54,Alaska_11082022_SenateDistrictL.csv,1,2.0,S,,,,,,,,,
+55,Alaska_11082022_SenateDistrictM.csv,1,2.0,S,,,,,,,,,
+56,Alaska_11082022_SenateDistrictN.csv,1,2.0,S,,,,,,,,,
+57,Alaska_11082022_SenateDistrictO.csv,1,2.0,S,,,,,,,,,
+58,Alaska_11082022_SenateDistrictP.csv,1,2.0,S,3.0,0.9081854607899256,,,"Matherly, Jim",,"Kawasaki, Scott",-1,"Kawasaki, Scott"
+59,Alaska_11082022_SenateDistrictQ.csv,1,2.0,S,3.0,0.9056495554918268,,,"Myers, Robert H. Jr.",,"Myers, Robert H. Jr.","Myers, Robert H. Jr.","Myers, Robert H. Jr."
+60,Alaska_11082022_SenateDistrictR.csv,1,2.0,S,3.0,0.9263377345378735,,,"Bishop, Click",,"Bishop, Click","Bishop, Click","Bishop, Click"
+61,Alaska_11082022_SenateDistrictS.csv,1,2.0,S,2.0,1.0,,,"Hoffman, Lyman F.",,"Hoffman, Lyman F.","Hoffman, Lyman F.","Hoffman, Lyman F."
+62,Alaska_11082022_USRepresentative.csv,1,3.0,R,4.0,0.8268977046132626,,,"Begich, Nick",,"Peltola, Mary S.","Palin, Sarah","Peltola, Mary S."
+63,Alaska_11082022_USSenator.csv,1,3.0,S,,,,,,,,,
+64,Albany_11082022_BoardofEducation.csv,,,,,,,,,,,,
+65,Albany_11082022_CityCouncil.csv,,,,5.0,0.35140341221794164,,,JOHN ANTHONY MIKI,,JOHN ANTHONY MIKI,JEREMIAH GARRETT PINGUELO,JOHN ANTHONY MIKI
+66,Albany_11082022_FAKECityCouncil.csv,,,,,,,,,,,,
+67,Berkeley_03072017_CityCouncilDistrict4.csv,0,1.0,R,2.0,1.0,,,KATE HARRISON,,KATE HARRISON,KATE HARRISON,KATE HARRISON
+68,Berkeley_11022010_CityAuditor.csv,0,1.0,O,,,,,,,,,
+69,Berkeley_11022010_CityCouncilDistrict1.csv,0,1.0,R,,,,,,,,,
+70,Berkeley_11022010_CityCouncilDistrict4.csv,0,1.0,R,4.0,0.7403189066059226,,,JESSE ARREGUIN,,JESSE ARREGUIN,JESSE ARREGUIN,JESSE ARREGUIN
+71,Berkeley_11022010_CityCouncilDistrict7.csv,0,1.0,R,3.0,0.8249331413289447,,,KRISS WORTHINGTON,,KRISS WORTHINGTON,CECILIA ''CES'' ROSALES,KRISS WORTHINGTON
+72,Berkeley_11022010_CityCouncilDistrict8.csv,0,1.0,R,3.0,0.8304576144036009,,,GORDON WOZNIAK,,GORDON WOZNIAK,JACQUELYN McCORMICK,GORDON WOZNIAK
+73,Berkeley_11032020_MayorBerkeleyRCV.csv,0,1.0,E,4.0,0.8026938023816584,,,JESSE ARREGUÍN,,JESSE ARREGUÍN,JESSE ARREGUÍN,JESSE ARREGUÍN
+74,Berkeley_11032020_MemberCityCouncilDist2BerkeleyRCV.csv,0,1.0,R,4.0,0.7203606812868752,,,TERRY TAPLIN,,TERRY TAPLIN,TIMOTHY W. CARTER,TERRY TAPLIN
+75,Berkeley_11032020_MemberCityCouncilDist3BerkeleyRCV.csv,0,1.0,R,3.0,0.9317028149515459,,,BEN BARTLETT,,BEN BARTLETT,BEN BARTLETT,BEN BARTLETT
+76,Berkeley_11032020_MemberCityCouncilDist5BerkeleyRCV.csv,0,1.0,R,3.0,0.9698240495943112,,,SOPHIE HAHN,,SOPHIE HAHN,SOPHIE HAHN,SOPHIE HAHN
+77,Berkeley_11032020_MemberCityCouncilDist6BerkeleyRCV.csv,0,1.0,R,2.0,1.0,,,SUSAN WENGRAF,,SUSAN WENGRAF,SUSAN WENGRAF,SUSAN WENGRAF
+78,Berkeley_11042014_CityAuditor.csv,0,1.0,O,1.0,1.0,,,ANN-MARIE HOGAN,,ANN-MARIE HOGAN,ANN-MARIE HOGAN,ANN-MARIE HOGAN
+79,Berkeley_11042014_CityCouncilDistrict1.csv,0,1.0,R,,,,,,,,,
+80,Berkeley_11042014_CityCouncilDistrict7.csv,0,1.0,R,,,,,,,,,
+81,Berkeley_11042014_CityCouncilDistrict8.csv,0,1.0,R,4.0,0.5827120693129155,,,LORI DROSTE,,LORI DROSTE,LORI DROSTE,LORI DROSTE
+82,Berkeley_11062012_CityCouncilDistrict2.csv,0,1.0,R,,,,,,,,,
+83,Berkeley_11062012_CityCouncilDistrict3.csv,0,1.0,R,,,,,,,,,
+84,Berkeley_11062012_CityCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+85,Berkeley_11062012_CityCouncilDistrict6.csv,0,1.0,R,,,,,,,,,
+86,Berkeley_11062012_Mayor.csv,0,1.0,E,,,,,,,,,
+87,Berkeley_11062018_CityAuditor.csv,0,1.0,O,,,,,,,,,
+88,Berkeley_11062018_CityCouncilDistrict1.csv,0,1.0,R,4.0,0.7067926757235676,,,IGOR A. TREGUB,,RASHI KESARWANI,MARGO SCHUELER,RASHI KESARWANI
+89,Berkeley_11062018_CityCouncilDistrict4.csv,0,1.0,R,3.0,0.8677932405566601,,,KATE HARRISON,,KATE HARRISON,GREGORY MAGOFNA,KATE HARRISON
+90,Berkeley_11062018_CityCouncilDistrict7.csv,0,1.0,R,3.0,0.9229329173166927,,,RIGEL ROBINSON,,RIGEL ROBINSON,AIDAN HILL,RIGEL ROBINSON
+91,Berkeley_11062018_CityCouncilDistrict8.csv,0,1.0,R,,,,,,,,,
+92,Berkeley_11082016_CityCouncilDistrict2.csv,0,1.0,R,,,,,,,,,
+93,Berkeley_11082016_CityCouncilDistrict3.csv,0,1.0,R,,,,,,,,,
+94,Berkeley_11082016_CityCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+95,Berkeley_11082016_CityCouncilDistrict6.csv,0,1.0,R,,,,,,,,,
+96,Berkeley_11082016_Mayor.csv,0,1.0,E,8.0,,,,JESSE ARREGUÍN,,JESSE ARREGUÍN,JESSE ARREGUÍN,JESSE ARREGUÍN
+97,Burlington_03032009_Mayor.csv,1,1.0,E,,,,,,,,,
+98,Burlington_03072006_Mayor.csv,1,1.0,E,5.0,0.6267234387672344,,,Bob Kiss,,Bob Kiss,Hinda Miller,Bob Kiss
+99,Burlington_03072023_CityCouncilCentralDistrict.csv,1,1.0,R,2.0,1.0,,,MELO GRANT,,MELO GRANT,AVERY MUZIKAR,MELO GRANT
+100,Burlington_03072023_CityCouncilEastDistrict.csv,1,1.0,R,2.0,1.0,,,"TIMOTHY C. DOHERTY,JR",,"TIMOTHY C. DOHERTY,JR","TIMOTHY C. DOHERTY,JR","TIMOTHY C. DOHERTY,JR"
+101,Burlington_03072023_CityCouncilNorthDistrict.csv,1,1.0,R,1.0,1.0,,,MARK BARLOW,,MARK BARLOW,MARK BARLOW,MARK BARLOW
+102,Burlington_03072023_CityCouncilSouthDistrict.csv,1,1.0,R,3.0,0.8629124004550626,,,JOAN SHANNON,,JOAN SHANNON,JOAN SHANNON,JOAN SHANNON
+103,Corvallis_11082022_CityCouncilWard9.csv,0,1.0,R,3.0,0.8609972677595629,,,Tony Cadena,,Tony Cadena,Cliff Feldman,Tony Cadena
+104,Corvallis_11082022_Mayor.csv,0,1.0,E,,,,,,,,,
+105,Easthampton_11022021_Mayor.csv,1,1.0,E,0.0,1.0,,,,,,-1,
+106,Eastpointe_11052019_CityCouncil.csv,0,1.0,R,4.0,0.6049766718506998,,,Sarah A. Lucido,,Sarah A. Lucido,Harvey Curley,Sarah A. Lucido
+107,ElkRidge_11022021_Mayor.csv,0,1.0,E,,,,,,,,,
+108,Hawaii_05232020_PresidentoftheUnitedStateCD1.csv,DP,3.0,E,11.0,,,,Joseph R. Biden,,Joseph R. Biden,Joseph R. Biden,Joseph R. Biden
+109,Hawaii_05232020_PresidentoftheUnitedStateCD1CD2.csv,DP,3.0,E,11.0,,,,Joseph R. Biden,,Joseph R. Biden,Joseph R. Biden,Joseph R. Biden
+110,Hawaii_05232020_PresidentoftheUnitedStateCD2.csv,DP,3.0,E,11.0,,,,Joseph R. Biden,,Joseph R. Biden,Joseph R. Biden,Joseph R. Biden
+111,Kansas_05022020_PRESIDENTOFTHEUNITEDSTATES.csv,DP,3.0,E,5.0,0.6947404116789311,,,Joseph R. Biden,,Joseph R. Biden,Joseph R. Biden,Joseph R. Biden
+112,LasCruces_11052019_COUNCILORPOSITION2CITYOFLASCRUCESDISTRICT2COUNCILOR.csv,0,1.0,R,4.0,0.6539908065190138,,,TESSA ABEYTA STUVE,,TESSA ABEYTA STUVE,TESSA ABEYTA STUVE,TESSA ABEYTA STUVE
+113,LasCruces_11052019_COUNCILORPOSITION4CITYOFLASCRUCESDISTRICT4COUNCILOR.csv,0,1.0,R,3.0,0.870260663507109,,,JOHANA BENCOMO,,JOHANA BENCOMO,ANTOINETTE M REYES,JOHANA BENCOMO
+114,LasCruces_11052019_MAYORCITYOFLASCRUCES.csv,0,1.0,E,10.0,,,,KEN MIYAGISHIMA,,KEN MIYAGISHIMA,KEN MIYAGISHIMA,KEN MIYAGISHIMA
+115,Maine_06122018_DemocraticPrimaryforCD2.csv,1,3.0,R,4.0,0.7274801353158682,,,"Golden, Jared F.",,"Golden, Jared F.","St. Clair, Lucas R.","Golden, Jared F."
+116,Maine_06122018_DemocraticPrimaryforGovernor.csv,1,2.0,E,7.0,0.3359571716988408,,,"Mills, Janet T.",,"Mills, Janet T.","Sweet, Elizabeth A.","Mills, Janet T."
+117,Maine_07142020_DemocraticCandidateforMaineStateHouseDistrict41.csv,1,2.0,R,3.0,0.8464163822525598,,,"Zager, Samuel Lewis",,"Zager, Samuel Lewis","Davis, Laurie J.","Zager, Samuel Lewis"
+118,Maine_07142020_DemocraticCandidateforMaineStateHouseDistrict47.csv,1,2.0,R,3.0,0.8044224170796798,,,"Bell, Arthur L.",,"Bell, Arthur L.","Fromuth, Peter J.","Bell, Arthur L."
+119,Maine_07142020_DemocraticCandidateforMaineStateHouseDistrict49.csv,1,2.0,R,,,,,,,,,
+120,Maine_07142020_DemocraticCandidateforMaineStateHouseDistrict90.csv,1,2.0,R,3.0,0.8756003842459174,,,"Pieh, Wendy",,"Crafts, Lydia V.","Levesque, David J.","Crafts, Lydia V."
+121,Maine_07142020_DemocraticCandidateforMaineStateSenateDistrict11.csv,1,2.0,R,3.0,0.8067109402306886,,,"Curry, Glenn Chip",,"Curry, Glenn Chip","Pattavina, Charles F.","Curry, Glenn Chip"
+122,Maine_07142020_RepublicanCandidateforUSHouseofRepresentativesDistrict2.csv,1,3.0,R,3.0,0.8635330313648406,,,"Crafts, Dale John",,"Crafts, Dale John","Crafts, Dale John","Crafts, Dale John"
+123,Maine_11062018_CongressionalDistrict2.csv,1,3.0,R,4.0,0.7884360772234156,,,"REP Poliquin, Bruce",,"DEM Golden, Jared F.","REP Poliquin, Bruce","REP Poliquin, Bruce"
+124,Maine_11082022_CongressionalDistrict2.csv,1,3.0,R,3.0,0.9355499307571481,,,"Golden, Jared Forrest",,"Golden, Jared Forrest","Poliquin, Bruce","Golden, Jared Forrest"
+125,Minneapolis_08112020_Ward6CityCouncilSpecialElection.csv,0,1.0,R,12.0,,,,Jamal Osman,,Jamal Osman,Jamal Osman,Jamal Osman
+126,Minneapolis_11022021_CityCouncilWard1.csv,0,1.0,R,4.0,0.8967959805617329,,,Elliott Payne,,Elliott Payne,Kevin Reich,Elliott Payne
+127,Minneapolis_11022021_CityCouncilWard2.csv,0,1.0,R,5.0,0.7163706878954889,,,Yusra Arab,,Robin Wonsley Worlobah,Yusra Arab,Robin Wonsley Worlobah
+128,Minneapolis_11022021_CityCouncilWard3.csv,0,1.0,R,4.0,0.8477523031100644,,,Michael Rainville,,Michael Rainville,Michael Rainville,Michael Rainville
+129,Minneapolis_11022021_CityCouncilWard4.csv,0,1.0,R,3.0,0.9621282837711694,,,LaTrisha Vetaw,,LaTrisha Vetaw,LaTrisha Vetaw,LaTrisha Vetaw
+130,Minneapolis_11022021_CityCouncilWard5.csv,0,1.0,R,7.0,0.7015138023152271,,,Kristel Porter,,Jeremiah Ellison,Kristel Porter,Jeremiah Ellison
+131,Minneapolis_11022021_CityCouncilWard6.csv,0,1.0,R,2.0,1.0,,,Jamal Osman,,Jamal Osman,Jamal Osman,Jamal Osman
+132,Minneapolis_11022021_CityCouncilWard7.csv,0,1.0,R,4.0,0.8045911745619727,,,Lisa Goodman,,Lisa Goodman,Lisa Goodman,Lisa Goodman
+133,Minneapolis_11022021_CityCouncilWard8.csv,0,1.0,R,,,,,,,,,
+134,Minneapolis_11022021_CityCouncilWard9.csv,0,1.0,R,,,,,,,,,
+135,Minneapolis_11022021_CityCouncilWard10.csv,0,1.0,R,6.0,0.7442700987306065,,,Aisha Chughtai,,Aisha Chughtai,Katie Jones,Aisha Chughtai
+136,Minneapolis_11022021_CityCouncilWard11.csv,0,1.0,R,5.0,0.8152205246468723,,,Emily Koski,,Emily Koski,Emily Koski,Emily Koski
+137,Minneapolis_11022021_CityCouncilWard12.csv,0,1.0,R,3.0,0.9643701032209924,,,Andrew Johnson,,Andrew Johnson,Andrew Johnson,Andrew Johnson
+138,Minneapolis_11022021_CityCouncilWard13.csv,0,1.0,R,5.0,0.8808363187878075,,,Linea Palmisano,,Linea Palmisano,Linea Palmisano,Linea Palmisano
+139,Minneapolis_11022021_Mayor.csv,0,1.0,E,18.0,,,,Jacob Frey,,Jacob Frey,Jacob Frey,Jacob Frey
+140,Minneapolis_11022021_ParkBoardAtLarge.csv,0,1.0,B,7.0,0.7051728408653052,,,Meg Forney,,Meg Forney,Meg Forney,Meg Forney
+141,Minneapolis_11022021_ParkBoardDistrict1.csv,0,1.0,B,,,,,,,,,
+142,Minneapolis_11022021_ParkBoardDistrict2.csv,0,1.0,B,,,,,,,,,
+143,Minneapolis_11022021_ParkBoardDistrict3.csv,0,1.0,B,,,,,,,,,
+144,Minneapolis_11022021_ParkBoardDistrict4.csv,0,1.0,B,,,,,,,,,
+145,Minneapolis_11022021_ParkBoardDistrict5.csv,0,1.0,B,,,,,,,,,
+146,Minneapolis_11022021_ParkBoardDistrict6.csv,0,1.0,B,,,,,,,,,
+147,Minneapolis_11052013_Mayor.csv,0,1.0,E,35.0,,,,BETSY HODGES,,BETSY HODGES,BETSY HODGES,BETSY HODGES
+148,Minneapolis_11052013_PRBoardDistrict2.csv,0,1.0,B,2.0,1.0,,,JON OLSON,,JON OLSON,JON OLSON,JON OLSON
+149,Minneapolis_11052013_PRBoardDistrict6.csv,0,1.0,B,2.0,1.0,,,BRAD BOURN,,BRAD BOURN,BRAD BOURN,BRAD BOURN
+150,Minneapolis_11052013_Ward5CityCouncil.csv,0,1.0,R,,,,,,,,,
+151,Minneapolis_11052013_Ward9CityCouncil.csv,0,1.0,R,6.0,0.6885588303550708,,,ALONDRA CANO,,ALONDRA CANO,ALONDRA CANO,ALONDRA CANO
+152,Minneapolis_11052013_Ward13CityCouncil.csv,0,1.0,R,,,,,,,,,
+153,Minneapolis_11062009_Mayor.csv,0,1.0,E,11.0,,,,R.T. Rybak,,R.T. Rybak,R.T. Rybak,R.T. Rybak
+154,Minneapolis_11062009_PRBoardDistrict1.csv,0,1.0,B,3.0,0.9472922096727483,,,Liz Wielinski,,Liz Wielinski,Liz Wielinski,Liz Wielinski
+155,Minneapolis_11062009_PRBoardDistrict2.csv,0,1.0,B,2.0,1.0,,,Jon Olson,,Jon Olson,Jon Olson,Jon Olson
+156,Minneapolis_11062009_PRBoardDistrict3.csv,0,1.0,B,2.0,1.0,,,Scott Vreeland,,Scott Vreeland,Scott Vreeland,Scott Vreeland
+157,Minneapolis_11062009_PRBoardDistrict4.csv,0,1.0,B,1.0,1.0,,,Anita Tabb,,Anita Tabb,Anita Tabb,Anita Tabb
+158,Minneapolis_11062009_PRBoardDistrict5.csv,0,1.0,B,5.0,0.8023664854493124,,,Carol Kummer,,Carol Kummer,Carol Kummer,Carol Kummer
+159,Minneapolis_11062009_PRBoardDistrict6.csv,0,1.0,B,4.0,0.878546882670594,,,Brad Bourn,,Brad Bourn,Meg Forney,Brad Bourn
+160,Minneapolis_11062009_Ward1CityCouncil.csv,0,1.0,R,,,,,,,,,
+161,Minneapolis_11062009_Ward2CityCouncil.csv,0,1.0,R,,,,,,,,,
+162,Minneapolis_11062009_Ward3CityCouncil.csv,0,1.0,R,,,,,,,,,
+163,Minneapolis_11062009_Ward4CityCouncil.csv,0,1.0,R,,,,,,,,,
+164,Minneapolis_11062009_Ward5CityCouncil.csv,0,1.0,R,,,,,,,,,
+165,Minneapolis_11062009_Ward6CityCouncil.csv,0,1.0,R,,,,,,,,,
+166,Minneapolis_11062009_Ward7CityCouncil.csv,0,1.0,R,3.0,0.9353343632752151,,,Lisa Goodman,,Lisa Goodman,Lisa Goodman,Lisa Goodman
+167,Minneapolis_11062009_Ward8CityCouncil.csv,0,1.0,R,5.0,0.8885114268066708,,,Elizabeth Glidden,,Elizabeth Glidden,Elizabeth Glidden,Elizabeth Glidden
+168,Minneapolis_11062009_Ward9CityCouncil.csv,0,1.0,R,,,,,,,,,
+169,Minneapolis_11062009_Ward10CityCouncil.csv,0,1.0,R,4.0,0.8116618075801749,,,Meg Tuthill,,Meg Tuthill,Meg Tuthill,Meg Tuthill
+170,Minneapolis_11062009_Ward11CityCouncil.csv,0,1.0,R,3.0,0.9737836561171469,,,John Quincy,,John Quincy,John Quincy,John Quincy
+171,Minneapolis_11062009_Ward12CityCouncil.csv,0,1.0,R,4.0,0.8588332987336517,,,Sandy Colvin Roy,,Sandy Colvin Roy,Sandy Colvin Roy,Sandy Colvin Roy
+172,Minneapolis_11062009_Ward13CityCouncil.csv,0,1.0,R,3.0,0.9293496203367448,,,Betsy Hodges,,Betsy Hodges,Betsy Hodges,Betsy Hodges
+173,Minneapolis_11072017_Mayor.csv,0,1.0,E,18.0,,,,Jacob Frey,,Jacob Frey,Jacob Frey,Jacob Frey
+174,Minneapolis_11072017_PRBoardDistrict1.csv,0,1.0,B,3.0,0.9019343229869545,,,Chris Meyer,,Chris Meyer,Billy Menz,Chris Meyer
+175,Minneapolis_11072017_PRBoardDistrict2.csv,0,1.0,B,2.0,1.0,,,Kale Severson,,Kale Severson,Mike Talley Tate,Kale Severson
+176,Minneapolis_11072017_PRBoardDistrict3.csv,0,1.0,B,3.0,0.9409638554216867,,,AK Hassan,,AK Hassan,Abdi Gurhan Mohamed,AK Hassan
+177,Minneapolis_11072017_PRBoardDistrict4.csv,0,1.0,B,,,,,,,,,
+178,Minneapolis_11072017_PRBoardDistrict5.csv,0,1.0,B,,,,,,,,,
+179,Minneapolis_11072017_PRBoardDistrict6.csv,0,1.0,B,,,,,,,,,
+180,Minneapolis_11072017_Ward1CityCouncil.csv,0,1.0,R,3.0,0.8936026176238294,,,Kevin Reich,,Kevin Reich,Kevin Reich,Kevin Reich
+181,Minneapolis_11072017_Ward2CityCouncil.csv,0,1.0,R,1.0,1.0,,,Cam Gordon,,Cam Gordon,Cam Gordon,Cam Gordon
+182,Minneapolis_11072017_Ward3CityCouncil.csv,0,1.0,R,4.0,0.6793236127987039,,,Steve Fletcher,,Steve Fletcher,Steve Fletcher,Ginger Jentzen
+183,Minneapolis_11072017_Ward4CityCouncil.csv,0,1.0,R,4.0,0.805908750934929,,,Phillipe M. Cunningham,,Phillipe M. Cunningham,Stephanie Gasca,"Barbara A. ""Barb"" Johnson"
+184,Minneapolis_11072017_Ward5CityCouncil.csv,0,1.0,R,4.0,0.7533317746083703,,,Jeremiah Ellison,,Jeremiah Ellison,-1,Jeremiah Ellison
+185,Minneapolis_11072017_Ward6CityCouncil.csv,0,1.0,R,4.0,0.9798539751216874,,,Abdi Warsame,,Abdi Warsame,Abdi Warsame,Abdi Warsame
+186,Minneapolis_11072017_Ward7CityCouncil.csv,0,1.0,R,4.0,0.8376918089474822,,,Lisa Goodman,,Lisa Goodman,Lisa Goodman,Lisa Goodman
+187,Minneapolis_11072017_Ward8CityCouncil.csv,0,1.0,R,4.0,0.9013778100072516,,,Andrea Jenkins,,Andrea Jenkins,Andrea Jenkins,Andrea Jenkins
+188,Minneapolis_11072017_Ward9CityCouncil.csv,0,1.0,R,4.0,0.7966011683483802,,,Alondra Cano,,Alondra Cano,Mohamed Farah,Alondra Cano
+189,Minneapolis_11072017_Ward10CityCouncil.csv,0,1.0,R,,,,,,,,,
+190,Minneapolis_11072017_Ward11CityCouncil.csv,0,1.0,R,,,,,,,,,
+191,Minneapolis_11072017_Ward12CityCouncil.csv,0,1.0,R,3.0,0.9561805101373446,,,Andrew Johnson,,Andrew Johnson,Andrew Johnson,Andrew Johnson
+192,Minneapolis_11072017_Ward13CityCouncil.csv,0,1.0,R,,,,,,,,,
+193,Minnetonka_11022021_CityCouncilAtLargeSeatA.csv,0,1.0,R,5.0,0.7998942638117896,,,Deb Calvert,,Deb Calvert,Deb Calvert,Deb Calvert
+194,Minnetonka_11022021_CityCouncilAtLargeSeatB.csv,0,1.0,R,5.0,0.8042999383205569,,,Kimberly Wilburn,,Kimberly Wilburn,Kimberly Wilburn,Kimberly Wilburn
+195,Minnetonka_11022021_Mayor.csv,0,1.0,E,,,,,,,,,
+196,NewYorkCity_06222021_CONCouncilMember19thCouncilDistrict.csv,,1.0,R,,,,,,,,,
+197,NewYorkCity_06222021_DEMBoroughPresidentBronx.csv,DP,1.0,E,,,,,,,,,
+198,NewYorkCity_06222021_DEMBoroughPresidentKings.csv,DP,1.0,E,12.0,,,,Jo Anne Simon,,Antonio Reynoso,Jo Anne Simon,Antonio Reynoso
+199,NewYorkCity_06222021_DEMBoroughPresidentNewYork.csv,DP,1.0,E,,,,,,,,,
+200,NewYorkCity_06222021_DEMBoroughPresidentQueens.csv,DP,1.0,E,3.0,0.9050544215386812,,,Donovan J. Richards Jr.,,Donovan J. Richards Jr.,Donovan J. Richards Jr.,Donovan J. Richards Jr.
+201,NewYorkCity_06222021_DEMBoroughPresidentRichmond.csv,DP,1.0,E,5.0,0.7132085881108915,,,Mark S. Murphy,,Mark S. Murphy,Mark S. Murphy,Mark S. Murphy
+202,NewYorkCity_06222021_DEMComptrollerCitywide.csv,DP,1.0,O,10.0,,,,Corey D. Johnson,,Brad Lander,Corey D. Johnson,Brad Lander
+203,NewYorkCity_06222021_DEMCouncilMember1stCouncilDistrict.csv,DP,1.0,R,9.0,,,,Christopher Marte,,Christopher Marte,Christopher Marte,Christopher Marte
+204,NewYorkCity_06222021_DEMCouncilMember2ndCouncilDistrict.csv,DP,1.0,R,2.0,1.0,,,Carlina Rivera,,Carlina Rivera,Carlina Rivera,Carlina Rivera
+205,NewYorkCity_06222021_DEMCouncilMember3rdCouncilDistrict.csv,DP,1.0,R,6.0,0.9542001854122432,,,Erik D. Bottcher,,Erik D. Bottcher,Erik D. Bottcher,Erik D. Bottcher
+206,NewYorkCity_06222021_DEMCouncilMember5thCouncilDistrict.csv,DP,1.0,R,7.0,0.9515012410658213,,,Julie Menin,,Julie Menin,Julie Menin,Julie Menin
+207,NewYorkCity_06222021_DEMCouncilMember6thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+208,NewYorkCity_06222021_DEMCouncilMember7thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+209,NewYorkCity_06222021_DEMCouncilMember8thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+210,NewYorkCity_06222021_DEMCouncilMember9thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+211,NewYorkCity_06222021_DEMCouncilMember10thCouncilDistrict.csv,DP,1.0,R,8.0,,,,Carmen N. De La Rosa,,Carmen N. De La Rosa,Carmen N. De La Rosa,Carmen N. De La Rosa
+212,NewYorkCity_06222021_DEMCouncilMember11thCouncilDistrict.csv,DP,1.0,R,7.0,0.9295785717654086,,,Eric Dinowitz,,Eric Dinowitz,Eric Dinowitz,Eric Dinowitz
+213,NewYorkCity_06222021_DEMCouncilMember12thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+214,NewYorkCity_06222021_DEMCouncilMember13thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+215,NewYorkCity_06222021_DEMCouncilMember14thCouncilDistrict.csv,DP,1.0,R,6.0,0.963610355722527,,,Pierina Ana Sanchez,,Pierina Ana Sanchez,Fernando A. Aquino,Pierina Ana Sanchez
+216,NewYorkCity_06222021_DEMCouncilMember15thCouncilDistrict.csv,DP,1.0,R,8.0,,,,Oswald Feliz,,Oswald Feliz,Oswald Feliz,Oswald Feliz
+217,NewYorkCity_06222021_DEMCouncilMember16thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+218,NewYorkCity_06222021_DEMCouncilMember17thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+219,NewYorkCity_06222021_DEMCouncilMember18thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+220,NewYorkCity_06222021_DEMCouncilMember19thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+221,NewYorkCity_06222021_DEMCouncilMember20thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+222,NewYorkCity_06222021_DEMCouncilMember21stCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+223,NewYorkCity_06222021_DEMCouncilMember22ndCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+224,NewYorkCity_06222021_DEMCouncilMember23rdCouncilDistrict.csv,DP,1.0,R,7.0,0.9700033438156318,,,Linda Lee,,Linda Lee,Linda Lee,Linda Lee
+225,NewYorkCity_06222021_DEMCouncilMember24thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+226,NewYorkCity_06222021_DEMCouncilMember25thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+227,NewYorkCity_06222021_DEMCouncilMember26thCouncilDistrict.csv,DP,1.0,R,15.0,,,,Julie Won,,Julie Won,Julie Won,Julie Won
+228,NewYorkCity_06222021_DEMCouncilMember27thCouncilDistrict.csv,DP,1.0,R,12.0,,,,Nantasha M. Williams,,Nantasha M. Williams,Nantasha M. Williams,Nantasha M. Williams
+229,NewYorkCity_06222021_DEMCouncilMember28thCouncilDistrict.csv,DP,1.0,R,3.0,0.9969266952957399,,,Adrienne E. Adams,,Adrienne E. Adams,Japneet Singh,Adrienne E. Adams
+230,NewYorkCity_06222021_DEMCouncilMember29thCouncilDistrict.csv,DP,1.0,R,9.0,,,,Lynn C. Schulman,,Lynn C. Schulman,Lynn C. Schulman,Lynn C. Schulman
+231,NewYorkCity_06222021_DEMCouncilMember30thCouncilDistrict.csv,DP,1.0,R,2.0,1.0,,,Robert F. Holden,,Robert F. Holden,Robert F. Holden,Robert F. Holden
+232,NewYorkCity_06222021_DEMCouncilMember31stCouncilDistrict.csv,DP,1.0,R,3.0,0.9941990434433036,,,Selvena N. Brooks-Powers,,Selvena N. Brooks-Powers,Selvena N. Brooks-Powers,Selvena N. Brooks-Powers
+233,NewYorkCity_06222021_DEMCouncilMember32ndCouncilDistrict.csv,DP,1.0,R,6.0,0.9844155648982015,,,Michael G. Scala,,Felicia Singh,Michael G. Scala,Felicia Singh
+234,NewYorkCity_06222021_DEMCouncilMember33rdCouncilDistrict.csv,DP,1.0,R,8.0,,,,Lincoln Restler,,Lincoln Restler,Lincoln Restler,Lincoln Restler
+235,NewYorkCity_06222021_DEMCouncilMember34thCouncilDistrict.csv,DP,1.0,R,4.0,0.9943344187382624,,,Jennifer Gutierrez,,Jennifer Gutierrez,Jennifer Gutierrez,Jennifer Gutierrez
+236,NewYorkCity_06222021_DEMCouncilMember35thCouncilDistrict.csv,DP,1.0,R,7.0,0.9613948326087798,,,Crystal Hudson,,Crystal Hudson,Crystal Hudson,Crystal Hudson
+237,NewYorkCity_06222021_DEMCouncilMember36thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+238,NewYorkCity_06222021_DEMCouncilMember37thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+239,NewYorkCity_06222021_DEMCouncilMember38thCouncilDistrict.csv,DP,1.0,R,6.0,0.9864045776313792,,,Alexa Aviles,,Alexa Aviles,Rodrigo G. Camarena,Alexa Aviles
+240,NewYorkCity_06222021_DEMCouncilMember39thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+241,NewYorkCity_06222021_DEMCouncilMember40thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+242,NewYorkCity_06222021_DEMCouncilMember41stCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+243,NewYorkCity_06222021_DEMCouncilMember42ndCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+244,NewYorkCity_06222021_DEMCouncilMember45thCouncilDistrict.csv,DP,1.0,R,,,,,,,,,
+245,NewYorkCity_06222021_DEMCouncilMember46thCouncilDistrict.csv,DP,1.0,R,8.0,,,,Mercedes Narcisse,,Mercedes Narcisse,Mercedes Narcisse,Mercedes Narcisse
+246,NewYorkCity_06222021_DEMCouncilMember47thCouncilDistrict.csv,DP,1.0,R,4.0,0.9933555311558043,,,Ari Kagan,,Ari Kagan,Ari Kagan,Ari Kagan
+247,NewYorkCity_06222021_DEMCouncilMember48thCouncilDistrict.csv,DP,1.0,R,5.0,0.9887761144288821,,,Steven Saperstein,,Steven Saperstein,Steven Saperstein,Steven Saperstein
+248,NewYorkCity_06222021_DEMCouncilMember49thCouncilDistrict.csv,DP,1.0,R,9.0,,,,Kamillah Hanks,,Kamillah Hanks,Kamillah Hanks,Kamillah Hanks
+249,NewYorkCity_06222021_DEMMayorCitywide.csv,DP,1.0,E,13.0,,,,Eric L. Adams,,Eric L. Adams,Kathryn A. Garcia,Eric L. Adams
+250,NewYorkCity_06222021_DEMPublicAdvocateCitywide.csv,DP,1.0,O,3.0,0.9350927068556556,,,Jumaane D. Williams,,Jumaane D. Williams,Jumaane D. Williams,Jumaane D. Williams
+251,NewYorkCity_06222021_REPBoroughPresidentQueens.csv,RP,1.0,E,,,,,,,,,
+252,NewYorkCity_06222021_REPBoroughPresidentRichmond.csv,RP,1.0,E,4.0,0.7556551967353519,,,Vito Fossella,,Vito Fossella,Vito Fossella,Vito Fossella
+253,NewYorkCity_06222021_REPCouncilMember15thCouncilDistrict.csv,RP,1.0,R,2.0,1.0,,,Ariel Rivera-Diaz,,Ariel Rivera-Diaz,Ariel Rivera-Diaz,Ariel Rivera-Diaz
+254,NewYorkCity_06222021_REPCouncilMember19thCouncilDistrict.csv,RP,1.0,R,2.0,1.0,,,Vickie Paladino,,Vickie Paladino,Vickie Paladino,Vickie Paladino
+255,NewYorkCity_06222021_REPCouncilMember23rdCouncilDistrict.csv,RP,1.0,R,2.0,1.0,,,James F. Reilly,,James F. Reilly,Alex Amoroso,James F. Reilly
+256,NewYorkCity_06222021_REPCouncilMember24thCouncilDistrict.csv,RP,1.0,R,2.0,1.0,,,Timothy Rosen,,Timothy Rosen,Angelo King,Timothy Rosen
+257,NewYorkCity_06222021_REPCouncilMember32ndCouncilDistrict.csv,RP,1.0,R,,,,,,,,,
+258,NewYorkCity_06222021_REPCouncilMember50thCouncilDistrict.csv,RP,1.0,R,,,,,,,,,
+259,NewYorkCity_06222021_REPMayorCitywide.csv,RP,1.0,E,2.0,1.0,,,Curtis A. Sliwa,,Curtis A. Sliwa,Curtis A. Sliwa,Curtis A. Sliwa
+260,Oakland_11022010_CityAuditor.csv,0,1.0,O,2.0,1.0,,,COURTNEY RUBY,,COURTNEY RUBY,COURTNEY RUBY,COURTNEY RUBY
+261,Oakland_11022010_CityCouncilDistrict2.csv,0,1.0,E,,,,,,,,,
+262,Oakland_11022010_CityCouncilDistrict4.csv,0,1.0,R,,,,,,,,,
+263,Oakland_11022010_CityCouncilDistrict6.csv,0,1.0,R,,,,,,,,,
+264,Oakland_11022010_Mayor.csv,0,1.0,E,10.0,,,,JEAN QUAN,,JEAN QUAN,JEAN QUAN,DON PERATA
+265,Oakland_11022010_SchoolDirectorDistrict2.csv,0,1.0,B,1.0,1.0,,,DAVID KAKISHIBA,,DAVID KAKISHIBA,DAVID KAKISHIBA,DAVID KAKISHIBA
+266,Oakland_11022010_SchoolDirectorDistrict4.csv,0,1.0,B,2.0,1.0,,,GARY D. YEE,,GARY D. YEE,GARY D. YEE,GARY D. YEE
+267,Oakland_11022010_SchoolDirectorDistrict6.csv,0,1.0,B,1.0,1.0,,,CHRISTOPHER DOBBINS,,CHRISTOPHER DOBBINS,CHRISTOPHER DOBBINS,CHRISTOPHER DOBBINS
+268,Oakland_11032020_CityAttorneyOaklandRCV.csv,0,1.0,O,2.0,1.0,,,BARBARA PARKER,,BARBARA PARKER,ELI FERRAN,BARBARA PARKER
+269,Oakland_11032020_MemberCityCouncilAtLargeOaklandRCV.csv,0,1.0,R,,,,,,,,,
+270,Oakland_11032020_MemberCityCouncilDist1OaklandRCV.csv,0,1.0,R,3.0,0.8290452383855628,,,DAN KALB,,DAN KALB,DAN KALB,DAN KALB
+271,Oakland_11032020_MemberCityCouncilDist3OaklandRCV.csv,0,1.0,R,,,,,,,,,
+272,Oakland_11032020_MemberCityCouncilDist5OaklandRCV.csv,0,1.0,R,3.0,0.8534587378640777,,,NOEL GALLO,,NOEL GALLO,ZOE LOPEZ-MERAZ,NOEL GALLO
+273,Oakland_11032020_MemberCityCouncilDist7OaklandRCV.csv,0,1.0,R,,,,,,,,,
+274,Oakland_11032020_SchoolDirectorDist1OaklandRCV.csv,0,1.0,B,3.0,0.9382514327521034,,,SAM DAVIS,,SAM DAVIS,STACY THOMAS,SAM DAVIS
+275,Oakland_11032020_SchoolDirectorDist3OaklandRCV.csv,0,1.0,B,5.0,0.5914690841469085,,,VANCEDRIC WILLIAMS,,VANCEDRIC WILLIAMS,CHERISSE GASH,VANCEDRIC WILLIAMS
+276,Oakland_11032020_SchoolDirectorDist5OaklandRCV.csv,0,1.0,B,4.0,0.6406755663430421,,,MIKE HUTCHINSON,,MIKE HUTCHINSON,MIKE HUTCHINSON,MIKE HUTCHINSON
+277,Oakland_11032020_SchoolDirectorDist7OaklandRCV.csv,0,1.0,B,5.0,0.4935653347471924,,,CLIFFORD THOMPSON,,CLIFFORD THOMPSON,VICTOR JAVIER VALERIO,CLIFFORD THOMPSON
+278,Oakland_11042014_CityAuditor.csv,0,1.0,O,,,,,,,,,
+279,Oakland_11042014_CityCouncilDistrict2.csv,0,1.0,R,5.0,0.6579911064608945,,,ABEL GUILLEN,,ABEL GUILLEN,ABEL GUILLEN,ABEL GUILLEN
+280,Oakland_11042014_CityCouncilDistrict4.csv,0,1.0,R,,,,,,,,,
+281,Oakland_11042014_CityCouncilDistrict6.csv,0,1.0,R,,,,,,,,,
+282,Oakland_11042014_Mayor.csv,0,1.0,E,16.0,,,,LIBBY SCHAAF,,LIBBY SCHAAF,LIBBY SCHAAF,LIBBY SCHAAF
+283,Oakland_11042014_SchoolDirectorDistrict2.csv,0,1.0,B,2.0,1.0,,,AIMEE ENG,,AIMEE ENG,AIMEE ENG,AIMEE ENG
+284,Oakland_11042014_SchoolDirectorDistrict4.csv,0,1.0,B,4.0,0.7410700904231403,,,NINA SENN,,NINA SENN,NINA SENN,NINA SENN
+285,Oakland_11042014_SchoolDirectorDistrict6.csv,0,1.0,B,2.0,1.0,,,SHANTHI GONZALES,,SHANTHI GONZALES,SHANTHI GONZALES,SHANTHI GONZALES
+286,Oakland_11062012_CityAttorney.csv,0,1.0,O,2.0,1.0,,,BARBARA PARKER,,BARBARA PARKER,BARBARA PARKER,BARBARA PARKER
+287,Oakland_11062012_CityCouncilAtLarge.csv,0,1.0,R,,,,,,,,,
+288,Oakland_11062012_CityCouncilDistrict1.csv,0,1.0,R,7.0,0.6325228941747857,,,DAN KALB,,DAN KALB,DAN KALB,DAN KALB
+289,Oakland_11062012_CityCouncilDistrict3.csv,0,1.0,R,6.0,0.6150224215246637,,,LYNETTE GIBSON-MCELHANEY,,LYNETTE GIBSON-MCELHANEY,LYNETTE GIBSON-MCELHANEY,SEAN SULLIVAN
+290,Oakland_11062012_CityCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+291,Oakland_11062012_CityCouncilDistrict7.csv,0,1.0,R,,,,,,,,,
+292,Oakland_11062012_SchoolDirectorDistrict1.csv,0,1.0,B,2.0,1.0,,,JODY LONDON,,JODY LONDON,JODY LONDON,JODY LONDON
+293,Oakland_11062012_SchoolDirectorDistrict3.csv,0,1.0,B,3.0,0.8568011958146488,,,JUMOKE HINTON HODGE,,JUMOKE HINTON HODGE,RICHARD FUENTES,JUMOKE HINTON HODGE
+294,Oakland_11062012_SchoolDirectorDistrict5.csv,0,1.0,B,2.0,1.0,,,ROSIE TORRES,,ROSIE TORRES,ROSIE TORRES,ROSIE TORRES
+295,Oakland_11062012_SchoolDirectorDistrict7.csv,0,1.0,B,2.0,1.0,,,JAMES HARRIS,,JAMES HARRIS,JAMES HARRIS,JAMES HARRIS
+296,Oakland_11062018_CityAuditor.csv,0,1.0,O,2.0,1.0,,,COURTNEY RUBY,,COURTNEY RUBY,COURTNEY RUBY,COURTNEY RUBY
+297,Oakland_11062018_CityCouncilDistrict2.csv,0,1.0,R,3.0,0.9392633890859943,,,NIKKI FORTUNATO BAS,,NIKKI FORTUNATO BAS,ABEL GUILLÉN,NIKKI FORTUNATO BAS
+298,Oakland_11062018_CityCouncilDistrict4.csv,0,1.0,R,7.0,0.6421768225755055,,,PAM HARRIS,,SHENG THAO,PAM HARRIS,SHENG THAO
+299,Oakland_11062018_CityCouncilDistrict6.csv,0,1.0,R,5.0,0.6091783485112043,,,LOREN TAYLOR,,LOREN TAYLOR,MYA WHITAKER,LOREN TAYLOR
+300,Oakland_11062018_Mayor.csv,0,1.0,E,,,,,,,,,
+301,Oakland_11062018_SchoolDirectorDistrict2.csv,0,1.0,B,1.0,1.0,,,AIMEE ENG,,AIMEE ENG,AIMEE ENG,AIMEE ENG
+302,Oakland_11062018_SchoolDirectorDistrict4.csv,0,1.0,B,2.0,1.0,,,GARY D. YEE,,GARY D. YEE,CLARISSA DOUTHERD,GARY D. YEE
+303,Oakland_11062018_SchoolDirectorDistrict6.csv,0,1.0,B,2.0,1.0,,,SHANTHI GONZALES,,SHANTHI GONZALES,SHANTHI GONZALES,SHANTHI GONZALES
+304,Oakland_11082016_CityAttorney.csv,0,1.0,O,1.0,1.0,,,BARBARA J. PARKER,,BARBARA J. PARKER,BARBARA J. PARKER,BARBARA J. PARKER
+305,Oakland_11082016_CityCouncilDistrict1.csv,0,1.0,R,2.0,1.0,,,DAN KALB,,DAN KALB,DAN KALB,DAN KALB
+306,Oakland_11082016_CityCouncilDistrict3.csv,0,1.0,R,2.0,1.0,,,NONI D. SESSION,,LYNETTE GIBSON MCELHANEY,NONI D. SESSION,LYNETTE GIBSON MCELHANEY
+307,Oakland_11082016_CityCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+308,Oakland_11082016_CityCouncilDistrict7.csv,0,1.0,R,,,,,,,,,
+309,Oakland_11082016_CouncilAtLrg.csv,0,1.0,R,5.0,0.7066768000900748,,,REBECCA KAPLAN,,REBECCA KAPLAN,REBECCA KAPLAN,REBECCA KAPLAN
+310,Oakland_11082016_SchoolDirectorDistrict1.csv,0,1.0,B,2.0,1.0,,,JODY LONDON,,JODY LONDON,JODY LONDON,JODY LONDON
+311,Oakland_11082016_SchoolDirectorDistrict3.csv,0,1.0,B,5.0,0.7880767236910317,,,JUMOKE HINTON HODGE,,JUMOKE HINTON HODGE,BENJAMIN LANG,JUMOKE HINTON HODGE
+312,Oakland_11082016_SchoolDirectorDistrict5.csv,0,1.0,B,4.0,0.8183991174307428,,,ROSIE TORRES,,ROSIE TORRES,ROSIE TORRES,HUBER TRENADO
+313,Oakland_11082016_SchoolDirectorDistrict7.csv,0,1.0,B,2.0,1.0,,,JAMES HARRIS,,JAMES HARRIS,JAMES HARRIS,JAMES HARRIS
+314,Oakland_11082022_CityAuditor.csv,0,1.0,O,1.0,1.0,,,COURTNEY RUBY,,COURTNEY RUBY,COURTNEY RUBY,COURTNEY RUBY
+315,Oakland_11082022_CityCouncilmemberDistrict4.csv,0,1.0,R,,,,,,,,,
+316,Oakland_11082022_CityCouncilmemberDistrict6.csv,0,1.0,R,,,,,,,,,
+317,Oakland_11082022_Mayor.csv,0,1.0,E,10.0,,,,SHENG THAO,,SHENG THAO,SHENG THAO,LOREN MANUEL TAYLOR
+318,Oakland_11082022_Schoolboarddistrict2.csv,0,1.0,B,3.0,0.9612324929971989,,,JENNIFER BROUHARD,,JENNIFER BROUHARD,MAX OROZCO,JENNIFER BROUHARD
+319,Oakland_11082022_Schoolboarddistrict4.csv,0,1.0,B,,,,,,,,,
+320,Oakland_11082022_Schoolboarddistrict6.csv,0,1.0,B,,,,,,,,,
+321,Payson_11052019_CityCouncil.csv,1,1.0,R,,,,,,,,,
+322,PierceCounty_11032009_CountyAuditor.csv,1,1.0,O,3.0,0.9363694323253284,,,Julie Anderson,,Julie Anderson,Will Baker,Julie Anderson
+323,PierceCounty_11042008_CountyAssessorTreasurer.csv,1,1.0,O,6.0,0.6500751350832881,,,Jan Shabro,,Dale Washam,Jan Shabro,Dale Washam
+324,PierceCounty_11042008_CountyCouncilDistrict2.csv,1,1.0,R,,,,,,,,,
+325,PierceCounty_11042008_CountyExecutiveMember.csv,1,1.0,E,4.0,0.7178341912587525,,,Pat McCarthy,,Pat McCarthy,Calvin Goings,Shawn Bunney
+326,Portland_06082021_charter_commission_at_large.csv,0,1.0,B,11.0,,,,"Chann, Marpheen S.",,"Chann, Marpheen S.",-1,"Sheikh-Yousef, Nasreen A."
+327,Portland_06142022_SchoolboardAL-1.csv,0,1.0,B,7.0,0.6286589876360562,,,"Grant, Benjamin K.",,"Lentz, Sarah M.","Grant, Benjamin K.","Lentz, Sarah M."
+328,Portland_06142022_SchoolboardAL.csv,0,1.0,B,,,,,,,,,
+329,Portland_06142022_Schoolboarddistrict5-1.csv,0,1.0,B,6.0,0.7657276995305164,,,"Brydon, Sarah M.",,"Brydon, Sarah M.","Brydon, Sarah M.","Brydon, Sarah M."
+330,Portland_06142022_Schoolboarddistrict5.csv,0,1.0,B,,,,,,,,,
+331,Portland_11082022_SchoolBoardDistrict3.csv,0,1.0,B,3.0,0.9482506319010243,,,"Opperman, Julianne R.",,"Opperman, Julianne R.","Burk, Adam M.","Opperman, Julianne R."
+332,SanFrancisco_06052018_BoardofSupervisorsDistrict8.csv,0,1.0,B,,,,,,,,,
+333,SanFrancisco_06052018_Mayor.csv,0,1.0,E,8.0,,,,MARK LENO,,LONDON BREED,MARK LENO,LONDON BREED
+334,SanFrancisco_11022004_BoardofSupervisorsDistrict2.csv,0,1.0,B,5.0,0.7060135323483946,,,Michela Alioto-pier,,Michela Alioto-pier,Michela Alioto-pier,Michela Alioto-pier
+335,SanFrancisco_11022004_BoardofSupervisorsDistrict3.csv,0,1.0,B,4.0,0.7251377313179828,,,Arron Peskin,,Arron Peskin,-1,Arron Peskin
+336,SanFrancisco_11022004_BoardofSupervisorsDistrict5.csv,0,1.0,B,22.0,,,,Ross Mirkarimi,,Ross Mirkarimi,-1,Ross Mirkarimi
+337,SanFrancisco_11022004_BoardofSupervisorsDistrict7.csv,0,1.0,B,13.0,,,,Sean R. Elsbernd,,Sean R. Elsbernd,Sean R. Elsbernd,Sean R. Elsbernd
+338,SanFrancisco_11022004_BoardofSupervisorsDistrict9.csv,0,1.0,B,6.0,0.6965821724899139,,,Tom Ammiano,,Tom Ammiano,Renee Saucedo,Tom Ammiano
+339,SanFrancisco_11022004_BoardofSupervisorsDistrict11.csv,0,1.0,B,,,,,,,,,
+340,SanFrancisco_11022010_BoardofSupervisorsDistrict2.csv,0,1.0,B,6.0,0.7389830508474576,,,MARK FARRELL,,MARK FARRELL,MARK FARRELL,JANET REILLY
+341,SanFrancisco_11022010_BoardofSupervisorsDistrict6.csv,0,1.0,B,14.0,,,,JANE KIM,,JANE KIM,JANE KIM,JANE KIM
+342,SanFrancisco_11022010_BoardofSupervisorsDistrict8.csv,0,1.0,B,,,,,,,,,
+343,SanFrancisco_11022010_BoardofSupervisorsDistrict10.csv,0,1.0,B,,,,,,,,,
+344,SanFrancisco_11032015_BoardofSupervisorsDistrict3.csv,0,1.0,B,,,,,,,,,
+345,SanFrancisco_11032015_Mayor.csv,0,1.0,E,,,,,,,,,
+346,SanFrancisco_11032015_Sheriff.csv,0,1.0,O,,,,,,,,,
+347,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT1.csv,0,1.0,B,,,,,,,,,
+348,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT3.csv,0,1.0,B,,,,,,,,,
+349,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT5.csv,0,1.0,B,,,,,,,,,
+350,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT7.csv,0,1.0,B,,,,,,,,,
+351,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT9.csv,0,1.0,B,2.0,1.0,,,HILLARY RONEN,,HILLARY RONEN,HILLARY RONEN,HILLARY RONEN
+352,SanFrancisco_11032020_BOARDOFSUPERVISORSDISTRICT11.csv,0,1.0,B,,,,,,,,,
+353,SanFrancisco_11042008_BoardofSupervisorsDistrict1.csv,0,1.0,B,,,,,,,,,
+354,SanFrancisco_11042008_BoardofSupervisorsDistrict3.csv,0,1.0,B,,,,,,,,,
+355,SanFrancisco_11042008_BoardofSupervisorsDistrict4.csv,0,1.0,B,,,,,,,,,
+356,SanFrancisco_11042008_BoardofSupervisorsDistrict5.csv,0,1.0,B,,,,,,,,,
+357,SanFrancisco_11042008_BoardofSupervisorsDistrict7.csv,0,1.0,B,,,,,,,,,
+358,SanFrancisco_11042008_BoardofSupervisorsDistrict9.csv,0,1.0,B,7.0,0.6387840598275802,,,DAVID CAMPOS,,DAVID CAMPOS,MARK SANCHEZ,DAVID CAMPOS
+359,SanFrancisco_11042008_BoardofSupervisorsDistrict11.csv,0,1.0,B,,,,,,,,,
+360,SanFrancisco_11042014_BoardofSupervisorsDistrict10.csv,0,1.0,B,,,,,,,,,
+361,SanFrancisco_11052004_BoardofSupervisorsDistrict1.csv,0,1.0,B,7.0,0.5782877604166666,,,Jake McGoldrick,,Jake McGoldrick,Matt Tuchow,Jake McGoldrick
+362,SanFrancisco_11052019_CityAttorney.csv,0,1.0,O,1.0,1.0,,,DENNIS J. HERRERA,,DENNIS J. HERRERA,DENNIS J. HERRERA,DENNIS J. HERRERA
+363,SanFrancisco_11052019_DistrictAttorney.csv,0,1.0,O,4.0,0.6585611985483902,,,SUZY LOFTUS,,CHESA BOUDIN,SUZY LOFTUS,CHESA BOUDIN
+364,SanFrancisco_11052019_Mayor.csv,0,1.0,E,7.0,0.6893690931320228,,,LONDON N. BREED,,LONDON N. BREED,LONDON N. BREED,LONDON N. BREED
+365,SanFrancisco_11052019_MemberBoardofSupervisorsDistrict5.csv,0,1.0,B,4.0,0.808916168631885,,,DEAN PRESTON,,DEAN PRESTON,DEAN PRESTON,DEAN PRESTON
+366,SanFrancisco_11052019_PublicDefender.csv,0,1.0,O,1.0,1.0,,,"MANOHAR ""MANO"" RAJU",,"MANOHAR ""MANO"" RAJU","MANOHAR ""MANO"" RAJU","MANOHAR ""MANO"" RAJU"
+367,SanFrancisco_11052019_Sheriff.csv,0,1.0,O,1.0,1.0,,,PAUL MIYAMOTO,,PAUL MIYAMOTO,PAUL MIYAMOTO,PAUL MIYAMOTO
+368,SanFrancisco_11052019_Treasurer.csv,0,1.0,O,1.0,1.0,,,JOSÉ CISNEROS,,JOSÉ CISNEROS,JOSÉ CISNEROS,JOSÉ CISNEROS
+369,SanFrancisco_11062007_Mayor.csv,0,1.0,E,12.0,,,,Gavin Newsom,,Gavin Newsom,Gavin Newsom,Gavin Newsom
+370,SanFrancisco_11062012_BoardofSupervisorsDistrict5.csv,0,1.0,B,8.0,,,,LONDON BREED,,LONDON BREED,LONDON BREED,LONDON BREED
+371,SanFrancisco_11062012_BoardofSupervisorsDistrict7.csv,0,1.0,B,9.0,,,,NORMAN YEE,,NORMAN YEE,F. X. FRANCIS XAVIER CROWLEY,NORMAN YEE
+372,SanFrancisco_11062018_AssessorRecorder.csv,0,1.0,O,,,,,,,,,
+373,SanFrancisco_11062018_BoardofSupervisorsDistrict2.csv,0,1.0,B,,,,,,,,,
+374,SanFrancisco_11062018_BoardofSupervisorsDistrict4.csv,0,1.0,B,,,,,,,,,
+375,SanFrancisco_11062018_BoardofSupervisorsDistrict6.csv,0,1.0,B,,,,,,,,,
+376,SanFrancisco_11062018_BoardofSupervisorsDistrict8.csv,0,1.0,B,2.0,1.0,,,RAFAEL MANDELMAN,,RAFAEL MANDELMAN,RAFAEL MANDELMAN,RAFAEL MANDELMAN
+377,SanFrancisco_11062018_BoardofSupervisorsDistrict10.csv,0,1.0,B,6.0,0.703877209018891,,,SHAMANN WALTON,,SHAMANN WALTON,SHAMANN WALTON,SHAMANN WALTON
+378,SanFrancisco_11062018_PublicDefender.csv,0,1.0,O,1.0,1.0,,,JEFF ADACHI,,JEFF ADACHI,JEFF ADACHI,JEFF ADACHI
+379,SanFrancisco_11072006_BoardofSupervisorsDistrict2.csv,0,1.0,B,2.0,1.0,,,Michela Alioto-pier,,Michela Alioto-pier,Michela Alioto-pier,Michela Alioto-pier
+380,SanFrancisco_11072006_BoardofSupervisorsDistrict4.csv,0,1.0,B,,,,,,,,,
+381,SanFrancisco_11072006_BoardofSupervisorsDistrict6.csv,0,1.0,B,,,,,,,,,
+382,SanFrancisco_11072006_BoardofSupervisorsDistrict8.csv,0,1.0,B,3.0,0.9323954892356761,,,Bevan Dufty,,Bevan Dufty,Bevan Dufty,Bevan Dufty
+383,SanFrancisco_11072006_BoardofSupervisorsDistrict10.csv,0,1.0,B,7.0,0.6725541851275296,,,Sophie Maxwell,,Sophie Maxwell,Sophie Maxwell,Sophie Maxwell
+384,SanFrancisco_11082005_AssessorRecorder.csv,0,1.0,O,4.0,0.9047961343396829,,,Phil Ting,,Phil Ting,Ronald Chun,Phil Ting
+385,SanFrancisco_11082005_Treasurer.csv,0,1.0,O,4.0,0.8274030589832675,,,Jose Cisneros,,Jose Cisneros,Jose Cisneros,Jose Cisneros
+386,SanFrancisco_11082011_DistrictAttorney.csv,0,1.0,O,5.0,0.6751740256843152,,,GEORGE GASCÓN,,GEORGE GASCÓN,SHARMIN BOCK,GEORGE GASCÓN
+387,SanFrancisco_11082011_Mayor.csv,0,1.0,E,16.0,,,,ED LEE,,ED LEE,ED LEE,ED LEE
+388,SanFrancisco_11082011_Sheriff.csv,0,1.0,O,,,,,,,,,
+389,SanFrancisco_11082016_BoardofSupervisorsDistrict1.csv,0,1.0,B,10.0,,,,SANDRA LEE FEWER,,SANDRA LEE FEWER,SANDRA LEE FEWER,SANDRA LEE FEWER
+390,SanFrancisco_11082016_BoardofSupervisorsDistrict3.csv,0,1.0,B,2.0,1.0,,,AARON PESKIN,,AARON PESKIN,AARON PESKIN,AARON PESKIN
+391,SanFrancisco_11082016_BoardofSupervisorsDistrict5.csv,0,1.0,B,2.0,1.0,,,LONDON BREED,,LONDON BREED,LONDON BREED,LONDON BREED
+392,SanFrancisco_11082016_BoardofSupervisorsDistrict7.csv,0,1.0,B,5.0,0.6050145624920856,,,NORMAN YEE,,NORMAN YEE,BEN MATRANGA,NORMAN YEE
+393,SanFrancisco_11082016_BoardofSupervisorsDistrict9.csv,0,1.0,B,,,,,,,,,
+394,SanFrancisco_11082016_BoardofSupervisorsDistrict11.csv,0,1.0,B,5.0,0.6203363204684209,,,KIM ALVARENGA,,AHSHA SAFAI,KIM ALVARENGA,AHSHA SAFAI
+395,SanFrancisco_11082022_AssessorRecorder.csv,0,1.0,O,,,,,,,,,
+396,SanFrancisco_11082022_BoardofSupervisorsD2.csv,0,1.0,B,,,,,,,,,
+397,SanFrancisco_11082022_BoardofSupervisorsD4.csv,0,1.0,B,,,,,,,,,
+398,SanFrancisco_11082022_BoardofSupervisorsD6.csv,0,1.0,B,,,,,,,,,
+399,SanFrancisco_11082022_BoardofSupervisorsD8.csv,0,1.0,B,2.0,1.0,,,RAFAEL MANDELMAN,,RAFAEL MANDELMAN,RAFAEL MANDELMAN,RAFAEL MANDELMAN
+400,SanFrancisco_11082022_BoardofSupervisorsD10.csv,0,1.0,B,,,,,,,,,
+401,SanFrancisco_11082022_DistrictAttorney.csv,0,1.0,O,,,,,,,,,
+402,SanFrancisco_11082022_PublicDefender.csv,0,1.0,O,2.0,1.0,,,MANO RAJU,,MANO RAJU,MANO RAJU,MANO RAJU
+403,SanLeandro_11022010_CountyCouncilDistrict1.csv,0,1.0,R,,,,,,,,,
+404,SanLeandro_11022010_CountyCouncilDistrict3.csv,0,1.0,R,,,,,,,,,
+405,SanLeandro_11022010_CountyCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+406,SanLeandro_11022010_Mayor.csv,0,1.0,E,,,,,,,,,
+407,SanLeandro_11032020_MemberCityCouncilDist2SanLeandroRCV.csv,0,1.0,R,,,,,,,,,
+408,SanLeandro_11032020_MemberCityCouncilDist4SanLeandroRCV.csv,0,1.0,R,2.0,1.0,,,FRED SIMON,,FRED SIMON,CHRISTOPHER BAMMER,FRED SIMON
+409,SanLeandro_11032020_MemberCityCouncilDist6SanLeandroRCV.csv,0,1.0,R,,,,,,,,,
+410,SanLeandro_11042014_CountyCouncilDistrict1.csv,0,1.0,R,4.0,0.7062038490609919,,,DEBORAH COX,,DEBORAH COX,DEBORAH COX,DEBORAH COX
+411,SanLeandro_11042014_CountyCouncilDistrict3.csv,0,1.0,R,3.0,0.9058666201523344,,,LEE THOMAS,,LEE THOMAS,ALLEN SCHOENFELD,LEE THOMAS
+412,SanLeandro_11042014_CountyCouncilDistrict5.csv,0,1.0,R,3.0,0.8572591429734286,,,CORINA LOPEZ,,CORINA LOPEZ,LEAH HALL,CORINA LOPEZ
+413,SanLeandro_11042014_Mayor.csv,0,1.0,E,4.0,0.9079597651026222,,,PAULINE RUSSO CUTTER,,PAULINE RUSSO CUTTER,DAN DILLMAN,PAULINE RUSSO CUTTER
+414,SanLeandro_11062012_CountyCouncilDistrict2.csv,0,1.0,R,,,,,,,,,
+415,SanLeandro_11062012_CountyCouncilDistrict4.csv,0,1.0,R,4.0,0.6982440248066337,,,BENNY LEE,,BENNY LEE,CHRIS CROW,BENNY LEE
+416,SanLeandro_11062012_CountyCouncilDistrict6.csv,0,1.0,R,2.0,1.0,,,JIM PROLA,,JIM PROLA,JIM PROLA,JIM PROLA
+417,SanLeandro_11062018_CountyCouncilDistrict1.csv,0,1.0,R,,,,,,,,,
+418,SanLeandro_11062018_CountyCouncilDistrict3.csv,0,1.0,R,,,,,,,,,
+419,SanLeandro_11062018_CountyCouncilDistrict5.csv,0,1.0,R,,,,,,,,,
+420,SanLeandro_11062018_Mayor.csv,0,1.0,E,4.0,0.7496578549304905,,,PAULINE RUSSO CUTTER,,PAULINE RUSSO CUTTER,BENNY LEE,PAULINE RUSSO CUTTER
+421,SanLeandro_11082016_CountyCouncilDistrict2.csv,0,1.0,R,,,,,,,,,
+422,SanLeandro_11082016_CountyCouncilDistrict4.csv,0,1.0,R,1.0,1.0,,,BENNY LEE,,BENNY LEE,BENNY LEE,BENNY LEE
+423,SanLeandro_11082016_CountyCouncilDistrict6.csv,0,1.0,R,1.0,1.0,,,PETE BALLEW,,PETE BALLEW,PETE BALLEW,PETE BALLEW
+424,SantaFe_03062018_CityCouncilDistrict2.csv,0,1.0,R,3.0,0.9115360696517413,,,Carol Romero-Wirth,,Carol Romero-Wirth,Joe H. Arellano,Carol Romero-Wirth
+425,SantaFe_03062018_CityCouncilDistrict4.csv,0,1.0,R,3.0,0.7975979523528254,,,JoAnne Vigil Coppler,,JoAnne Vigil Coppler,Eric John Holmes,JoAnne Vigil Coppler
+426,SantaFe_03062018_Mayor.csv,0,1.0,E,5.0,0.37307078233102714,,,Alan Webber,,Alan Webber,Ronald S. Trujillo,Alan Webber
+427,Springville_11022021_CityCouncil2yr.csv,0,1.0,R,3.0,0.8874088169996829,,,CHRIS SORENSEN,,CHRIS SORENSEN,KELLY JENSEN,CHRIS SORENSEN
+428,Springville_11022021_Mayor.csv,0,1.0,E,3.0,0.89581351094196,,,MATT PACKARD,,MATT PACKARD,MATTHEW NORMAN BRADLEY,MATT PACKARD
+429,StLouisPark_11022021_CityCouncilWard1.csv,0,1.0,R,1.0,1.0,,,Margaret Rog,,Margaret Rog,Margaret Rog,Margaret Rog
+430,StLouisPark_11022021_CityCouncilWard2.csv,0,1.0,R,2.0,1.0,,,Lynette Lungay Dumalag,,Lynette Lungay Dumalag,Lynette Lungay Dumalag,Lynette Lungay Dumalag
+431,StLouisPark_11022021_CityCouncilWard3.csv,0,1.0,R,3.0,0.8880706921944035,,,Jim Leuthner,,Sue Budd,Jim Leuthner,Sue Budd
+432,StLouisPark_11022021_CityCouncilWard4.csv,0,1.0,R,,,,,,,,,
+433,TakomaPark_11082022_CityCouncilWard1.csv,0,1.0,R,,,,,,,,,
+434,TakomaPark_11082022_CityCouncilWard2.csv,0,1.0,R,,,,,,,,,
+435,TakomaPark_11082022_CityCouncilWard3.csv,0,1.0,R,,,,,,,,,
+436,TakomaPark_11082022_CityCouncilWard4.csv,0,1.0,R,,,,,,,,,
+437,TakomaPark_11082022_CityCouncilWard5.csv,0,1.0,R,,,,,,,,,
+438,TakomaPark_11082022_CityCouncilWard6.csv,0,1.0,R,,,,,,,,,
+439,TakomaPark_11082022_Mayor.csv,0,1.0,E,11.0,,,,Talisha Searcy,,Talisha Searcy,Jarrett Smith,Talisha Searcy
+440,Vineyard_11022021_Mayor.csv,0,1.0,E,,,,,,,,,
+441,Vineyard_11052019_CityCouncil.csv,0,1.0,R,,,,,,,,,
+442,WoodlandHills_11022021_Mayor.csv,0,1.0,E,3.0,0.832572298325723,,,BRENT WINDER,,BRENT WINDER,-1,BRENT WINDER
+443,Wyoming_04172020_PRESIDENTOFTHEUNITEDSTATES.csv,,3.0,E,,,,,,,,,
