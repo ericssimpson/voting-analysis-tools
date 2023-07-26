@@ -311,7 +311,6 @@ class voting_rules:
 
 
     def condorcet(self):
-        print("here")
         candidates = self.candidates
         ballots = self.ballots 
         pairs = self.get_pairs()
@@ -324,7 +323,6 @@ class voting_rules:
                         flag = False
             if (flag):
                 return c1
-        print(pairs)
         return -1
     
     def get_pairs(self):
