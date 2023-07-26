@@ -4,46 +4,53 @@ from typing import Dict, Tuple, List
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.utils import check_random_state
+from numba import njit
 from sklearn.manifold import MDS
+from sklearn.utils import check_random_state
 
 
-def calculate_mentioned_together(ballots: np.ndarray, num_candidates: int, num_ballots: int, num_ranks: int) -> np.ndarray:
+@njit
+def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballots: int, num_ranks: int) -> np.ndarray:
     """
-    Calculate how often each pair of candidates is mentioned together on ballots.
-
-    The function uses Numba to accelerate the computation.
+    Calculate the number of times each pair of candidates is mentioned together in the ballots.
 
     Parameters
     ----------
-    ballots : np.ndarray
-        The 2D array representing the ballots. Each row represents a ballot and each column a rank.
+    ballots : numpy.ndarray
+        An array representing the ranked votes. Each row is a ballot, with candidates represented by their indices.
     num_candidates : int
-        The number of candidates.
+        The total number of unique candidates.
     num_ballots : int
-        The number of ballots.
+        The total number of ballots.
     num_ranks : int
-        The number of ranks in each ballot.
+        The total number of ranks in each ballot.
 
     Returns
     -------
-    np.ndarray
-        A 2D array where the element at index (i, j) represents the number of times candidate i and candidate j are mentioned together on ballots.
+    numpy.ndarray
+        A square matrix where the entry at row i and column j represents the number of times candidate i and candidate j are mentioned together in the ballots.
     """
-    mentioned_together = np.zeros((num_candidates, num_candidates))
+    
+    # Initialize a zero matrix to store the counts of pair mentions
+    pair_mentions = np.zeros((num_candidates, num_candidates))
+    
+    # For each ballot
     for i in range(num_ballots):
+        # For each rank in the ballot
         for j in range(num_ranks):
+            # For each other rank in the ballot
             for k in range(num_ranks):
-                if ballots[i, j] <= num_candidates and ballots[i, k] <= num_candidates:
-                    mentioned_together[ballots[i, j] - 1, ballots[i, k] - 1] += 1
-    return mentioned_together
+                # Increment the count for the pair
+                pair_mentions[ballots[i, j] - 1, ballots[i, k] - 1] += 1
+    
+    return pair_mentions
 
 
-def plot_rcv_analysis(avg_1d_values_dict: dict, most_common_order: tuple, all_order_frequencies: list, candidate_names: list) -> None:
+def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_order: tuple, all_order_frequencies: list, candidate_names: list) -> None:
     """
     Plot the ranked-choice-voting (RCV) analysis results.
 
-    This function creates two plots: 
+    This function creates two plots:
     1. A bar plot showing the frequencies of candidate orders.
     2. A scatter plot showing the average MDS-1D coordinates for the most common order.
 
@@ -62,6 +69,7 @@ def plot_rcv_analysis(avg_1d_values_dict: dict, most_common_order: tuple, all_or
     -------
     None
     """
+
     # Plot frequencies of all orders
     plt.figure(figsize=(10, 6))
     orders, frequencies = zip(*all_order_frequencies)
@@ -72,34 +80,18 @@ def plot_rcv_analysis(avg_1d_values_dict: dict, most_common_order: tuple, all_or
     plt.show()
 
     # Plot average MDS-1D coordinates for most common order
-    mds_1d_coordinates = avg_1d_values_dict[most_common_order]
+    mds_1d_coordinates = mds_1d_coordinates[most_common_order]
     plt.figure(figsize=(10, 6))
     plt.scatter(np.zeros_like(mds_1d_coordinates), mds_1d_coordinates)
     for i in range(len(candidate_names)):
         plt.text(0.2, mds_1d_coordinates[i], candidate_names[most_common_order[i]])
     plt.axis([-1, 1.5, mds_1d_coordinates.min() * 1.2, mds_1d_coordinates.max() * 1.2])
-    plt.ylabel("MDS Dimension 1")
-    plt.title("Average 1D MDS of Candidates")
-    plt.show()
-
-    # Plot 2D MDS coordinates
-    plt.figure(figsize=(10, 8))
-    plt.scatter(mds_2d_coordinates[:, 0], mds_2d_coordinates[:, 1])
-    for i, txt in enumerate(candidate_names):
-        plt.annotate(txt, (mds_2d_coordinates[i, 0], mds_2d_coordinates[i, 1]))
-    plt.xlabel("MDS Dimension 1")
-    plt.ylabel("MDS Dimension 2")
-    plt.title("2D MDS of Candidates")
+    plt.ylabel("MDS-1D Coordinate")
+    plt.title("Average MDS-1D Coordinates for Most Common Order")
     plt.show()
 
 
-def perform_rcv_analysis(
-    csv_file: str, 
-    n_runs: int, 
-    random_state=None, 
-    ignore_values=None, 
-    metric=True
-) -> Tuple[Dict, Tuple, List, List]:
+def perform_rcv_analysis(csv_file: str, n_runs: int, random_state=None, ignore_values=None, metric=True) -> Tuple[Dict, Tuple, List, List]:
     """
     Perform ranked-choice-voting (RCV) analysis on a CSV file of ballots.
 
@@ -120,11 +112,13 @@ def perform_rcv_analysis(
     -------
     tuple
         A tuple containing the following elements:
-        - avg_y_values_dict : A dictionary mapping candidate order to average MDS coordinates.
+        - mds_1d_coordinates : A dictionary mapping candidate order to average MDS coordinates.
+        - mds_2d_coordinates : A dictionary mapping candidate order to average MDS coordinates for 2 dimensions. (TODO)
         - most_common_order : The most common order of candidates.
-        - all_order_frequencies : A list of tuples, each containing a candidate order and its frequency.
+        - order_frequencies : A list of tuples, each containing a candidate order and its frequency.
         - candidate_names : A list of candidate names.
     """
+
     # Default values to ignore when reading CSV
     if ignore_values is None:
         ignore_values = ['(WRITE-IN)', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared']
@@ -153,8 +147,8 @@ def perform_rcv_analysis(
         for j in range(num_ranks - 1):
             counts[ballots[i, j], ballots[i, j+1]] += 1
 
-    # Calculate 'mentioned_together' and normalize to frequencies relative to votes cast for the two candidates
-    mentioned_together = calculate_mentioned_together(ballots, num_candidates, num_ballots, num_ranks)
+    # Calculate pair mentions and normalize to frequencies relative to votes cast for the two candidates
+    mentioned_together = calculate_pair_mentions(ballots, num_candidates, num_ballots, num_ranks)
     frequencies = counts / mentioned_together
 
     # Combine frequencies in either direction to create symmetric matrix
@@ -164,7 +158,7 @@ def perform_rcv_analysis(
             freq_upper_triangle[i, j] = (frequencies[i, j] + frequencies[j, i]) / 2
             freq_upper_triangle[j, i] = freq_upper_triangle[i, j]
 
-    # Compute 'd' (distance metric)
+    # Compute distance metric
     min_freq = np.min(freq_upper_triangle[freq_upper_triangle > 0])
     distance = 1 / np.sqrt(freq_upper_triangle)
     distance[np.isnan(distance)] = 2 / min_freq
@@ -177,21 +171,27 @@ def perform_rcv_analysis(
     # Initialize containers for multiple MDS runs
     all_orders = defaultdict(lambda: 0)
     mds_1d_coordinates = defaultdict(list)
-    mds_2d_coordinates = None
+    mds_2d_coordinates = defaultdict(list)
 
-    # Run MDS multiple times
+    # Run multidimensional scaling multiple times
     for _ in range(n_runs):
 
-        # Perform nonmetric MDS for 1 dimension
+        # Perform nonmetric multidimensional scaling
         mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
-        values_1d = mds_1d.fit_transform(distance)
+        mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
 
-        # Identify order in 1D
+        # Fit and transform the distance matrix
+        values_1d = mds_1d.fit_transform(distance)
+        values_2d = mds_2d.fit_transform(distance)
+
+        # Identify orders in 1D and 2D TODO Procrustes alignment for 2d ordering
         order_1d = tuple(np.argsort(values_1d.flatten()))
+        order_2d = tuple(np.lexsort(values_2d.T))
 
         # Store orders and MDS coordinates
         all_orders[tuple(order_1d)] += 1
         mds_1d_coordinates[order_1d].append(values_1d.flatten()[np.array(order_1d)])
+        mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
 
     # Find most common order and frequencies of all orders along single dimension
     temporary_orders = list(all_orders.keys())
@@ -202,20 +202,71 @@ def perform_rcv_analysis(
             del all_orders[reversed_order]
     order_counter = Counter(all_orders)
     most_common_order = order_counter.most_common(1)[0][0]
-    all_order_frequencies = order_counter.most_common()
+    order_frequencies = order_counter.most_common()
 
     # Calculate average MDS coordinates for each unique order
-    avg_1d_values_dict = {order: np.mean(values, axis=0) for order, values in mds_1d_coordinates.items()}
+    mds_1d_coordinates = {order: np.mean(values, axis=0) for order, values in mds_1d_coordinates.items()}
 
-    return avg_1d_values_dict, most_common_order, all_order_frequencies, candidate_names
+    return mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names
 
-'''
 
-# Test the function with the provided CSV file
-maine = perform_rcv_analysis(f"Maine_11062018_CongressionalDistrict2.csv", n_runs=1000)
-avg_y_values_dict, most_common_order, all_order_frequencies, candidate_names = maine
+def get_distances_normalized(most_common_order: tuple, mds_1d_coordinates: Dict[tuple, np.ndarray], candidate_names: List[str]) -> Dict[str, float]:
+    """
+    Normalize the distances of MDS-1D coordinates for the most common order to start from 0 and ends at the number of candidates.
+    Return a dictionary with candidate names as keys and normalized distances as values.
 
-# Call the plotting function
-plot_rcv_analysis(avg_y_values_dict, most_common_order, all_order_frequencies, candidate_names)
+    Parameters
+    ----------
+    most_common_order : tuple
+        A tuple representing the most common order of candidates.a
+    mds_1d_coordinates : dict
+        A dictionary mapping candidate order to average MDS-1D coordinates.
+    candidate_names : list
+        A list of candidate names.
 
-'''
+    Returns
+    -------
+    dict
+        A dictionary mapping candidate names to normalized MDS-1D coordinates.
+    """
+    # Extract the MDS-1D coordinates for the most common order
+    mds_1d_coordinates_common_order = mds_1d_coordinates[most_common_order]
+    
+    # Compute the min and max of the MDS-1D coordinates
+    min_val = np.min(mds_1d_coordinates_common_order)
+    max_val = np.max(mds_1d_coordinates_common_order)
+
+    # Compute the normalized MDS-1D coordinates (shifted so that they start from 0 and end at the number of candidates)
+    mds_1d_coordinates_common_order_normalized = ((mds_1d_coordinates_common_order - min_val) / (max_val - min_val)) * (len(candidate_names))
+    
+    # Create a dictionary with candidate names as keys and normalized distances as values
+    normalized_coordinates_dict = {candidate_names[most_common_order[i]]: mds_1d_coordinates_common_order_normalized[i] for i in range(len(most_common_order))}
+    
+    return normalized_coordinates_dict
+
+
+def perform_rcv_and_normalize(csv_file: str, n_runs: int = 1000) -> Dict[str, float]:
+    """
+    Perform the ranked-choice-voting (RCV) analysis and normalize the distances of MDS-1D coordinates.
+    Return a dictionary with candidate names as keys and normalized distances as values.
+
+    Parameters
+    ----------
+    csv_file : str
+        The name of the CSV file to perform the RCV analysis on.
+    n_runs : int
+        The number of runs for the RCV analysis.
+
+    Returns
+    -------
+    dict
+        A dictionary mapping candidate names to normalized MDS-1D coordinates.
+    """
+    
+    # Perform the RCV analysis
+    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = perform_rcv_analysis(csv_file, n_runs)
+    
+    # Normalize the distances
+    normalized_coordinates_dict = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)
+    
+    return normalized_coordinates_dict
