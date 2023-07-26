@@ -202,14 +202,14 @@ class voting_rules:
         as this function.
         """
         # Try to find a Condorcet winner
-        winner = condorcet(ballots, candidates)
+        winner = self.condorcet()
 
         # If there is a Condorcet winner, return the winner
         if winner != -1:
             return winner
 
         # Calculate pairwise preferences
-        pairwise_preferences = get_pairs(ballots, candidates)
+        pairwise_preferences = self.get_pairs()
 
         # Order the pairs by the strength of the win
         ordered_pairs = sorted([(pairwise_preferences[pair] - pairwise_preferences[pair[::-1]], pair) 
@@ -311,7 +311,8 @@ class voting_rules:
 
 
     def condorcet(self):
-        print("function clall")
+        dbfbfs
+        print("here")
         candidates = self.candidates
         ballots = self.ballots 
         pairs = self.get_pairs()
@@ -326,6 +327,7 @@ class voting_rules:
                 return c1
         print(pairs)
         return -1
+    
     def get_pairs(self):
         candidates = self.candidates
         ballots = self.ballots
