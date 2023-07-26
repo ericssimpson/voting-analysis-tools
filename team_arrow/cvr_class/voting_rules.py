@@ -378,6 +378,13 @@ class voting_rules:
     
     
     def irv(self):
+        
+        if len(self.candidates) == 0:
+            return None 
+        
+        if len(self.candidates) == 1:
+            return self.candidates[0]
+        
         candidates_t = []
         for i in range(len(self.candidates)):
             candidates_t.append(self.candidates[i])
