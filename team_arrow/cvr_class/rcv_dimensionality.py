@@ -237,7 +237,7 @@ def get_distances_normalized(most_common_order: tuple, mds_1d_coordinates: Dict[
     max_val = np.max(mds_1d_coordinates_common_order)
 
     # Compute the normalized MDS-1D coordinates (shifted so that they start from 0 and end at the number of candidates)
-    mds_1d_coordinates_common_order_normalized = ((mds_1d_coordinates_common_order - min_val) / (max_val - min_val)) * (len(candidate_names))
+    mds_1d_coordinates_common_order_normalized = ((mds_1d_coordinates_common_order - min_val) / (max_val - min_val)) * (len(candidate_names) - 1)
     
     # Create a dictionary with candidate names as keys and normalized distances as values
     normalized_coordinates_dict = {candidate_names[most_common_order[i]]: mds_1d_coordinates_common_order_normalized[i] for i in range(len(most_common_order))}
