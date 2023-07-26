@@ -311,7 +311,6 @@ class voting_rules:
 
 
     def condorcet(self):
-    
         print("here")
         candidates = self.candidates
         ballots = self.ballots 
