@@ -1,3 +1,4 @@
+import re
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
@@ -6,7 +7,7 @@ import matplotlib.pyplot as plt
 from rcv_dimensionality import perform_rcv_and_normalize
 
 
-def parse_election_data(filename: str) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
+def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
     """
     Parses a CSV file with election data.
 
@@ -14,6 +15,8 @@ def parse_election_data(filename: str) -> Tuple[Dict[Tuple[str, ...], int], List
     ----------
     filename : str
         The name of the file with election data.
+    ignore_values : list, optional
+        A list of values to ignore when reading the CSV file. Defaults to common non-candidate values.
 
     Returns
     -------
@@ -22,7 +25,15 @@ def parse_election_data(filename: str) -> Tuple[Dict[Tuple[str, ...], int], List
         and a list of all the candidates.
     """
 
+    # Default values to ignore when reading CSV
+    if ignore_values is None:
+        ignore_values = ['^(WRITE-IN)', '^writein', '^Write-In', '^Write-in', '^skipped', '^overvote', '^Undeclared', '^undervote']
+
     data = pd.read_csv(filename, low_memory=False)
+
+    # Replace non-candidate values with None
+    for ignore_value in ignore_values:
+        data.replace(re.compile(ignore_value), None, inplace=True)
 
     # Initialize list of candidates and dictionary of ballots
     candidates = []
@@ -39,8 +50,8 @@ def parse_election_data(filename: str) -> Tuple[Dict[Tuple[str, ...], int], List
             try:
                 candidate = data.at[i, f"rank{j}"]
 
-                # Add candidate to ranking if it's not skipped, a write-in, an overvote, or an undervote
-                if candidate != "skipped" and candidate != "Write-in" and candidate[:5].lower() != "write" and candidate != "overvote" and candidate != "undervote":
+                # Add candidate to ranking if it's not None
+                if candidate is not None:
                     if candidate not in ranking:
                         ranking += (candidate,)
                     if candidate not in candidates:
