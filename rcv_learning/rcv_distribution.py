@@ -1,9 +1,61 @@
 from typing import Dict, List, Optional, Tuple
 
+import pandas as pd
 import matplotlib.pyplot as plt
 
-import rcv_parser # TODO refactor or build in a way that this import is not needed and assumptions are shared between scripts
 from rcv_dimensionality import perform_rcv_and_normalize
+
+
+def parse_election_data(filename: str) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
+    """
+    Parses a CSV file with election data.
+
+    Parameters
+    ----------
+    filename : str
+        The name of the file with election data.
+
+    Returns
+    -------
+    tuple
+        A tuple containing a dictionary that maps each ballot (a tuple of candidate names) to a corresponding count, 
+        and a list of all the candidates.
+    """
+
+    data = pd.read_csv(filename, low_memory=False)
+
+    # Initialize list of candidates and dictionary of ballots
+    candidates = []
+    ballots = {}
+
+    # For each row in the data
+    for i in range(len(data)):
+        # Initialize an empty tuple for the ranking
+        ranking = ()
+
+        # Iterate over each rank
+        j = 1
+        while True:
+            try:
+                candidate = data.at[i, f"rank{j}"]
+
+                # Add candidate to ranking if it's not skipped, a write-in, an overvote, or an undervote
+                if candidate != "skipped" and candidate != "Write-in" and candidate[:5].lower() != "write" and candidate != "overvote" and candidate != "undervote":
+                    if candidate not in ranking:
+                        ranking += (candidate,)
+                    if candidate not in candidates:
+                        candidates.append(candidate)
+
+                j += 1
+            except KeyError:  # No more ranks
+                break
+
+        # Add ranking to ballots or increment count if it already exists
+        if ranking not in ballots:
+            ballots[ranking] = 0
+        ballots[ranking] += 1
+
+    return ballots, candidates
 
 
 def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
@@ -78,7 +130,7 @@ def calculate_ballot_consistency(filename: str, most_consistent_permutation: lis
         A dictionary that maps each point (representing a consistency value) to a corresponding count.
     """
 
-    ballots, candidates = rcv_parser.parser(filename)
+    ballots, candidates = parse_election_data(filename)
 
     # Create a dictionary that maps each candidate to a corresponding number
     candidate_to_number_map = {candidate: number for candidate, number in zip(most_consistent_permutation, permutation_numbers)}

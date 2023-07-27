@@ -1,9 +1,10 @@
+import re
 from collections import Counter, defaultdict
 from typing import Dict, List, Optional, Tuple
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from numba import njit
 from sklearn.manifold import MDS
 from sklearn.utils import check_random_state
@@ -40,9 +41,12 @@ def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballot
         for j in range(num_ranks):
             # For each other rank in the ballot
             for k in range(num_ranks):
-                # Increment the count for the pair
-                pair_mentions[ballots[i, j] - 1, ballots[i, k] - 1] += 1
-    
+                # If either of the candidates in the rank is invalid 
+                if np.isnan(ballots[i, j]) or np.isnan(ballots[i, k]):
+                    continue
+                # Else increment the count for the rank pair
+                pair_mentions[int(ballots[i, j]) - 1, int(ballots[i, k]) - 1] += 1
+
     return pair_mentions
 
 
@@ -121,14 +125,15 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
 
     # Default values to ignore when reading CSV
     if ignore_values is None:
-        ignore_values = ['(WRITE-IN)', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
+        ignore_values = ['^(WRITE-IN)', '^writein', '^Write-In', '^Write-in', '^skipped', '^overvote', '^Undeclared', '^undervote']
 
     # Load the CSV file and filter to keep only the 'rank' columns
     df = pd.read_csv(csv_file)
     df = df.filter(regex='^rank')
 
-    # Filter out rows that contain non-candidate values
-    df = df[~df.isin(ignore_values)].dropna()
+    # Replace non-candidate values with None
+    for ignore_value in ignore_values:
+        df.replace(re.compile(ignore_value), None, inplace=True)
 
     # Create a list of all candidate names and convert names to integer codes
     raw_ballots = df.values.tolist()
@@ -177,8 +182,12 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
     for _ in range(n_runs):
 
         # Perform nonmetric multidimensional scaling
-        mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
-        mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+        try:
+            mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+        except TypeError:
+            mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
+            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
 
         # Fit and transform the distance matrix
         values_1d = mds_1d.fit_transform(distance)
