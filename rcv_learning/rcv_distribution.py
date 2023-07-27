@@ -186,3 +186,23 @@ def get_consistency_points(file: str) -> Dict[float, int]:
         permutation_numbers.append(rcv_and_normalized_results[candidate])
 
     return calculate_ballot_consistency(file, most_consistent_permutation, permutation_numbers)
+
+
+def plot_consistency_points(points: Dict[float, int], file: str) -> None:
+    """
+    Plots the consistency points.
+
+    Parameters
+    ----------
+    points : dict
+        A dictionary that maps each point (representing a consistency value) to a corresponding count.
+    file : str
+        The name of the file with election data.
+    """
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(points.keys(), points.values(), width=0.5, color='g')
+    plt.xlabel("Consistency Value")
+    plt.ylabel("Number of Ballots")
+    plt.title(f"Consistency Points for {file}")
+    plt.show()
