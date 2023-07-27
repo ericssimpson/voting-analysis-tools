@@ -77,7 +77,7 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
     # Plot frequencies of all orders
     plt.figure(figsize=(10, 6))
     orders, frequencies = zip(*all_order_frequencies)
-    orders = ["-".join(candidate_names[list(order)]) for order in orders]
+    orders = ["-".join(candidate_names[i] for i in order) for order in orders]
     plt.barh(orders, frequencies)
     plt.xlabel("Frequency")
     plt.title("Frequencies of Candidate Orders")
@@ -137,12 +137,12 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
 
     # Create a list of all candidate names and convert names to integer codes
     raw_ballots = df.values.tolist()
-    candidate_names = pd.unique(df.values.ravel())
+    candidate_names = [name for name in pd.unique(df.values.ravel()) if pd.notna(name)]
     candidate_dict = {name: i for i, name in enumerate(candidate_names)}
     num_candidates = len(candidate_names)
 
-    # Convert ballots to integers representing candidates
-    ballots = [[candidate_dict[candidate] for candidate in ballot] for ballot in raw_ballots]
+    # Convert ballots to integers representing candidates, replacing invalid candidates with NaN
+    ballots = [[candidate_dict.get(candidate, np.nan) for candidate in ballot] for ballot in raw_ballots]
     ballots = np.array(ballots)
 
     # Count up frequencies of consecutive-pair ballot choices
@@ -150,7 +150,9 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
     counts = np.zeros((num_candidates, num_candidates))
     for i in range(num_ballots):
         for j in range(num_ranks - 1):
-            counts[ballots[i, j], ballots[i, j+1]] += 1
+            if np.isnan(ballots[i, j]) or np.isnan(ballots[i, j+1]):
+                continue
+            counts[int(ballots[i, j]), int(ballots[i, j+1])] += 1
 
     # Calculate pair mentions and normalize to frequencies relative to votes cast for the two candidates
     mentioned_together = calculate_pair_mentions(ballots, num_candidates, num_ballots, num_ranks)
