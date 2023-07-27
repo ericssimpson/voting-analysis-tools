@@ -76,10 +76,7 @@ docs/_build
 
 # Other stuff
 *.DS_Store
-team_arrow/rcv_elections_database/proportional/*
-team_arrow/rcv_elections_database/sequential/*
-team_arrow/rcv_elections_database/single/*
-team_arrow/cvr_class/dataverse_files/*
-team_arrow/tabulator_input/*
-team_arrow/tabulator_output/*
+rcv_elections_database/proportional/*
+rcv_elections_database/sequential/*
+rcv_elections_database/single/*
 team_arrow/cvr_class/dataverse_files/*
