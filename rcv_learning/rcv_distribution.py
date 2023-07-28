@@ -4,7 +4,61 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from numba import njit
+
 from rcv_dimensionality import perform_rcv_and_normalize
+
+
+@njit
+def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
+    """
+    Evaluates the consistency of a ballot.
+
+    A ballot is consistent if it fulfills a certain condition defined in the code. 
+    If the ballot is consistent, the function returns True and a certain value 'consistency_value'. 
+    If the ballot is not consistent, the function returns False and 'consistency_value'. 
+    If the ballot is empty, the function returns True and None.
+
+    Parameters
+    ----------
+    ballot : list
+        A list of numbers representing a ballot.
+
+    Returns
+    -------
+    tuple
+        A tuple containing a boolean that indicates whether the ballot is consistent or not, 
+        and a number 'consistency_value' which is calculated based on the ballot.
+    """
+
+    if len(ballot) == 0: 
+        return (True, None) 
+    if len(ballot) == 1:
+        return (True, ballot[0]) 
+
+    consistency_value = 0 
+    adjustment_factor = 0.25
+    ballot_index = 1
+    while (ballot_index < len(ballot)):
+        if ballot[ballot_index] < ballot[ballot_index - 1]:
+            consistency_value -= (adjustment_factor * min(abs(ballot[ballot_index] - ballot[0]), abs(ballot[ballot_index] - ballot[ballot_index - 1])))
+        else:
+            consistency_value += (adjustment_factor * min(abs(ballot[ballot_index] - ballot[0]), abs(ballot[ballot_index] - ballot[ballot_index - 1])))
+        adjustment_factor *= 0.5
+        ballot_index += 1
+
+    distance_list = []
+    if abs(consistency_value) >= (ballot[1] - ballot[0])/2 or consistency_value == 0:
+        return (False, consistency_value + ballot[0]) 
+
+    consistency_value += ballot[0]
+    for candidate in ballot:
+        distance_list.append(abs(candidate - consistency_value))
+
+    if(all(distance_list[i] <= distance_list[i + 1] for i in range(len(distance_list) -  1))):
+        return (True, consistency_value)
+
+    return (False, consistency_value)
 
 
 def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
@@ -67,57 +121,6 @@ def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None
         ballots[ranking] += 1
 
     return ballots, candidates
-
-
-def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
-    """
-    Evaluates the consistency of a ballot.
-
-    A ballot is consistent if it fulfills a certain condition defined in the code. 
-    If the ballot is consistent, the function returns True and a certain value 'consistency_value'. 
-    If the ballot is not consistent, the function returns False and 'consistency_value'. 
-    If the ballot is empty, the function returns True and None.
-
-    Parameters
-    ----------
-    ballot : list
-        A list of numbers representing a ballot.
-
-    Returns
-    -------
-    tuple
-        A tuple containing a boolean that indicates whether the ballot is consistent or not, 
-        and a number 'consistency_value' which is calculated based on the ballot.
-    """
-
-    if len(ballot) == 0: 
-        return (True, None) 
-    if len(ballot) == 1:
-        return (True, ballot[0]) 
-
-    consistency_value = 0 
-    adjustment_factor = 0.25
-    ballot_index = 1
-    while (ballot_index < len(ballot)):
-        if ballot[ballot_index] < ballot[ballot_index - 1]:
-            consistency_value -= (adjustment_factor * min(abs(ballot[ballot_index] - ballot[0]), abs(ballot[ballot_index] - ballot[ballot_index - 1])))
-        else:
-            consistency_value += (adjustment_factor * min(abs(ballot[ballot_index] - ballot[0]), abs(ballot[ballot_index] - ballot[ballot_index - 1])))
-        adjustment_factor *= 0.5
-        ballot_index += 1
-
-    distance_list = []
-    if abs(consistency_value) >= (ballot[1] - ballot[0])/2 or consistency_value == 0:
-        return (False, consistency_value + ballot[0]) 
-
-    consistency_value += ballot[0]
-    for candidate in ballot:
-        distance_list.append(abs(candidate - consistency_value))
-
-    if(all(distance_list[i] <= distance_list[i + 1] for i in range(len(distance_list) -  1))):
-        return (True, consistency_value)
-
-    return (False, consistency_value)
 
 
 def calculate_ballot_consistency(filename: str, most_consistent_permutation: list, permutation_numbers: list) -> Dict[float, int]:
