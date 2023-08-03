@@ -4,12 +4,9 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from numba import njit
-
 from rcv_dimensionality import perform_rcv_and_normalize
 
 
-@njit
 def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
     """
     Evaluates the consistency of a ballot.
@@ -209,3 +206,4 @@ def plot_consistency_points(points: Dict[float, int], file: str) -> None:
     plt.ylabel("Number of Ballots")
     plt.title(f"Consistency Points for {file}")
     plt.show()
+    
