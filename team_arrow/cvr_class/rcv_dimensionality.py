@@ -129,7 +129,7 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
 
 
     # Load the CSV file and filter to keep only the 'rank' columns
-    df = pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file, low_memory=False)
     df = df.filter(regex='^rank')
 
     # Replace non-candidate values with None
