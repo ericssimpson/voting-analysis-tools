@@ -127,7 +127,6 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
     if ignore_values is None:
         ignore_values = ['(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
 
-
     # Load the CSV file and filter to keep only the 'rank' columns
     df = pd.read_csv(csv_file)
     df = df.filter(regex='^rank')
