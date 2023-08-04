@@ -78,7 +78,7 @@ def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None
 
     # Default values to ignore when reading CSV
     if ignore_values is None:
-        ignore_values = ['(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
+        ignore_values = ['UWI', '(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
 
     data = pd.read_csv(filename, low_memory=False)
 
