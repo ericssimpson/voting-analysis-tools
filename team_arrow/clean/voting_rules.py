@@ -4,6 +4,59 @@ class voting_rules:
         self.candidates = candidates 
         self.ballots = ballots
         
+    #helper functions 
+
+    def get_pairs(self):
+        candidates = self.candidates
+        ballots = self.ballots
+        """
+        This function calculates pairwise preferences between all pairs of candidates based on the given ballots.
+
+        Parameters:
+        ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
+        candidates (list): A list of candidates.
+
+        Returns:
+        pairs: A dictionary where each key is a tuple representing a pair of candidates and the value is the number of 
+            times the first candidate is preferred over the second one in the ballots.
+        """
+        # Initialize an empty dictionary to store the pairs
+        pairwise_preferences = {}
+
+        # Iterate over all pairs of candidates
+        for c1 in candidates:
+            for c2 in candidates:
+                if c1 != c2:
+                    pairwise_preferences[(c1, c2)] = 0
+
+        for b in ballots:
+            n = ballots[b]
+            for i in range(len(b)):
+                c1 = b[i]
+                for c2 in candidates:
+                    if c2 not in b:
+                        pairwise_preferences[(c1, c2)] += n
+                    elif c2 != c1:
+                        j = b.index(c2)
+                        if j > i:
+                            pairwise_preferences[(c1, c2)] += n
+
+        return pairwise_preferences
+    
+    
+    def get_first_place(self):
+        candidates = self.candidates
+        ballots = self.ballots
+        first_place = {}
+        for b in ballots:
+            if len(b) > 0:
+                candidate = b[0]
+                if candidate not in first_place:
+                    first_place[candidate] = 0
+                first_place[candidate] += ballots[b]
+        return first_place
+
+    
     #RCV variations
     def black(self):
         candidates = self.candidates
@@ -231,43 +284,6 @@ class voting_rules:
         return winner
 
 
-    def get_pairs(self):
-        candidates = self.candidates
-        ballots = self.ballots
-        """
-        This function calculates pairwise preferences between all pairs of candidates based on the given ballots.
-
-        Parameters:
-        ballots (dict): A dictionary where each key is a tuple representing a ballot (ordered candidate preferences) and the value is the number of such ballots.
-        candidates (list): A list of candidates.
-
-        Returns:
-        pairs: A dictionary where each key is a tuple representing a pair of candidates and the value is the number of 
-            times the first candidate is preferred over the second one in the ballots.
-        """
-        # Initialize an empty dictionary to store the pairs
-        pairwise_preferences = {}
-
-        # Iterate over all pairs of candidates
-        for c1 in candidates:
-            for c2 in candidates:
-                if c1 != c2:
-                    pairwise_preferences[(c1, c2)] = 0
-
-        for b in ballots:
-            n = ballots[b]
-            for i in range(len(b)):
-                c1 = b[i]
-                for c2 in candidates:
-                    if c2 not in b:
-                        pairwise_preferences[(c1, c2)] += n
-                    elif c2 != c1:
-                        j = b.index(c2)
-                        if j > i:
-                            pairwise_preferences[(c1, c2)] += n
-
-        return pairwise_preferences
-    
     def condorcet(self):
         candidates = self.candidates
         ballots = self.ballots 
@@ -346,19 +362,6 @@ class voting_rules:
             return plurality
         return -1 
 
-    
-    def get_first_place(self):
-        candidates = self.candidates
-        ballots = self.ballots
-        first_place = {}
-        for b in ballots:
-            if len(b) > 0:
-                candidate = b[0]
-                if candidate not in first_place:
-                    first_place[candidate] = 0
-                first_place[candidate] += ballots[b]
-        return first_place
-
 
     def approval(self):
         candidates = self.candidates
@@ -401,6 +404,7 @@ class voting_rules:
                                 approved[c] = 0
                             approved[c] += n
             return max(approved, key=approved.get)
+
 
 
 
