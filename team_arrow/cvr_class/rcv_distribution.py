@@ -4,12 +4,9 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from numba import njit
-
 from rcv_dimensionality import perform_rcv_and_normalize
 
 
-@njit
 def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
     """
     Evaluates the consistency of a ballot.
@@ -54,11 +51,16 @@ def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
     consistency_value += ballot[0]
     for candidate in ballot:
         distance_list.append(abs(candidate - consistency_value))
+    
+    for i in range(len(distance_list) - 1):
+        if distance_list[i] > distance_list[i + 1]:
+            return (False, consistency_value)
+    return (True, consistency_value)
 
-    if(all(distance_list[i] <= distance_list[i + 1] for i in range(len(distance_list) -  1))):
+    '''if(all(distance_list[i] <= distance_list[i + 1] for i in range(len(distance_list) -  1))):
         return (True, consistency_value)
 
-    return (False, consistency_value)
+    return (False, consistency_value)'''
 
 
 def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
@@ -81,7 +83,7 @@ def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None
 
     # Default values to ignore when reading CSV
     if ignore_values is None:
-        ignore_values = ['(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
+        ignore_values = ['UWI', '(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
 
     data = pd.read_csv(filename, low_memory=False)
 
@@ -209,3 +211,4 @@ def plot_consistency_points(points: Dict[float, int], file: str) -> None:
     plt.ylabel("Number of Ballots")
     plt.title(f"Consistency Points for {file}")
     plt.show()
+    
