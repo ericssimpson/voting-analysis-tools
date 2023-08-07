@@ -5,12 +5,11 @@ from typing import Dict, List, Optional, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from numba import njit
 from sklearn.manifold import MDS
 from sklearn.utils import check_random_state
 
 
-@njit
+
 def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballots: int, num_ranks: int) -> np.ndarray:
     """
     Calculate the number of times each pair of candidates is mentioned together in the ballots.

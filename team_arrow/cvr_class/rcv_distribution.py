@@ -166,7 +166,7 @@ def calculate_ballot_consistency(filename: str, most_consistent_permutation: lis
     return points
 
 
-def get_consistency_points(file: str) -> Dict[float, int]:
+def get_consistency_points(file: str, normalized_distances: dict) -> Dict[float, int]:
     """
     Performs RCV analysis and normalizes the distances of MDS-1D coordinates,
     then calculates the consistency of each ballot and collects points based on this consistency.
@@ -183,14 +183,39 @@ def get_consistency_points(file: str) -> Dict[float, int]:
         a list of candidates in their most consistent permutation, and a list of mds-1d coordinates.
     """
 
-    rcv_and_normalized_results = perform_rcv_and_normalize(file)
     most_consistent_permutation = []
     permutation_numbers = []
-    for candidate in rcv_and_normalized_results:
+    for candidate in normalized_distances:
         most_consistent_permutation.append(candidate)
-        permutation_numbers.append(rcv_and_normalized_results[candidate])
+        permutation_numbers.append(normalized_distances[candidate])
+    
 
     return calculate_ballot_consistency(file, most_consistent_permutation, permutation_numbers)
+
+def calculate_gamma(file, normalized_distances):
+
+    ballots, candidates = parse_election_data(file)
+    most_consistent_permutation = []
+    permutation_numbers = []
+    for candidate in normalized_distances:
+        most_consistent_permutation.append(candidate)
+        permutation_numbers.append(normalized_distances[candidate])
+
+    candidate_to_number_map = {candidate: number for candidate, number in zip(most_consistent_permutation, permutation_numbers)}
+
+    # Convert the ballots from using candidate names to using corresponding numbers
+    ballot_counts = {tuple(candidate_to_number_map[candidate] for candidate in ballot): count for ballot, count in ballots.items()}
+    consistent = 0
+    total = 0
+
+    for ballot, count in ballot_counts.items():
+        if len(ballot) > 0:
+            total += count
+            consistency_check = evaluate_ballot_consistency(ballot)
+            if consistency_check[0] is True and consistency_check[1] is not None:
+                consistent += count
+    
+    return consistent/total 
 
 
 def plot_consistency_points(points: Dict[float, int], file: str) -> None:
