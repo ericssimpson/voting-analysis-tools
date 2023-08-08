@@ -208,12 +208,21 @@ def calculate_gamma(file, normalized_distances):
     consistent = 0
     total = 0
 
-    for ballot, count in ballot_counts.items():
+    for ballot in ballots:
+        ballot_position = []
+        for candidate in ballot:
+            ballot_position.append(normalized_distances[candidate])
+        if len(ballot) > 0:
+            total += ballots[ballot]
+            if evaluate_ballot_consistency(ballot_position)[0] is True:
+                consistent += ballots[ballot]
+
+    '''for ballot, count in ballot_counts.items():
         if len(ballot) > 0:
             total += count
             consistency_check = evaluate_ballot_consistency(ballot)
             if consistency_check[0] is True and consistency_check[1] is not None:
-                consistent += count
+                consistent += count'''
     
     return consistent/total 
 
