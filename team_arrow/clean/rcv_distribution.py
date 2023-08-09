@@ -245,4 +245,50 @@ def plot_consistency_points(points: Dict[float, int], file: str) -> None:
     plt.ylabel("Number of Ballots")
     plt.title(f"Consistency Points for {file}")
     plt.show()
+
+def is_consistent(ballot):
+    if len(ballot) == 0 or len(ballot) == 1:
+        return True
+    x = 0 
+    v = 0.25
+    i = 1
+    while (i < len(ballot)):
+        if ballot[i] < ballot[i - 1]:
+            x -= (v * min(abs(ballot[i] - ballot[0]), abs(ballot[i] - ballot[i - 1])))
+        else:
+            x += (v * min(abs(ballot[i] - ballot[0]), abs(ballot[i] - ballot[i - 1])))
+        v *= 0.5
+        i += 1
+    l = []
+    if abs(x) >= 0.5 or x == 0:
+        return False 
+    x += ballot[0]
+    for c in ballot:
+        l.append(abs(c - x))
+    if(all(l[i] <= l[i + 1] for i in range(len(l) -  1))):
+        return True 
+    return False
+
+def get_gamma(mds, ballots, candidates):
+    mcp = []
+    mcp_num = []
+    for k in mds:
+        mcp.append(k)
+        mcp_num.append(mds[k])
     
+    temp = {}
+    for i in range(len(mcp)):
+        temp[mcp[i]] = mcp_num[i]
+    c = 0
+    total = 0
+    for b in ballots:
+        if len(b) > 0:
+            total += ballots[b] 
+            b_num = []
+            for candidate in b:
+                if candidate in mcp:
+                    b_num.append(temp[candidate])
+            if (is_consistent(b_num)):
+                c += ballots[b]
+    
+    return (c/total), mcp
