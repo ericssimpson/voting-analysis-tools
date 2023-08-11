@@ -45,13 +45,12 @@ def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
         ballot_index += 1
 
     distance_list = []
-    if abs(consistency_value) >= (ballot[1] - ballot[0])/2 or consistency_value == 0:
+    if abs(consistency_value) >= 0.5 or consistency_value == 0:
         return (False, consistency_value + ballot[0]) 
 
     consistency_value += ballot[0]
     for candidate in ballot:
         distance_list.append(abs(candidate - consistency_value))
-    
     for i in range(len(distance_list) - 1):
         if distance_list[i] > distance_list[i + 1]:
             return (False, consistency_value)
@@ -166,7 +165,7 @@ def calculate_ballot_consistency(filename: str, most_consistent_permutation: lis
     return points
 
 
-def get_consistency_points(file: str, normalized_distances: dict) -> Dict[float, int]:
+def get_consistency_points(ballots, candidates, normalized_distances: dict) -> Dict[float, int]:
     """
     Performs RCV analysis and normalizes the distances of MDS-1D coordinates,
     then calculates the consistency of each ballot and collects points based on this consistency.
@@ -189,8 +188,38 @@ def get_consistency_points(file: str, normalized_distances: dict) -> Dict[float,
         most_consistent_permutation.append(candidate)
         permutation_numbers.append(normalized_distances[candidate])
     
+    points = {}
 
-    return calculate_ballot_consistency(file, most_consistent_permutation, permutation_numbers)
+    equal = {}
+    for i in range(most_consistent_permutation):
+        equal[most_consistent_permutation[i]] = i
+
+    for ballot in ballots:
+        equal_distances = []
+        for candidate in ballot:
+            equal_distances.append(equal[candidate])
+
+        mds_distances = []
+        for candidate in ballot:
+            mds_distances.append(normalized_distances[candidate])
+
+        #checking if the ballot is consistent with the mds permutation but assuming they are equaly distances 
+        check_consistency = evaluate_ballot_consistency(equal_distances)
+        if check_consistency[0] is True:
+
+            #here we know that it is consistent assuming equal distances, and we get the point on the axis with respect
+            #to mds distances 
+            point = evaluate_ballot_consistency(mds_distances)[1]
+            if point is not None:
+                if len(ballot) > 1:
+                    #if the point falls closer to the second choice, we push it back 
+                    point = min(point, ((mds_distances[0] + mds_distances[1])/2 - ((mds_distances[0] + mds_distances[1])/(len(candidates) + 1))))
+                if point not in points:
+                    points[point] = 0
+                points[point] += ballots[ballot]
+    
+
+    return points
 
 def calculate_gamma(file, normalized_distances):
 
@@ -288,7 +317,7 @@ def get_gamma(mds, ballots, candidates):
             for candidate in b:
                 if candidate in mcp:
                     b_num.append(temp[candidate])
-            if (is_consistent(b_num)):
+            if (evaluate_ballot_consistency(b_num)[0] is True):
                 c += ballots[b]
     
     return (c/total), mcp
