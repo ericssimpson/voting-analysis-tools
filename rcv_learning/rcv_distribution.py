@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from rcv_dimensionality import perform_rcv_and_normalize
+from rcv_learning.rcv_dimensionality import perform_rcv_and_normalize
 
 
 def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
