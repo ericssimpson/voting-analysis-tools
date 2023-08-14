@@ -191,7 +191,7 @@ def get_consistency_points(ballots, candidates, normalized_distances: dict) -> D
     points = {}
 
     equal = {}
-    for i in range(most_consistent_permutation):
+    for i in range(len(most_consistent_permutation)):
         equal[most_consistent_permutation[i]] = i
 
     for ballot in ballots:
