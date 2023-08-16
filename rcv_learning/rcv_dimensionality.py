@@ -50,7 +50,7 @@ def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballot
     return pair_mentions
 
 
-def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_order: tuple, all_order_frequencies: list, candidate_names: list) -> None:
+def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_order: tuple, all_order_frequencies: list, candidate_names: list, save=False, filename=None) -> None:
     """
     Plot the ranked-choice-voting (RCV) analysis results.
 
@@ -68,31 +68,49 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
         A list of tuples, each containing a candidate order and its frequency.
     candidate_names : list
         A list of candidate names.
+    save : bool
+        Whether to save the plot or show it.
+    filename : str
+        The filename to save the plot if `save` is True.
 
     Returns
     -------
     None
     """
 
-    # Plot frequencies of all orders
+    # Sort all_order_frequencies in descending order based on frequencies
+    sorted_frequencies = sorted(all_order_frequencies, key=lambda x: x[1], reverse=True)
+
+    # Plot frequencies of top 10 orders
     plt.figure(figsize=(10, 6))
-    orders, frequencies = zip(*all_order_frequencies)
+    top_3_orders = sorted_frequencies[:10]
+    orders, frequencies = zip(*top_3_orders)
     orders = ["-".join(candidate_names[i] for i in order) for order in orders]
     plt.barh(orders, frequencies)
     plt.xlabel("Frequency")
-    plt.title("Frequencies of Candidate Orders")
-    plt.show()
+    plt.title("Top 10 Frequencies of Best Fit Candidate Orders [1000 MDS Runs]")
+    
+    if save:
+        plt.savefig(f"{filename}_freq.png", bbox_inches='tight')
+        plt.close()
+    else:
+        plt.show()
 
     # Plot average MDS-1D coordinates for most common order
-    mds_1d_coordinates = mds_1d_coordinates[most_common_order]
     plt.figure(figsize=(10, 6))
+    mds_1d_coordinates = mds_1d_coordinates[most_common_order]
     plt.scatter(np.zeros_like(mds_1d_coordinates), mds_1d_coordinates)
     for i in range(len(candidate_names)):
         plt.text(0.2, mds_1d_coordinates[i], candidate_names[most_common_order[i]])
     plt.axis([-1, 1.5, mds_1d_coordinates.min() * 1.2, mds_1d_coordinates.max() * 1.2])
     plt.ylabel("MDS-1D Coordinate")
-    plt.title("Average MDS-1D Coordinates for Most Common Order")
-    plt.show()
+    plt.title("Average MDS-1D Coordinates for Order of Best Fit")
+    
+    if save:
+        plt.savefig(f"{filename}_mds.png", bbox_inches='tight')
+        plt.close()
+    else:
+        plt.show()
 
 
 def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
