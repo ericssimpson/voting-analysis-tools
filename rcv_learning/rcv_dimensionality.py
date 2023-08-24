@@ -50,6 +50,101 @@ def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballot
     return pair_mentions
 
 
+def plot_rcv_distribution(csv_path: str, normalized_distances: dict, save: bool = False, filename: str = None) -> None:
+    """
+    Plot the ranked-choice-voting (RCV) analysis results with integrated computation of midpoints and widths.
+    
+    This function creates a bar plot showing the distribution of rankings for candidates with bars centered on calculated midpoints.
+
+    Parameters
+    ----------
+    csv_path : str
+        Path to the CSV file containing ranking data.
+    normalized_distances : dict
+        A dictionary mapping candidate names to their positions on the x-axis.
+    save : bool, optional
+        Whether to save the plot or display it. Default is to display.
+    filename : str, optional
+        The filename to save the plot if `save` is True.
+
+    Returns
+    -------
+    None
+    """
+    
+    # Compute the midpoints and widths for each bar based on the normalized distances
+    sorted_candidates = sorted(normalized_distances.keys(), key=lambda x: normalized_distances[x])
+    edge_values = {}
+    
+    for idx, candidate in enumerate(sorted_candidates):
+        # Left neighbor
+        if idx > 0:
+            left_neighbor = normalized_distances[sorted_candidates[idx - 1]]
+            left_edge = (left_neighbor + normalized_distances[candidate]) / 2
+        else:
+            # No left neighbor, so duplicate the distance to the right midpoint
+            right_neighbor = normalized_distances[sorted_candidates[idx + 1]]
+            left_edge = normalized_distances[candidate] - (right_neighbor - normalized_distances[candidate]) / 2
+        
+        # Right neighbor
+        if idx < len(sorted_candidates) - 1:
+            right_neighbor = normalized_distances[sorted_candidates[idx + 1]]
+            right_edge = (right_neighbor + normalized_distances[candidate]) / 2
+        else:
+            # No right neighbor, so duplicate the distance to the left midpoint
+            left_neighbor = normalized_distances[sorted_candidates[idx - 1]]
+            right_edge = normalized_distances[candidate] + (normalized_distances[candidate] - left_neighbor) / 2
+        
+        edge_values[candidate] = (left_edge, right_edge)
+
+    midpoints = [(left + right) / 2 for left, right in edge_values.values()]
+    widths = [right - left for left, right in edge_values.values()]
+    
+    # Read the CSV data
+    data = pd.read_csv(csv_path)
+    
+    # Determine the maximum number of ranks in the dataset
+    max_ranks = len(data.columns)
+    
+    # Score mapping based on the number of ranks
+    score_mapping = {f'rank{i+1}': max_ranks - i for i in range(max_ranks)}
+    
+    # Constructing the score DataFrame
+    scores_list = []
+    for _, row in data.iterrows():
+        scores = {}
+        for rank, stimulus in enumerate(row):
+            if stimulus in normalized_distances.keys():
+                scores[stimulus] = score_mapping[f'rank{rank+1}']
+        scores_list.append(scores)
+
+    score_df = pd.DataFrame(scores_list)
+    
+    # Calculating the counts of each score for each candidate
+    ranking_counts = score_df.apply(lambda col: col.value_counts()).fillna(0).transpose()
+    
+    # Plotting the bars using midpoints and widths
+    plt.figure(figsize=(10, 6))
+    for idx, candidate in enumerate(sorted_candidates):
+        candidate_data = ranking_counts.loc[candidate]
+        for rank, height in enumerate(candidate_data):
+            plt.bar(midpoints[idx], height, width=widths[idx], bottom=candidate_data[:rank].sum(), label=f'Rank {rank+1}' if idx == 0 else "", color=plt.cm.viridis(rank / max_ranks))
+    
+    plt.title('Distribution of Rankings for Candidates')
+    plt.ylabel('Count of Respondents')
+    plt.xlabel('Candidate')
+    plt.xticks(list(normalized_distances.values()), list(normalized_distances.keys()), rotation=45)
+    plt.grid(axis='y')
+    plt.tight_layout()
+    plt.legend(title='Score', loc='upper right')
+    
+    if save:
+        plt.savefig(filename, bbox_inches='tight')
+        plt.close()
+    else:
+        plt.show()
+
+
 def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_order: tuple, all_order_frequencies: list, candidate_names: list, save=False, filename=None) -> None:
     """
     Plot the ranked-choice-voting (RCV) analysis results.
