@@ -139,7 +139,7 @@ def plot_rcv_distribution(csv_path: str, normalized_distances: dict, save: bool 
     plt.legend(title='Score', loc='upper right')
     
     if save:
-        plt.savefig(filename, bbox_inches='tight')
+        plt.savefig(f"{filename}_dist.png", bbox_inches='tight')
         plt.close()
     else:
         plt.show()
