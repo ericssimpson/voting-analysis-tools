@@ -211,14 +211,13 @@ def get_consistency_points(ballots, candidates, normalized_distances: dict) -> D
             #to mds distances 
             point = evaluate_ballot_consistency(mds_distances)[1]
             if point is not None:
-                if len(ballot) > 1:
+                '''if len(ballot) > 1:
                     #if the point falls closer to the second choice, we push it back 
-                    point = min(point, ((mds_distances[0] + mds_distances[1])/2 - ((mds_distances[0] + mds_distances[1])/(len(candidates) + 1))))
+                    point = min(point, ((mds_distances[0] + mds_distances[1])/2 - ((mds_distances[0] + mds_distances[1])/(len(candidates) + 1))))'''
                 if point not in points:
                     points[point] = 0
                 points[point] += ballots[ballot]
     
-
     return points
 
 def calculate_gamma(file, normalized_distances):
@@ -298,7 +297,7 @@ def is_consistent(ballot):
         return True 
     return False
 
-def get_gamma(mds, ballots, candidates):
+def get_gamma(mds, ballots):
     mcp = []
     mcp_num = []
     for k in mds:
@@ -306,8 +305,10 @@ def get_gamma(mds, ballots, candidates):
         mcp_num.append(mds[k])
     
     temp = {}
+    j = 0
     for i in range(len(mcp)):
-        temp[mcp[i]] = mcp_num[i]
+        temp[mcp[i]] = j
+        j += 1
     c = 0
     total = 0
     for b in ballots:
@@ -320,4 +321,33 @@ def get_gamma(mds, ballots, candidates):
             if (evaluate_ballot_consistency(b_num)[0] is True):
                 c += ballots[b]
     
-    return (c/total), mcp
+    return (c/total)
+
+def freq(ballots, candidates):
+    result_freq = {}
+    result_first = {}
+
+    frequency = {}
+    first = {}
+    empty = 0
+    for c in candidates:
+        frequency[c] = 0
+        first[c] = 0
+    
+    for b in ballots:
+        if len(b) > 0:
+            first[b[0]] += ballots[b]
+        else:
+            empty += ballots[b]
+        for c in b:
+            frequency[c] += ballots[b]
+    
+    total = sum(ballots.values())
+    total -= empty 
+    for c in frequency:
+        result_freq[c] = (frequency[c]/total) * 100
+    for c in first:
+        result_first[c] = (first[c]/total) * 100
+    
+   
+    return result_freq, result_first
