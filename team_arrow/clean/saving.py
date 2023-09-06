@@ -157,8 +157,11 @@ def get_intervals(normalized_distances, ballots, candidates):
         chunk_size = width/y
         for i in range(y):
             data.append(low+(i*chunk_size))
+
+    data_frequency = Counter(data)
+    data_with_y_values = {x: data_frequency[x] for x in set(data)}
     
-    return data
+    return data, data_with_y_values
 
 def save_plots(data, normalized_distances, filename, ignore=False):
 
@@ -178,9 +181,9 @@ def save_plots(data, normalized_distances, filename, ignore=False):
     plt.ylabel('Density')
     plt.grid(True)
     if (ignore):
-        file_path = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/Histograms_ignored/" + filename[0:-4] + ".png"
+        file_path = "team_arrow/clean/Histograms_ignored/" + filename[0:-4] + ".png"
     else:
-        file_path = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/Histograms/" + filename[0:-4] + ".png"
+        file_path = "team_arrow/clean/Histograms/" + filename[0:-4] + ".png"
     plt.savefig(file_path,  dpi=600, bbox_inches='tight')
     #plt.show()
 
@@ -193,32 +196,26 @@ def save_plots(data, normalized_distances, filename, ignore=False):
     plt.ylabel('Density')
     plt.grid(True)
     if (ignore):
-        file_path = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/KDE_ignored/" + filename[0:-4] + ".png"  
+        file_path = "team_arrow/clean/KDE_ignored/" + filename[0:-4] + ".png"  
     else:  
-        file_path = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/KDE/" + filename[0:-4] + ".png"
+        file_path = "team_arrow/clean/KDE/" + filename[0:-4] + ".png"
     plt.savefig(file_path,  dpi=600, bbox_inches='tight')
     #plt.show()
 
 
-
 def main():
-    filename = "Alaska_11082022_GovernorLieutenantGovernor.csv"
-    file = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/dataverse_files/" + filename
+    filename = "Alaska_08162022_HouseofRepresentativesSpecial.csv"
+    file = "rcv_elections_database/classic/" + filename
     ballots, candidates = parse_election_data(file)
     normalized_distances = pefrom_MDS(file, True)
-    data = get_intervals(normalized_distances, ballots, candidates)
-    mat_file = "C:/Users/mahsh/Documents/GitHub/bugs-in-democracy/team_arrow/clean/data/" + filename[0:-4]+".mat"
-    scipy.io.savemat(mat_file, mdict={'my_list': data})
+    data, data_with_y_values = get_intervals(normalized_distances, ballots, candidates)
+
+    keys = np.array(list(data_with_y_values.keys()))
+    values = np.array(list(data_with_y_values.values()))
+    mat_data = np.column_stack((keys, values))
+    mat_file = "team_arrow/clean/data/" + filename[0:-4]+".mat"
+    scipy.io.savemat(mat_file, mdict={'my_data': mat_data})
 
     save_plots(data, normalized_distances, filename,ignore=True)
 
 main()
-
-
-
-
-        
-
-
-    
-
