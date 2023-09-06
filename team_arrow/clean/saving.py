@@ -6,6 +6,8 @@ from rcv_distribution import *
 from rcv_dimensionality import *
 from voting_rules import *
 
+import pandas as pd
+
 
 def frequency(ballots, candidates):
     result_freq = {}
@@ -212,10 +214,12 @@ def main():
 
     keys = np.array(list(data_with_y_values.keys()))
     values = np.array(list(data_with_y_values.values()))
-    mat_data = np.column_stack((keys, values))
-    mat_file = "team_arrow/clean/data/" + filename[0:-4]+".mat"
-    scipy.io.savemat(mat_file, mdict={'my_data': mat_data})
 
-    save_plots(data, normalized_distances, filename,ignore=True)
+    # Create a DataFrame and save it as a CSV file
+    df = pd.DataFrame({'x': keys, 'y': values})
+    csv_file = "team_arrow/clean/data/" + filename[0:-4] + ".csv"
+    df.to_csv(csv_file, index=False)
+
+    save_plots(data, normalized_distances, filename, ignore=True)
 
 main()
