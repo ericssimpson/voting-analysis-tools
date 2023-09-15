@@ -396,7 +396,7 @@ def perform_rcv_and_normalize(csv_file: str, n_runs: int = 1000) -> Dict[str, fl
     """
     
     # Perform the RCV analysis
-    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = perform_rcv_analysis(csv_file, n_runs)
+    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names, stress = perform_rcv_analysis(csv_file, n_runs)
     
     # Normalize the distances
     normalized_coordinates_dict = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)
