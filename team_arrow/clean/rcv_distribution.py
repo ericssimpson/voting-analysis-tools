@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from rcv_dimensionality import perform_rcv_and_normalize
 
 
-def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
+def evaluate_ballot_consistency(ballot: list, n :int) -> Tuple[bool, Optional[float]]:
     """
     Evaluates the consistency of a ballot.
 
@@ -33,7 +33,7 @@ def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
     if len(ballot) == 1:
         return (True, ballot[0]) 
 
-    consistency_value = 0 
+    '''consistency_value = 0 
     adjustment_factor = 0.25
     ballot_index = 1
     while (ballot_index < len(ballot)):
@@ -46,9 +46,23 @@ def evaluate_ballot_consistency(ballot: list) -> Tuple[bool, Optional[float]]:
 
     distance_list = []
     if abs(consistency_value) >= 0.5 or consistency_value == 0:
-        return (False, consistency_value + ballot[0]) 
+        return (False, consistency_value + ballot[0]) '''
 
-    consistency_value += ballot[0]
+    distance_list = []
+    if (ballot[1] > ballot[0]):
+        consistency_value = ballot[0] + 0.25
+    else:
+        consistency_value = ballot[0] - 0.25
+    if len(ballot) < n:
+        not_included = []
+        for i in range(n):
+            if i not in ballot and i > min(ballot) and i < max(ballot):
+                not_included.append((abs(i - consistency_value), i))
+        not_included = sorted(not_included)
+        for c in not_included:
+            ballot.append(c[1])
+
+            
     for candidate in ballot:
         distance_list.append(abs(candidate - consistency_value))
     for i in range(len(distance_list) - 1):
@@ -318,7 +332,7 @@ def get_gamma(mds, ballots):
             for candidate in b:
                 if candidate in mcp:
                     b_num.append(temp[candidate])
-            if (evaluate_ballot_consistency(b_num)[0] is True):
+            if (evaluate_ballot_consistency(b_num, len(mds))[0] is True):
                 c += ballots[b]
     
     return (c/total)
