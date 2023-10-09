@@ -325,6 +325,7 @@ def get_gamma(mds, ballots):
         j += 1
     c = 0
     total = 0
+    print("from gamma: ", ballots)
     for b in ballots:
         if len(b) > 0:
             total += ballots[b] 
