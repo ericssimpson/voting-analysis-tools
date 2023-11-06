@@ -292,6 +292,7 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
     all_orders = defaultdict(lambda: 0)
     mds_1d_coordinates = defaultdict(list)
     mds_2d_coordinates = defaultdict(list)
+    stress_values_1d = defaultdict(list)
 
     # Run multidimensional scaling multiple times
     for _ in range(n_runs):
@@ -317,6 +318,9 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
         mds_1d_coordinates[order_1d].append(values_1d.flatten()[np.array(order_1d)])
         mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
 
+        # Store stress values
+        stress_values_1d[order_1d].append(mds_1d.stress_)
+
     # Find most common order and frequencies of all orders along single dimension
     temporary_orders = list(all_orders.keys())
     for order in temporary_orders:
@@ -331,7 +335,10 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
     # Calculate average MDS coordinates for each unique order
     mds_1d_coordinates = {order: np.mean(values, axis=0) for order, values in mds_1d_coordinates.items()}
 
-    return mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names
+    # Calculate average stress value for most common order
+    most_common_order_stress = np.mean(stress_values_1d[most_common_order])
+
+    return mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names, most_common_order_stress
 
 
 def get_distances_normalized(most_common_order: tuple, mds_1d_coordinates: Dict[tuple, np.ndarray], candidate_names: List[str]) -> Dict[str, float]:
@@ -389,7 +396,7 @@ def perform_rcv_and_normalize(csv_file: str, n_runs: int = 1000) -> Dict[str, fl
     """
     
     # Perform the RCV analysis
-    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = perform_rcv_analysis(csv_file, n_runs)
+    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names, stress = perform_rcv_analysis(csv_file, n_runs)
     
     # Normalize the distances
     normalized_coordinates_dict = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)
