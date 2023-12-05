@@ -218,12 +218,12 @@ def get_consistency_points(ballots, candidates, normalized_distances: dict) -> D
             mds_distances.append(normalized_distances[candidate])
 
         #checking if the ballot is consistent with the mds permutation but assuming they are equaly distances 
-        check_consistency = evaluate_ballot_consistency(equal_distances)
+        check_consistency = evaluate_ballot_consistency(equal_distances, len(candidates))
         if check_consistency[0] is True:
 
             #here we know that it is consistent assuming equal distances, and we get the point on the axis with respect
             #to mds distances 
-            point = evaluate_ballot_consistency(mds_distances)[1]
+            point = evaluate_ballot_consistency(mds_distances, len(candidates))[1]
             if point is not None:
                 '''if len(ballot) > 1:
                     #if the point falls closer to the second choice, we push it back 
