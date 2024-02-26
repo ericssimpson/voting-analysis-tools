@@ -50,9 +50,9 @@ def evaluate_ballot_consistency(ballot: list, n :int) -> Tuple[bool, Optional[fl
 
     distance_list = []
     if (ballot[1] > ballot[0]):
-        consistency_value = ballot[0] + 0.25
+        consistency_value = ballot[0] + 0.25*(ballot[1] - ballot[0])
     else:
-        consistency_value = ballot[0] - 0.25
+        consistency_value = ballot[0] - 0.25*(ballot[0] - ballot[1])
     if len(ballot) < n:
         not_included = []
         for i in range(n):
