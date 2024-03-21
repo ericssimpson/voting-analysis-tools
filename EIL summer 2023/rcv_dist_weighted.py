@@ -35,11 +35,11 @@ def ballot_names_to_nums(ballots, candidate_names, order_frequencies):
     The `candidate_names_order` array represents the numerical order of candidate names as obtained
     from the order frequencies.
     """
-
+    v_large_num = 100000
     candidate_names_order = np.array(candidate_names)[np.array(order_frequencies[0][0]).astype(int)]#[::-1]
     ballot_name_orders = list(ballots.keys())
 
-    ballot_nums = np.inf*np.ones((len(ballot_name_orders), len(candidate_names)), dtype=int)
+    ballot_nums = v_large_num*np.ones((len(ballot_name_orders), len(candidate_names)), dtype=int)
     order_transform = np.array(order_frequencies[0][0]).astype(int)
 
     for i in range(len(ballot_name_orders)):
@@ -47,7 +47,7 @@ def ballot_names_to_nums(ballots, candidate_names, order_frequencies):
         for j in range(len(candidate_names)):
             ballot_names[ballot_names == candidate_names_order[j]] = j
         ballot_names = ballot_names.astype(int)
-        ballot_num = np.inf*np.ones(len(candidate_names), dtype=int)
+        ballot_num = v_large_num*np.ones(len(candidate_names), dtype=int)
         ballot_num[0:len(ballot_names)] = ballot_names
         ballot_nums[i,:] = ballot_num
 
@@ -86,27 +86,42 @@ def get_candidate_pair_intervals(ballot_nums, normalized_distances):
     normalized distances.
 
     """
-    n_pairs = ballot_nums.shape[1]-1
-    n_ballot_orders = ballot_nums.shape[0]
+    n_pairs = ballot_nums.shape[1]-1 # number of pairs that need to be compared per ballot
+    n_ballot_orders = ballot_nums.shape[0] # number of ballots
 
     cand_coords = np.array(list(normalized_distances.values()))
     intervals = np.empty((2, n_ballot_orders, n_pairs))
 
+    large_num = 1000
     for i in range(n_pairs):
-        ballot_nums_pairs = ballot_nums[:,i:i+2].astype(int)
+        ballot_nums_pairs = ballot_nums[:,i:i+2].astype(int) # the astype int turns the np.inf to a large negative number
 
         # if 2nd pair element is inf
-        sing_inf_inds = np.where((ballot_nums_pairs[:, 0]>-100) & (ballot_nums_pairs[:, 1]<-100))[0]
-        intervals[:, sing_inf_inds, i] = [cand_coords[ballot_nums_pairs[sing_inf_inds, 0]],
-                                           cand_coords[ballot_nums_pairs[sing_inf_inds, 0]]]
+        sing_inf_inds = np.where((ballot_nums_pairs[:, 0]<large_num) & 
+                                 (ballot_nums_pairs[:, 1]>large_num))[0]
+        if i==0:
+            cand_inds_left = ballot_nums_pairs[sing_inf_inds, 0]-1
+            cand_inds_left[cand_inds_left<0] = cand_inds_left[cand_inds_left<0] + 1
+            cand_inds_right = ballot_nums_pairs[sing_inf_inds, 0] + 1
+            cand_inds_right[cand_inds_right>n_pairs] = cand_inds_right[cand_inds_right>n_pairs] - 1
+            mean_first = (cand_coords[cand_inds_left] + cand_coords[ballot_nums_pairs[sing_inf_inds, 0]])/2.
+            mean_second =(cand_coords[cand_inds_right] + cand_coords[ballot_nums_pairs[sing_inf_inds, 0]])/2.
+            #first_coord = cand_coords[ballot_nums_pairs[sing_inf_inds, 0]] - mean_first 
+            #second_coord = cand_coords[ballot_nums_pairs[sing_inf_inds, 0]] + mean_second
+            #intervals[:, sing_inf_inds, i] = [cand_coords[ballot_nums_pairs[sing_inf_inds, 0]],
+            #                                   cand_coords[ballot_nums_pairs[sing_inf_inds, 0]]]
+            intervals[:, sing_inf_inds, i] = np.vstack((mean_first, mean_second))
+        else:
+            intervals[:, sing_inf_inds, i] = np.reshape(np.array([-np.inf, np.inf]),(2,1))
 
         # if both pair elements are inf
-        double_inf_inds = np.where((ballot_nums_pairs[:, 0]<-100) & (ballot_nums_pairs[:, 1]<-100))[0]
+        double_inf_inds = np.where((ballot_nums_pairs[:, 0]>large_num) 
+                                 & (ballot_nums_pairs[:, 1]>large_num))[0]
         intervals[:, double_inf_inds, i] = np.reshape(np.array([-np.inf, np.inf]),(2,1))
 
         # if neither pair elements are inf and first is larger
-        double_coord_inds = np.where((ballot_nums_pairs[:, 0]>-100) &
-                                     (ballot_nums_pairs[:, 1]>-100) &
+        double_coord_inds = np.where((ballot_nums_pairs[:, 0]<large_num) & # 1st is not inf
+                                     (ballot_nums_pairs[:, 1]<large_num) & # second is not inf
                                      (ballot_nums_pairs[:, 0]>ballot_nums_pairs[:, 1]))[0]
         first_coord = cand_coords[ballot_nums_pairs[double_coord_inds, 0]]
         second_coord = cand_coords[ballot_nums_pairs[double_coord_inds, 1]]
@@ -114,19 +129,19 @@ def get_candidate_pair_intervals(ballot_nums, normalized_distances):
         intervals[:, double_coord_inds, i] = np.vstack((mean_coord, max(cand_coords)*np.ones(len(mean_coord))))
 
         # if neither pair elements are inf and first is smaller
-        double_coord_inds = np.where((ballot_nums_pairs[:, 0]>-100) &
-                                     (ballot_nums_pairs[:, 1]>-100) &
-                                      ballot_nums_pairs[:, 0]<ballot_nums_pairs[:, 1])[0]
+        double_coord_inds = np.where((ballot_nums_pairs[:, 0]<large_num) &
+                                     (ballot_nums_pairs[:, 1]<large_num) &
+                                     (ballot_nums_pairs[:, 0]<ballot_nums_pairs[:, 1]))[0]
         first_coord = cand_coords[ballot_nums_pairs[double_coord_inds, 0]]
         second_coord = cand_coords[ballot_nums_pairs[double_coord_inds, 1]]
         mean_coord = (first_coord + second_coord)/2.
-        intervals[:, double_coord_inds, i] = np.vstack((np.zeros(len(mean_coord)), first_coord + mean_coord))
+        intervals[:, double_coord_inds, i] = np.vstack((np.zeros(len(mean_coord)), mean_coord))
 
     return intervals, cand_coords
 
 def get_ballot_coords(ballots, intervals, cand_coords, n_points=500):
     """
-    Generate coordinates and weights for a smooth representation of ballot distributions.
+    Generate coordinates and weights for ballot distributions.
 
     Parameters
     ----------
@@ -153,7 +168,7 @@ def get_ballot_coords(ballots, intervals, cand_coords, n_points=500):
 
     Notes
     -----
-    This function generates smooth representations of ballot distributions by considering
+    This function generates ballot distributions by considering
     intervals between candidate pairs for each ballot order. It uses a specified number of
     points along the coordinate axis to create a smooth distribution.
 
