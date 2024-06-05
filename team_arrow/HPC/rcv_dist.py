@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from rcv_dimensionality import perform_rcv_and_normalize
+from rcv_dim import perform_rcv_and_normalize
 
 
 def evaluate_ballot_consistency(ballot: list, n :int) -> Tuple[bool, Optional[float]]:
@@ -50,9 +50,9 @@ def evaluate_ballot_consistency(ballot: list, n :int) -> Tuple[bool, Optional[fl
 
     distance_list = []
     if (ballot[1] > ballot[0]):
-        consistency_value = ballot[0] + 0.25
+        consistency_value = ballot[0] + 0.25*(ballot[1] - ballot[0])
     else:
-        consistency_value = ballot[0] - 0.25
+        consistency_value = ballot[0] - 0.25*(ballot[0] - ballot[1])
     if len(ballot) < n:
         not_included = []
         for i in range(n):
@@ -325,6 +325,7 @@ def get_gamma(mds, ballots):
         j += 1
     c = 0
     total = 0
+    print("from gamma: ", ballots)
     for b in ballots:
         if len(b) > 0:
             total += ballots[b] 

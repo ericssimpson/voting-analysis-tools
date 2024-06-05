@@ -1,11 +1,9 @@
-import argparse
 import seaborn as sns
 from scipy.optimize import linprog
 from scipy.stats import kurtosis, skew
 import os 
-from rcv_distribution import *
-from rcv_dimensionality import *
-from voting_rules import *
+from rcv_dist import *
+from rcv_dim import *
 from interval_consistency import *
 import random
 
@@ -43,37 +41,6 @@ def get_null_gamma(filename):
     for c in candidates:
         position = df.loc[df['candidate']==c, 'position']
         normalized_distances[c] = position.values[0]
+    print(normalized_distances)
     consistent_ballots, gamma = get_interval_consistent_ballots(ballots, normalized_distances)
     return consistent_ballots, gamma
-
-
-def main():
-    parser = argparse.ArgumentParser(description="Process some integers.")
-    parser.add_argument('input', metavar='INPUT', type=str, help='Input string')
-    
-    args = parser.parse_args()
-    user_input = args.input
-
-    null_gammas = pd.read_csv("null_gammas.csv")
-    ans = []
-    sum = 0
-    for i in range(1, 1001):
-        sum += get_null_gamma(user_input)[1]
-        if i == 10:
-            ans.append(sum/10)
-            null_gammas.loc[null_gammas["filename"] == user_input, "null_gamma_10"] = sum/10
-        if i == 100:
-            ans.append(sum/100)
-            null_gammas.loc[null_gammas["filename"] == user_input, "null_gamma_100"] = sum/100
-    ans.append(sum/1000)
-    null_gammas.loc[null_gammas["filename"] == user_input, "null_gamma_1000"] = sum/1000
-    
-    
-    null_gammas.to_csv("null_gammas.csv", index=False)  # Ensure index is not written to the CSV
-
-
-    
-    
-
-if __name__ == "__main__":
-    main()

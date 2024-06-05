@@ -94,7 +94,7 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
     plt.show()
 
 
-def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
+def perform_rcv_analysis(raw_ballots, candidate_names, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
     """
     Perform ranked-choice-voting (RCV) analysis on a CSV file of ballots.
 
@@ -122,32 +122,17 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
         - candidate_names : A list of candidate names.
     """
 
-    # Default values to ignore when reading CSV
-    if ignore_values is None:
-        ignore_values = ['(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote']
-
-
-    # Load the CSV file and filter to keep only the 'rank' columns
-    df = pd.read_csv(csv_file, low_memory=False)
-    df = df.filter(regex='^rank')
-
-    # Replace non-candidate values with None
-    for ignore_value in ignore_values:
-        df.replace(to_replace=re.compile(ignore_value), value=None, regex=True, inplace=True)
-
-    # Create a list of all candidate names and convert names to integer codes
-    raw_ballots = df.values.tolist()
-
-    candidate_names = [name for name in pd.unique(df.values.ravel()) if pd.notna(name)]
     candidate_dict = {name: i for i, name in enumerate(candidate_names)}
     num_candidates = len(candidate_names)
-
+    ballots = []
+    for ballot in raw_ballots:
+        num_ballot = [candidate_dict.get(candidate, np.nan) for candidate in ballot]
+        for i in range (len(candidate_names) - len(num_ballot)):
+            num_ballot.append(float("nan"))
+        for i in range(raw_ballots[ballot]):
+            ballots.append(num_ballot)
     # Convert ballots to integers representing candidates, replacing invalid candidates with NaN
-    ballots = [[candidate_dict.get(candidate, np.nan) for candidate in ballot] for ballot in raw_ballots]
     ballots = np.array(ballots)
-    print("ballots:")
-    print(ballots)
-
 
     # Count up frequencies of consecutive-pair ballot choices
     num_ballots, num_ranks = ballots.shape

@@ -3,9 +3,8 @@ import seaborn as sns
 
 from scipy.stats import kurtosis, skew
 import pandas as pd
-from rcv_distribution import *
-from rcv_dimensionality import *
-from voting_rules import *
+from rcv_dist import *
+from rcv_dim import *
 import os
 
 
@@ -73,6 +72,7 @@ def get_interval_consistent_ballots(ballots, normalized_distances):
                 consistent_ballots[b] = ballots[b]
             else:
                 b_num = ballot_to_num(b, normalized_distances)
+                print("ballot: ", b)
                 lp = solve_lp(b_num, midpoints, intervals, len(normalized_distances))
                 if (lp):
                     consistent_ballots[b] = ballots[b]
