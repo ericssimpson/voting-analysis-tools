@@ -30,17 +30,17 @@ def calculate_pair_mentions(ballots: np.ndarray, num_candidates: int, num_ballot
     numpy.ndarray
         A square matrix where the entry at row i and column j represents the number of times candidate i and candidate j are mentioned together in the ballots.
     """
-    
+
     # Initialize a zero matrix to store the counts of pair mentions
     pair_mentions = np.zeros((num_candidates, num_candidates))
-    
+
     # For each ballot
     for i in range(num_ballots):
         # For each rank in the ballot
         for j in range(num_ranks):
             # For each other rank in the ballot
             for k in range(num_ranks):
-                # If either of the candidates in the rank is invalid 
+                # If either of the candidates in the rank is invalid
                 if np.isnan(ballots[i, j]) or np.isnan(ballots[i, k]):
                     continue
                 # Else increment the count for the rank pair
@@ -94,7 +94,14 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
     plt.show()
 
 
-def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
+def perform_rcv_analysis(csv_file: str,
+                         n_runs: int = 100,
+                         n_init: int = 100,
+                         max_iter: int = 1000,
+                         calc_2d: bool = False,
+                         random_state: Optional[int] = None,
+                         ignore_values: Optional[List[str]] = None,
+                         metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
     """
     Perform ranked-choice-voting (RCV) analysis on a CSV file of ballots.
 
@@ -189,24 +196,29 @@ def perform_rcv_analysis(csv_file: str, n_runs: int, random_state: Optional[int]
 
         # Perform nonmetric multidimensional scaling
         try:
-            mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
-            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+            mds_1d = MDS(n_components=1, metric=metric, n_init=n_init, max_iter=max_iter, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+            if calc_2d:
+                mds_2d = MDS(n_components=2, metric=metric, n_init=n_init, max_iter=max_iter, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
         except TypeError:
-            mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
-            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
+            mds_1d = MDS(n_components=1, metric=metric, n_init=n_init, max_iter=max_iter, random_state=random_state, dissimilarity='precomputed')
+            if calc_2d:
+                mds_2d = MDS(n_components=2, metric=metric, n_init=n_init, max_iter=max_iter, random_state=random_state, dissimilarity='precomputed')
 
         # Fit and transform the distance matrix
         values_1d = mds_1d.fit_transform(distance)
-        values_2d = mds_2d.fit_transform(distance)
+        if calc_2d:
+            values_2d = mds_2d.fit_transform(distance)
 
         # Identify orders in 1D and 2D TODO Procrustes alignment for 2d ordering
         order_1d = tuple(np.argsort(values_1d.flatten()))
-        order_2d = tuple(np.lexsort(values_2d.T))
+        if calc_2d:
+            order_2d = tuple(np.lexsort(values_2d.T))
 
         # Store orders and MDS coordinates
         all_orders[tuple(order_1d)] += 1
         mds_1d_coordinates[order_1d].append(values_1d.flatten()[np.array(order_1d)])
-        mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
+        if calc_2d:
+            mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
 
     # Find most common order and frequencies of all orders along single dimension
     temporary_orders = list(all_orders.keys())
@@ -244,20 +256,20 @@ def get_distances_normalized(most_common_order: tuple, mds_1d_coordinates: Dict[
     dict
         A dictionary mapping candidate names to normalized MDS-1D coordinates.
     """
-    
+
     # Extract the MDS-1D coordinates for the most common order
     mds_1d_coordinates_common_order = mds_1d_coordinates[most_common_order]
-    
+
     # Compute the min and max of the MDS-1D coordinates
     min_val = np.min(mds_1d_coordinates_common_order)
     max_val = np.max(mds_1d_coordinates_common_order)
 
     # Compute the normalized MDS-1D coordinates (shifted so that they start from 0 and end at the number of candidates)
     mds_1d_coordinates_common_order_normalized = ((mds_1d_coordinates_common_order - min_val) / (max_val - min_val)) * (len(candidate_names) - 1)
-    
+
     # Create a dictionary with candidate names as keys and normalized distances as values
     normalized_coordinates_dict = {candidate_names[most_common_order[i]]: mds_1d_coordinates_common_order_normalized[i] for i in range(len(most_common_order))}
-    
+
     return normalized_coordinates_dict
 
 
@@ -278,11 +290,11 @@ def perform_rcv_and_normalize(csv_file: str, n_runs: int = 1000) -> Dict[str, fl
     dict
         A dictionary mapping candidate names to normalized MDS-1D coordinates.
     """
-    
+
     # Perform the RCV analysis
     mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = perform_rcv_analysis(csv_file, n_runs)
-    
+
     # Normalize the distances
     normalized_coordinates_dict = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)
-    
+
     return normalized_coordinates_dict
