@@ -27,26 +27,60 @@ def ballot_to_num(ballot, normalized_distances):
         b_num.append(normalized_distances[c])
     return b_num
 
-def solve_lp(b_num, midpoints, intervals, n):
-    
+def solve_lp(b_num, n):
+    """
+    This function takes a number representation of a ballot and returns 
+    the biggest inteval possible that respects the preferences on the ballot
+
+    Here we use linear programming to buil the constraints that represent 
+    the voter's preferneces and try to find points on the line that respect those.
+
+    Input:
+        b_num: a list of numbers representing the voter's ballot based on 
+               the positions of the candidates on the line
+        n: number of the candidates
+
+    Return:
+        Tuple: (success, interval)
+        success: boolean
+        interval: Tuple: (min_value, max_value)
+        min/ max values: minimum and maximum values that satisfy the conditions
+
+    """
+
     obj = [1]
     lhs_ineq = []
     rhs_ineq = []
     e = 0.000000001
+    
+    # Building the right hand side and left hand side of the constraints 
+    # Each constraint here represents a pairwise preference of the voter
     for i in range(len(b_num)):
         for j in range(i + 1, len(b_num)):
-            mid = (b_num[i]+b_num[j])/2
-            if (b_num[i] > b_num[j]):
+            mid = (b_num[i] + b_num[j]) / 2
+            if b_num[i] > b_num[j]:
                 lhs_ineq.append([-1])
-                rhs_ineq.append(-(e+mid))
-            if (b_num[i] < b_num[j]):
+                rhs_ineq.append(-(e + mid))
+            if b_num[i] < b_num[j]:
                 lhs_ineq.append([1])
-                rhs_ineq.append(e+mid)
-    bnd = [0, n-1]
-    opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd,
-              method="revised simplex")
-    return (opt["success"] is True)
-        
+                rhs_ineq.append(e + mid)
+    
+    # Bounds for the variable x
+    bnd = [(0, n - 1)]
+    
+    # Solve for the minimum value
+    opt_min = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd, method="revised simplex")
+    
+    # Solve for the maximum value
+    opt_max = linprog(c=[-c for c in obj], A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd, method="revised simplex")
+    
+    if opt_min.success and opt_max.success:
+        min_value = opt_min.fun
+        max_value = -opt_max.fun  # Negate because we minimized the negative of the objective
+        interval = (min_value, max_value)
+        return True, interval
+    else:
+        return False, None        
 
     
 def get_permissive_gamma(ballots, normalized_distances):
@@ -72,8 +106,8 @@ def get_permissive_gamma(ballots, normalized_distances):
                 consistent_ballots[b] = ballots[b]
             else:
                 b_num = ballot_to_num(b, normalized_distances)
-                lp = solve_lp(b_num, midpoints, intervals, len(normalized_distances))
-                if (lp):
+                lp = solve_lp(b_num, len(normalized_distances))
+                if (lp[0]):
                     consistent_ballots[b] = ballots[b]
                     consistent += ballots[b]
     

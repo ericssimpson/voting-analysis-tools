@@ -3,7 +3,7 @@ from typing import Dict, List, Optional, Tuple
 from consistency import *
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import numpy as np
 from MDS_analysis import perform_rcv_and_normalize
 
 
@@ -172,3 +172,41 @@ def freq(ballots, candidates):
     
    
     return result_freq, result_first
+
+
+def distribute_points(interval, num_points=1000):
+    min_val, max_val = interval
+    return np.linspace(min_val, max_val, num_points)
+
+def plot_KDE(ballots, normalized_distances):
+    
+    distributed_points = []
+    for b in ballots:
+        if len(b) > 0:
+            b_num = ballot_to_num(b, normalized_distances)
+            if len(b) > 1:    
+                success, interval = solve_lp(b_num, len(normalized_distances))
+                if success:
+                    points = distribute_points(interval, ballots[b])
+                    distributed_points.extend(points)
+            else:
+                success = True
+                interval = (b_num, b_num)
+                points = distribute_points(interval, ballots[b])
+                distributed_points.extend(points)
+        
+    distributed_points = np.array(distributed_points, dtype=float)
+    normalized_points = []
+    normalized_names = []
+    for name in normalized_distances:
+        normalized_names.append(name)
+        normalized_points.append(normalized_distances[name])
+    plt.figure(figsize=(10, 6))
+    sns.kdeplot(distributed_points, fill=True)
+    plt.title('Kernel Density Estimation of Data')
+    plt.xticks(normalized_points, normalized_names, rotation=45)
+    plt.xlabel('Value')
+    plt.ylabel('Density')
+    plt.grid(True)
+    plt.show()
+
