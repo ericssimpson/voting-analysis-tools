@@ -82,7 +82,13 @@ def solve_lp(b_num, n):
     else:
         return False, None        
 
-    
+def is_consistent(ballot, normalized_distances):
+    if len(ballot) <= 2:
+        return True
+    b_num = ballot_to_num(ballot, normalized_distances)
+    lp = solve_lp(b_num, len(normalized_distances))
+    return lp[0]
+
 def get_permissive_gamma(ballots, normalized_distances):
     """
     Args:
