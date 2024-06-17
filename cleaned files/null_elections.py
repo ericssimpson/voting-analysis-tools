@@ -4,10 +4,10 @@ from scipy.optimize import linprog
 from scipy.stats import kurtosis, skew
 import os 
 from rcv_distribution import *
-from rcv_dimensionality import *
+from MDS_analysis import *
 from consistency import *
 from voting_rules import *
-from interval_consistency import *
+import itertools
 import random
 
 
@@ -33,28 +33,61 @@ def get_strict_null_ballots(df):
     return ballots
 
 
+
+def generate_permutations(items):
+    n = len(items)
+    all_permutations = []
+    for i in range(1, n + 1):
+        all_permutations.extend(itertools.permutations(items, i))
+    return all_permutations
+
+
+def group_permutations_by_first_item(permutations):
+    grouped = {}
+    for perm in permutations:
+        first_item = perm[0]
+        if first_item not in grouped:
+            grouped[first_item] = []
+        grouped[first_item].append(perm)
+    return grouped
+
 def get_null_ballots(df):
     
     final_ballots = {}
     ballots_in_progress = {}
     ballots_list = []
-    candidates = df =['candidates'].values
+    candidates = df['candidate'].values
+    candidates = sorted(candidates)
+
+    
+    all_permutations = generate_permutations(candidates)
+    grouped_permutations = group_permutations_by_first_item(all_permutations)
+
+    for candidates 
 
     for candidate in candidates:
-        first_place = df.loc[df['candidate']==candidate, 'first_place'].values[0]
+        first_place = df.loc[df['candidate']==candidate, 'first place count'].values[0]
         ballots_in_progress[(candidate,)] = first_place
         ballots_list += [(candidate,)] * first_place
+    #print("after adding the first place choices: ")
+    #print(ballots_in_progress)
 
     lengths = {}
     for i in range (len(candidates)):
         sum_i = df['len_' + str(i+1)].sum()
+     #   print("sum of length ", i+1, " is ", sum_i)
         if (sum_i > 0):
             lengths[i+1] = sum_i
+    
+    #print("printing the lengths: ")
+    #print(lengths)
 
-    for i in range(len(candidates)):
+    """for i in range(len(candidates)):
         #
         if  i+1 == 1:
             random_voters = random.sample(ballots_list, lengths[i+1])
+            #print("sampled bullet voters: ")
+            #print(random_voters)
             for b in random_voters:
                 if b not in final_ballots:
                     final_ballots[b] = 0
@@ -63,21 +96,28 @@ def get_null_ballots(df):
             
 
         elif i+1 in lengths and lengths[i+1] > 0:
-            # pick lengths[i+1] random ballots and add random candidates to it
+           
             len_i = lengths[i+1]
-            for j in range(len_i):
-                random_voter = random.choice(ballots_list)
+            random_voters = random.sample(ballots_list, len_i)
+
+            for ranking in random_voters:
+                new_ranking = ranking
                 random_candidates = random.sample(candidates, i)
                 for c in random_candidates:
-                    random_voter += (c,)
-                if random_voter not in final_ballots:
-                    final_ballots[random_voter] = 0
-                final_ballots[random_voter] += 1
+                    new_ranking += (c,)
+                if new_ranking not in final_ballots:
+                    final_ballots[new_ranking] = 0
+                final_ballots[new_ranking] += 1
+                ballots_list.remove(ranking)
+    """
 
-                ballots_list.remove(random_voter)
+
+           
+   
     return final_ballots
 
         
+
 
 def get_null_gamma(filename):
 
