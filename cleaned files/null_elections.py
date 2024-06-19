@@ -7,11 +7,14 @@ from rcv_distribution import *
 from MDS_analysis import *
 from consistency import *
 from voting_rules import *
-import itertools
+from itertools import permutations
+from collections import defaultdict
+from collections import Counter
 import random
 
 
-def get_strict_null_ballots(df):
+# capturing lengths specific to each candidate
+def get_mild_null_ballots(df):
 
     ballots = {}
     candidates = df['candidate'].values
@@ -33,72 +36,41 @@ def get_strict_null_ballots(df):
     return ballots
 
 
-
-def generate_permutations(items):
-    n = len(items)
-    all_permutations = []
-    for i in range(1, n + 1):
-        all_permutations.extend(itertools.permutations(items, i))
-    return all_permutations
-
-
-def group_permutations_by_first_item(permutations):
-    grouped = {}
-    for perm in permutations:
-        first_item = perm[0]
-        if first_item not in grouped:
-            grouped[first_item] = []
-        grouped[first_item].append(perm)
-    return grouped
-
-def get_null_ballots(df):
+#cepturing the lengths
+def get_slow_null_ballots(df):
     
     final_ballots = {}
-    ballots_in_progress = {}
-    ballots_list = []
+    ballots_set = Counter()
     candidates = df['candidate'].values
     candidates = sorted(candidates)
 
-    
-    all_permutations = generate_permutations(candidates)
-    grouped_permutations = group_permutations_by_first_item(all_permutations)
-
-    for candidates 
 
     for candidate in candidates:
         first_place = df.loc[df['candidate']==candidate, 'first place count'].values[0]
-        ballots_in_progress[(candidate,)] = first_place
-        ballots_list += [(candidate,)] * first_place
-    #print("after adding the first place choices: ")
-    #print(ballots_in_progress)
+        ballots_set[(candidate,)] += first_place
+
 
     lengths = {}
     for i in range (len(candidates)):
         sum_i = df['len_' + str(i+1)].sum()
-     #   print("sum of length ", i+1, " is ", sum_i)
         if (sum_i > 0):
             lengths[i+1] = sum_i
-    
-    #print("printing the lengths: ")
-    #print(lengths)
 
-    """for i in range(len(candidates)):
-        #
+    for i in range(len(candidates)):
         if  i+1 == 1:
-            random_voters = random.sample(ballots_list, lengths[i+1])
-            #print("sampled bullet voters: ")
-            #print(random_voters)
+            ballots_list = list(ballots_set.elements())
+            random_voters = random.choices(ballots_list, k=lengths[i+1])
             for b in random_voters:
                 if b not in final_ballots:
                     final_ballots[b] = 0
                 final_ballots[b] += 1
-                ballots_list.remove(b)
+                ballots_set[b] -= 1
             
 
         elif i+1 in lengths and lengths[i+1] > 0:
-           
             len_i = lengths[i+1]
-            random_voters = random.sample(ballots_list, len_i)
+            ballots_list = list(ballots_set.elements())
+            random_voters = random.choices(ballots_list, k=lengths[i+1])
 
             for ranking in random_voters:
                 new_ranking = ranking
@@ -108,29 +80,73 @@ def get_null_ballots(df):
                 if new_ranking not in final_ballots:
                     final_ballots[new_ranking] = 0
                 final_ballots[new_ranking] += 1
-                ballots_list.remove(ranking)
-    """
-
-
+                ballots_set[ranking] -= 1
            
    
     return final_ballots
 
-        
 
 
-def get_null_gamma(filename):
+def generate_and_group_permutations(items, choices):
+    n = len(items)
+    grouped_permutations = defaultdict(list)
+    
+    for i in range(1, choices + 1):
+        for perm in permutations(items, i):
+            grouped_permutations[perm[0]].append(perm)
+    
+    return grouped_permutations
+
+
+def get_extreme_null_ballots(df, choices):
+
+    candidates = df['candidate'].values
+    candidates = sorted(candidates)
+    ballots = {}
+    #get choices from elections.csv
+    grouped_permutations = generate_and_group_permutations(candidates, choices)
+
+    for candidate in candidates:
+        first_place = df.loc[df['candidate']==candidate, 'first place count'].values[0]
+        random_ballots = random.choices(grouped_permutations[candidate], k=first_place)
+        for b in random_ballots:
+            if b not in ballots:
+                ballots[b] = 0
+            ballots[b] += 1
+    return ballots
+
+
+def get_null_gamma(filename, randomness):
 
     directory = "null_elections"
     csv = os.path.join(directory, filename) 
     df = pd.read_csv(csv)  
-    ballots = get_null_ballots(df)
     candidates = df['candidate'].values
-    normalized_distances = {}
+    election = pd.read_csv("election_table.csv")
+    choices = min(len(candidates), round(election.loc[election['filename']==filename, 'choices'].values[0]))
+    
+    #print(choices)
+    if randomness == 'extreme':
+        ballots = get_extreme_null_ballots(df, choices)
+    elif randomness == 'slow':
+        ballots = get_slow_null_ballots(df)
+    else:
+        ballots = get_mild_null_ballots(df)
+
+    normalized_distances_original = {}
     for c in candidates:
         position = df.loc[df['candidate']==c, 'position']
-        normalized_distances[c] = position.values[0]
-    consistent_ballots, gamma = get_permissive_gamma(ballots, normalized_distances)
+        normalized_distances_original[c] = position.values[0]
+    #print(filename, "  original normalized distances: ", normalized_distances_original)
+
+    """test = perform_rcv_analysis(ballots, candidates, n_runs=1000, metric=False)
+    mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = test
+
+    # Print the normalized distances between candidates and plot the MDS analysis
+    normalized_distances = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)"""
+
+    #print("new distances: ", normalized_distances_original)
+    consistent_ballots, gamma = get_permissive_gamma(ballots, normalized_distances_original)
     return consistent_ballots, gamma
 
 
