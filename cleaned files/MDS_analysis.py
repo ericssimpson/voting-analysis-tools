@@ -94,7 +94,7 @@ def plot_rcv_analysis(mds_1d_coordinates: dict, mds_2d_coordinates, most_common_
     plt.show()
 
 
-def perform_rcv_analysis(raw_ballots, candidate_names, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
+def perform_rcv_analysis(raw_ballots, candidate_names, n_init: int, max_itr: int, n_runs: int, random_state: Optional[int] = None, ignore_values: Optional[List[str]] = None, metric: bool = True) -> Tuple[Dict, Tuple, List, List]:
     """
     Perform ranked-choice-voting (RCV) analysis on a CSV file of ballots.
 
@@ -173,28 +173,27 @@ def perform_rcv_analysis(raw_ballots, candidate_names, n_runs: int, random_state
     mds_2d_coordinates = defaultdict(list)
 
     # Run multidimensional scaling multiple times
-    for _ in range(n_runs):
-
+    for i in range(n_runs):
         # Perform nonmetric multidimensional scaling
         try:
-            mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
-            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+            mds_1d = MDS(n_components=1, metric=metric, n_init= n_init, max_itr=max_itr, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
+            #mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed', normalized_stress='auto')
         except TypeError:
             mds_1d = MDS(n_components=1, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
-            mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
+            #mds_2d = MDS(n_components=2, metric=metric, max_iter=1000, random_state=random_state, dissimilarity='precomputed')
 
         # Fit and transform the distance matrix
         values_1d = mds_1d.fit_transform(distance)
-        values_2d = mds_2d.fit_transform(distance)
+        #values_2d = mds_2d.fit_transform(distance)
 
         # Identify orders in 1D and 2D TODO Procrustes alignment for 2d ordering
         order_1d = tuple(np.argsort(values_1d.flatten()))
-        order_2d = tuple(np.lexsort(values_2d.T))
+        #order_2d = tuple(np.lexsort(values_2d.T))
 
         # Store orders and MDS coordinates
         all_orders[tuple(order_1d)] += 1
         mds_1d_coordinates[order_1d].append(values_1d.flatten()[np.array(order_1d)])
-        mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
+        #mds_2d_coordinates[order_2d].append(values_2d.flatten()[np.array(order_2d)])
 
     # Find most common order and frequencies of all orders along single dimension
     temporary_orders = list(all_orders.keys())

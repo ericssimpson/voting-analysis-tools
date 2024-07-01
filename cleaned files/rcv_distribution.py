@@ -26,7 +26,9 @@ def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None
     """
 
     # Default values to ignore when reading CSV
-    if ignore_values is None:
+    if ignore_values is not None:
+        ignore_values.extend(['UWI', '(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote', 'Write in'])
+    else:
         ignore_values = ['UWI', '(WRITE-IN)', 'WRITE-IN', 'writein', 'Write-In', 'Write-in', 'skipped', 'overvote', 'Undeclared', 'undervote', 'Write in']
 
     data = pd.read_csv(filename, low_memory=False)
@@ -210,3 +212,20 @@ def plot_KDE(ballots, normalized_distances):
     plt.grid(True)
     plt.show()
 
+
+
+def get_frequency(ballots, candidates):
+
+    freqs = {}
+    total = 0
+    for b in ballots:
+        if len(b) > 0:
+            total += ballots[b]
+            first_candidate = b[0]
+            if first_candidate not in freqs:
+                freqs[first_candidate] = 0
+            freqs[first_candidate] += ballots[b]
+    for candidate in freqs:
+        freqs[candidate] /= total
+
+    return freqs

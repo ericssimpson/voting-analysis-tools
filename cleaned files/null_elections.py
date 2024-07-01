@@ -105,9 +105,10 @@ def get_extreme_null_ballots(df, choices):
     ballots = {}
     #get choices from elections.csv
     grouped_permutations = generate_and_group_permutations(candidates, choices)
-
+    sum_voters = df['first place count'].sum()
     for candidate in candidates:
-        first_place = df.loc[df['candidate']==candidate, 'first place count'].values[0]
+        first_place_freq = df.loc[df['candidate']==candidate, 'first place freq'].values[0]
+        first_place = int(round(first_place_freq, 3) * 1000)
         random_ballots = random.choices(grouped_permutations[candidate], k=first_place)
         for b in random_ballots:
             if b not in ballots:
@@ -139,14 +140,14 @@ def get_null_gamma(filename, randomness):
         normalized_distances_original[c] = position.values[0]
     #print(filename, "  original normalized distances: ", normalized_distances_original)
 
-    """test = perform_rcv_analysis(ballots, candidates, n_runs=1000, metric=False)
+    test = perform_rcv_analysis(ballots, candidates, n_init=100, max_itr=1000, n_runs=1000, metric=False)
     mds_1d_coordinates, mds_2d_coordinates, most_common_order, order_frequencies, candidate_names = test
 
     # Print the normalized distances between candidates and plot the MDS analysis
-    normalized_distances = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)"""
+    normalized_distances = get_distances_normalized(most_common_order, mds_1d_coordinates, candidate_names)
 
     #print("new distances: ", normalized_distances_original)
-    consistent_ballots, gamma = get_permissive_gamma(ballots, normalized_distances_original)
+    consistent_ballots, gamma = get_permissive_gamma(ballots, normalized_distances)
     return consistent_ballots, gamma
 
 

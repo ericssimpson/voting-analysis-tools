@@ -315,12 +315,16 @@ class voting_rules:
         ballots_t = {}
         for b in self.ballots:
             ballots_t[b] = self.ballots[b]
+        
+        round = 1
+        summary = {}
         while len(candidates_t) > 1:
             new_election = voting_rules(ballots_t, candidates_t)
             if new_election.majority() != -1:
                 return new_election.majority()
             else:
                 first_place = new_election.get_first_place()
+                summary["round_"+str(round)] = first_place
                 loser = min(first_place, key=first_place.get)
                 new_ballots = {}
                 for b in ballots_t:
@@ -333,7 +337,8 @@ class voting_rules:
                     new_ballots[new_ranking] += ballots_t[b]
                 ballots_t = new_ballots
                 candidates_t.remove(loser)
-        return candidates_t[0] 
+                round += 1
+        return candidates_t[0], summary
         
 
     def plurality(self):
