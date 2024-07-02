@@ -5,6 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from MDS_analysis import perform_rcv_and_normalize
+import seaborn as sns
+
 
 
 def parse_election_data(filename: str, ignore_values: Optional[List[str]] = None) -> Tuple[Dict[Tuple[str, ...], int], List[str]]:
@@ -241,3 +243,52 @@ def get_frequency(ballots, candidates):
         freqs[candidate] /= total
 
     return freqs
+
+
+def plot_median_and_winner_normalized(filename):
+    #filename that you pass here should be without the .csv or .npy
+
+    # Load the winner's data
+    winners = pd.read_csv("diff.csv")
+    winner = winners.loc[winners["filename"] == (filename + ".csv"), "IRV1"].tolist()[0]
+    print(winner)
+    # Load the positions data
+    df = pd.read_csv("null_elections/" + filename + ".csv")
+
+    # Load the distributed points
+    distributed_points = np.load("np_data/" + filename + ".npy")
+
+    # Normalize the distributed points
+    min_position = np.min(distributed_points)
+    max_position = np.max(distributed_points)
+    normalized_points = (distributed_points - min_position) / (max_position - min_position)
+
+    # Calculate the median of the normalized points
+    median_value = np.median(normalized_points)
+
+    # Normalize the positions in the dataframe
+    df['normalized_position'] = (df['position'] - min_position) / (max_position - min_position)
+
+    # Get the winner's normalized position
+    winner_position = df.loc[df["candidate"] == winner, "normalized_position"].tolist()[0]
+
+    # Plot the data
+    plt.figure(figsize=(10, 6))
+    sns.kdeplot(normalized_points, fill=True)
+    plt.title('Kernel Density Estimation of Normalized Data')
+    plt.xlabel('Normalized Value')
+    plt.ylabel('Density')
+    plt.grid(True)
+
+    # Mark the median on the x-axis
+    plt.axvline(median_value, color='red', linestyle='dashed', linewidth=1)
+    plt.text(median_value, plt.gca().get_ylim()[1] * 0.95, f'Median: {median_value:.2f}', color='red', ha='center')
+
+    # Mark the winner on the x-axis
+    plt.axvline(winner_position, color='blue', linestyle='dashed', linewidth=1)
+    plt.text(winner_position, plt.gca().get_ylim()[1] * 0.90, f'Winner: {winner_position:.2f}', color='blue', ha='center')
+
+    plt.show()
+
+# Example usage:
+# plot_median_and_winner("Alaska_08162022_HouseofRepresentativesSpecial")
