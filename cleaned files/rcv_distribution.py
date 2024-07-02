@@ -180,7 +180,7 @@ def distribute_points(interval, num_points=1000):
     min_val, max_val = interval
     return np.linspace(min_val, max_val, num_points)
 
-def plot_KDE(ballots, normalized_distances):
+def plot_KDE(ballots, normalized_distances, filename=None, ignore=False, save=False):
     
     distributed_points = []
     for b in ballots:
@@ -210,7 +210,19 @@ def plot_KDE(ballots, normalized_distances):
     plt.xlabel('Value')
     plt.ylabel('Density')
     plt.grid(True)
-    plt.show()
+    if save == False:
+        plt.show()
+    else:
+        if ignore == False:
+            file_path = "KDE/" + filename[0:-4] + ".png"
+            plt.savefig(file_path,  dpi=600, bbox_inches='tight')
+            np.save('np_data/' + filename[0:-4] + ".npy", distributed_points)
+            plt.close()
+        else:
+            file_path = "ignored_KDE/" + filename[0:-4] + ".png"
+            plt.savefig(file_path,  dpi=600, bbox_inches='tight')
+            np.save('ignored_np_data/' + filename[0:-4] + ".npy", distributed_points)
+            plt.close()
 
 
 
