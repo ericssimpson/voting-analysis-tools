@@ -22,6 +22,10 @@ from votekit.ballot import Ballot
 from fractions import Fraction
 import matplotlib.pyplot as plt
 
+from votekit.plots import plot_MDS, compute_MDS
+from votekit.metrics import earth_mover_dist, lp_dist
+from votekit import PreferenceInterval
+
 
 ballot = Ballot(ranking = [{"A"}, {"B"}, {"C"}], weight = 1)
 print(ballot)
@@ -75,10 +79,6 @@ cs = bg.CambridgeSampler.from_params(slate_to_candidates=slate_to_candidates,
 
 profile = cs.generate_profile(number_of_ballots= 1000)
 print(profile)
-
-from votekit.plots import plot_MDS, compute_MDS
-from votekit.metrics import earth_mover_dist, lp_dist
-from votekit import PreferenceInterval
 
 number_of_ballots = 100
 
