@@ -245,13 +245,47 @@ def get_frequency(ballots, candidates):
     return freqs
 
 
-def plot_median_and_winner_normalized(filename):
+
+def plot_median_and_winner(filename):
+
+    #filename = "Maine_11062018_CongressionalDistrict2.npy"
+    #file = "np_data/Maine_11062018_CongressionalDistrict2.npy"
+    winners = pd.read_csv("diff.csv")
+    winner = (winners.loc[winners["filename"]==(filename+".csv"), "IRV1"]).tolist()[0]
+
+    df = pd.read_csv("null_elections/" + filename + ".csv")
+
+    distributed_points = np.load("np_data/" + filename + ".npy")
+    median_value = np.median(distributed_points)
+    #df['normalized_position'] = (df['position'] - min_position) / (max_position - min_position)
+    winner_position = (df.loc[df["candidate"]==winner, "position"]).tolist()[0]
+
+
+    plt.figure(figsize=(10, 6))
+    sns.kdeplot(distributed_points, fill=True)
+    plt.title('Kernel Density Estimation of Data')
+    #plt.xticks(normalized_points, normalized_names, rotation=45)
+    plt.xlabel('Value')
+    plt.ylabel('Density')
+    plt.grid(True)
+
+    plt.axvline(median_value, color='red', linestyle='dashed', linewidth=1)
+    plt.text(median_value, plt.gca().get_ylim()[1]*0.95, f'Median: {median_value:.2f}', color='red', ha='center')
+
+    plt.axvline(winner_position, color='blue', linestyle='dashed', linewidth=1)
+    plt.text(winner_position, plt.gca().get_ylim()[1]*0.95, f'Winner: {winner_position:.2f}', color='blue', ha='center')
+
+    plt.show()
+
+
+
+def plot_median_and_winner_normalized(filename, show=False):
     #filename that you pass here should be without the .csv or .npy
 
     # Load the winner's data
     winners = pd.read_csv("diff.csv")
     winner = winners.loc[winners["filename"] == (filename + ".csv"), "IRV1"].tolist()[0]
-    print(winner)
+
     # Load the positions data
     df = pd.read_csv("null_elections/" + filename + ".csv")
 
@@ -288,7 +322,11 @@ def plot_median_and_winner_normalized(filename):
     plt.axvline(winner_position, color='blue', linestyle='dashed', linewidth=1)
     plt.text(winner_position, plt.gca().get_ylim()[1] * 0.90, f'Winner: {winner_position:.2f}', color='blue', ha='center')
 
-    plt.show()
+    if show is False:
+        plt.close()
+    else:
+        plt.show()
+    return abs(winner_position - median_value)
 
 # Example usage:
 # plot_median_and_winner("Alaska_08162022_HouseofRepresentativesSpecial")
