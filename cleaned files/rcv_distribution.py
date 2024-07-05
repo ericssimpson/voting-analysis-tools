@@ -182,7 +182,7 @@ def distribute_points(interval, num_points=1000):
     min_val, max_val = interval
     return np.linspace(min_val, max_val, num_points)
 
-def plot_KDE(ballots, normalized_distances, filename=None, ignore=False, save=False):
+def plot_KDE(ballots, normalized_distances, filename=None, ignore=False, save=False, directory=None):
     
     distributed_points = []
     for b in ballots:
@@ -216,10 +216,17 @@ def plot_KDE(ballots, normalized_distances, filename=None, ignore=False, save=Fa
         plt.show()
     else:
         if ignore == False:
-            file_path = "KDE/" + filename[0:-4] + ".png"
-            plt.savefig(file_path,  dpi=600, bbox_inches='tight')
-            np.save('np_data/' + filename[0:-4] + ".npy", distributed_points)
-            plt.close()
+            if directory is None:
+                file_path = "KDE/" + filename[0:-4] + ".png"
+                plt.savefig(file_path,  dpi=600, bbox_inches='tight')
+                np.save('np_data/' + filename[0:-4] + ".npy", distributed_points)
+                plt.close()
+            else:
+                file_path = directory + "/" + filename[0:-4] + ".png"
+                plt.savefig(file_path,  dpi=600, bbox_inches='tight')
+                np.save('np_data_new/' + filename[0:-4] + ".npy", distributed_points)
+                plt.close()
+
         else:
             file_path = "ignored_KDE/" + filename[0:-4] + ".png"
             plt.savefig(file_path,  dpi=600, bbox_inches='tight')
@@ -290,7 +297,7 @@ def plot_median_and_winner_normalized(filename, show=False):
     df = pd.read_csv("null_elections/" + filename + ".csv")
 
     # Load the distributed points
-    distributed_points = np.load("np_data/" + filename + ".npy")
+    distributed_points = np.load("np_data_new/" + filename + ".npy")
 
     # Normalize the distributed points
     min_position = np.min(distributed_points)
@@ -326,7 +333,28 @@ def plot_median_and_winner_normalized(filename, show=False):
         plt.close()
     else:
         plt.show()
-    return abs(winner_position - median_value)
+    return winner_position, median_value
 
 # Example usage:
 # plot_median_and_winner("Alaska_08162022_HouseofRepresentativesSpecial")
+
+
+def get_median_voter_distances(filename):
+    #filename without .npy or .csv
+
+    candidate_positions_file = pd.read_csv("null_elections/" + filename + ".csv")
+    positions = pd.Series(candidate_positions_file['position'].values, index=candidate_positions_file['candidate']).to_dict()
+
+    n = len(positions)
+    normalized_positions = {key: value / (n - 1) for key, value in positions.items()}
+
+    winner_position, median_voter_position = plot_median_and_winner_normalized(filename, show=False)
+
+    items = normalized_positions.items()
+    closest_candidate, closest_candiate_position = min(items, key=lambda item: abs(item[1] - median_voter_position))
+
+    median_voter_distance = abs(winner_position - median_voter_position)
+    median_voter_preference_distance = abs(winner_position - closest_candiate_position)
+
+    return median_voter_distance, median_voter_preference_distance
+    
