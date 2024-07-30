@@ -321,7 +321,8 @@ class voting_rules:
         while len(candidates_t) > 1:
             new_election = voting_rules(ballots_t, candidates_t)
             if new_election.majority() != -1:
-                return new_election.majority()
+                summary["majority"] = new_election.get_first_place()
+                return new_election.majority(), summary
             else:
                 first_place = new_election.get_first_place()
                 summary["round_"+str(round)] = first_place
@@ -361,7 +362,8 @@ class voting_rules:
         first_place = self.get_first_place()
         V = 0
         for b in ballots:
-            V += ballots[b]
+            if len(b) > 0:
+                V += ballots[b]
         plurality = max(first_place, key=first_place.get)
         if first_place[plurality] > V/2:
             return plurality
