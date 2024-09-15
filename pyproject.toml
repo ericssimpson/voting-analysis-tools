@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "voting-analysis-tools"
+version = "0.1.0"
+description = "Scripts having to do with understanding electoral reforms."
+authors = [
+    "Annie Stephenson <annie.stephenson@example.com>",
+    "Dakshesh Vasan <dakshesh.vasan@example.com>",
+    "Eric Simpson <eric.simpson@example.com>",
+    "Mahshad Habibpourparizi <mahshad.habibpourparizi@example.com>",
+    "Paul Soltys <paul.soltys@example.com>",
+    "Phousawanh Peaungvongpakdy <phousawanh.peaungvongpakdy@example.com>",
+    "Samuel Wang <samuel.wang@example.com>"
+]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.4"
+pandas = "^2.3.0"
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
