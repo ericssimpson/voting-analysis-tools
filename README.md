@@ -49,6 +49,28 @@ Once the setup is complete, you can run the data pipeline scripts. It's recommen
 
 To ensure the Jupyter notebooks use the correct project environment, you need to point to the Poetry environment.
 
+## Code Quality
 
+This project uses [Ruff](https://docs.astral.sh/ruff/) to format code and enforce a consistent style. This ensures that the codebase is readable, maintainable, and free of common errors.
+
+### Formatting Code
+
+Before committing any changes, please format your code by running the following command from the root of the project:
+
+```bash
+poetry run ruff format .
+```
+
+This will automatically reformat all Python files in the project to match the established style guide.
+
+### Checking for Errors
+
+To check for linting errors and other potential issues, run:
+
+```bash
+poetry run ruff check .
+```
+
+This command will analyze your code and report any violations of the coding standards.
 
 *NOTE: This README is a work in progress...*

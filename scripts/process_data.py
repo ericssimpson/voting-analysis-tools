@@ -19,8 +19,9 @@ Usage:
 """
 
 import os
+from typing import Dict, List, Tuple
+
 import pandas as pd
-from typing import List, Tuple, Dict
 
 # --- Constants and Configuration ---
 
@@ -28,22 +29,23 @@ from typing import List, Tuple, Dict
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Raw and processed data directories
-RAW_DATA_DIR = os.path.join(BASE_DIR, 'data', 'raw')
-PROCESSED_DATA_DIR = os.path.join(BASE_DIR, 'data', 'processed')
+RAW_DATA_DIR = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
 
 # Output filenames
-ELECTIONS_DB_FILENAME = 'elections_database.csv'
-UNMATCHED_LOG_FILENAME = 'unmatched_files.log'
+ELECTIONS_DB_FILENAME = "elections_database.csv"
+UNMATCHED_LOG_FILENAME = "unmatched_files.log"
 
 # Defines the relationship between metadata files and the directories containing
 # the corresponding raw ballot data.
 ELECTION_SOURCES = {
-    'proportional': ('ProportionalRCV.csv', 'rcv_proportional'),
-    'single': ('SingleWinnerRCV.csv', 'rcv_single'),
-    'sequential': ('OtherMultiWinnerRCV.csv', 'rcv_sequential'),
+    "proportional": ("ProportionalRCV.csv", "rcv_proportional"),
+    "single": ("SingleWinnerRCV.csv", "rcv_single"),
+    "sequential": ("OtherMultiWinnerRCV.csv", "rcv_sequential"),
 }
 
 # --- Function Definitions ---
+
 
 def get_race_ids(csv_path: str) -> List[str]:
     """
@@ -65,6 +67,7 @@ def get_race_ids(csv_path: str) -> List[str]:
         print(f"Error reading RaceIDs from {csv_path}: {e}")
         return []
 
+
 def get_election_filepaths(dir_path: str) -> List[str]:
     """
     Returns a list of all CSV file paths within a given directory.
@@ -77,9 +80,14 @@ def get_election_filepaths(dir_path: str) -> List[str]:
     """
     if not os.path.isdir(dir_path):
         return []
-    return [os.path.join(dir_path, f) for f in os.listdir(dir_path) if f.endswith('.csv')]
+    return [
+        os.path.join(dir_path, f) for f in os.listdir(dir_path) if f.endswith(".csv")
+    ]
 
-def match_elections_exact(metadata_csv_path: str, data_dir_path: str) -> Tuple[List[Dict], List[str]]:
+
+def match_elections_exact(
+    metadata_csv_path: str, data_dir_path: str
+) -> Tuple[List[Dict], List[str]]:
     """
     Performs an exact match between RaceIDs in a metadata file and the filenames
     in a corresponding data directory.
@@ -96,21 +104,23 @@ def match_elections_exact(metadata_csv_path: str, data_dir_path: str) -> Tuple[L
     race_ids = get_race_ids(metadata_csv_path)
     race_id_set = set(race_ids)
     filepaths = get_election_filepaths(data_dir_path)
-    
+
     matched_races = []
     unmatched_filepaths = []
-    
+
     for path in filepaths:
         # Extract the filename without extension to match against RaceID
         filename = os.path.splitext(os.path.basename(path))[0]
         if filename in race_id_set:
-            matched_races.append({'filepath': path, 'race_id': filename})
+            matched_races.append({"filepath": path, "race_id": filename})
         else:
             unmatched_filepaths.append(path)
-            
+
     return matched_races, unmatched_filepaths
 
+
 # --- Main Execution ---
+
 
 def main():
     """
@@ -128,19 +138,19 @@ def main():
     # Process each defined election source
     for election_type, (metadata_filename, data_dirname) in ELECTION_SOURCES.items():
         print(f"\n--- Processing {election_type} elections ---")
-        
-        metadata_path = os.path.join(RAW_DATA_DIR, 'rcv_database', metadata_filename)
+
+        metadata_path = os.path.join(RAW_DATA_DIR, "rcv_database", metadata_filename)
         data_path = os.path.join(RAW_DATA_DIR, data_dirname)
 
         matched, unmatched = match_elections_exact(metadata_path, data_path)
-        
+
         # Add the election type to the matched data for better categorization
         for race in matched:
-            race['election_type'] = election_type
+            race["election_type"] = election_type
 
         all_matched_races.extend(matched)
         all_unmatched_files.extend(unmatched)
-        
+
         print(f"Found {len(matched)} matched elections.")
         print(f"Found {len(unmatched)} unmatched files.")
 
@@ -148,7 +158,7 @@ def main():
     if all_matched_races:
         elections_df = pd.DataFrame(all_matched_races)
         # Reorder columns for clarity
-        elections_df = elections_df[['race_id', 'election_type', 'filepath']]
+        elections_df = elections_df[["race_id", "election_type", "filepath"]]
         output_path = os.path.join(PROCESSED_DATA_DIR, ELECTIONS_DB_FILENAME)
         elections_df.to_csv(output_path, index=False)
         print(f"\nSuccessfully created elections database at: {output_path}")
@@ -158,15 +168,19 @@ def main():
     # Create and save the log of unmatched files
     if all_unmatched_files:
         log_path = os.path.join(PROCESSED_DATA_DIR, UNMATCHED_LOG_FILENAME)
-        with open(log_path, 'w') as f:
-            f.write("# The following files from data/raw could not be matched to a RaceID.\n")
+        with open(log_path, "w") as f:
+            f.write(
+                "# The following files from data/raw could not be matched to a "
+                "RaceID.\n"
+            )
             for filepath in all_unmatched_files:
                 f.write(f"{filepath}\n")
         print(f"Log of unmatched files saved at: {log_path}")
     else:
         print("No unmatched files found.")
-        
+
     print("\n--- Data Processing Complete ---")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

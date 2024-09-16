@@ -14,6 +14,7 @@ Usage:
 
 import os
 import zipfile
+
 import requests
 
 # --- Constants and Configuration ---
@@ -25,34 +26,46 @@ BASE_DATA_FOLDER = os.path.join(os.path.dirname(__file__), "..", "data", "raw")
 HARVARD_DATAVERSE_SETS = {
     "doi:10.7910/DVN/STVUET": "rcv_proportional",
     "doi:10.7910/DVN/04LOQX": "rcv_sequential",
-    "doi:10.7910/DVN/AMK8PJ": "rcv_single"
+    "doi:10.7910/DVN/AMK8PJ": "rcv_single",
 }
 
-# A mapping of Google Sheet identifiers to their destination subfolders and the specific tabs to download.
+# A mapping of Google Sheet identifiers to their destination subfolders
+# and the specific tabs to download.
 GOOGLE_SHEETS_CONFIG = {
     "rcv_database": {
         "id": "1lU6viuXfay323Gl6zkH5itwmrUIUo9rAzalK_ntu-ZY",
         "tabs": [
-            "About", "SingleWinnerRCV", "ProportionalRCV", "OtherMultiWinnerRCV",
-            "Party RCV Use", "CandidateDetails", "Upcoming RCV Elections",
-            "RCV Ballot Measures", "Data Directory", "Other Resources"
-        ]
+            "About",
+            "SingleWinnerRCV",
+            "ProportionalRCV",
+            "OtherMultiWinnerRCV",
+            "Party RCV Use",
+            "CandidateDetails",
+            "Upcoming RCV Elections",
+            "RCV Ballot Measures",
+            "Data Directory",
+            "Other Resources",
+        ],
     },
     "rcv_used": {
         "id": "17hMetWAVvF5iFDcwikavl0pHtXyQ7jI31cFFgsa0k0w",
         "tabs": [
-            "Full list", "Trimmed list for sharing", "By type breakdown",
-            "List of States", "Totals by category (including potential)",
-            "Totals by category (not including potential)"
-        ]
+            "Full list",
+            "Trimmed list for sharing",
+            "By type breakdown",
+            "List of States",
+            "Totals by category (including potential)",
+            "Totals by category (not including potential)",
+        ],
     },
     "rcv_tabulation": {
         "id": "1JKTHia4iSNT16dhEOmsEtS0muisUgT3_1WD3PvIAoBU",
-        "tabs": ["2023 update", "2021 Summary", "Old"]
-    }
+        "tabs": ["2023 update", "2021 Summary", "Old"],
+    },
 }
 
 # --- Function Definitions ---
+
 
 def download_and_unzip(persistent_id: str, dest_folder: str) -> None:
     """
@@ -85,12 +98,17 @@ def download_and_unzip(persistent_id: str, dest_folder: str) -> None:
         # Clean up by removing the downloaded zip file
         os.remove(zip_path)
 
-        print(f"Successfully downloaded and unzipped dataset {persistent_id} to {dest_folder}.")
+        print(
+            f"Successfully downloaded and unzipped dataset {persistent_id} "
+            f"to {dest_folder}."
+        )
 
     except requests.exceptions.RequestException as e:
         print(f"Error downloading dataset {persistent_id}: {e}")
     except zipfile.BadZipFile:
-        print(f"Error: The downloaded file for {persistent_id} is not a valid zip file.")
+        print(
+            f"Error: The downloaded file for {persistent_id} is not a valid zip file."
+        )
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
@@ -118,22 +136,31 @@ def download_google_sheet_tab(sheet_id: str, tab_name: str, dest_folder: str) ->
 
         if response.content:
             # Sanitize the tab name to create a safe filename
-            safe_filename = "".join(c for c in tab_name if c.isalnum() or c in (' ', '_')).rstrip().replace(' ', '_')
+            safe_filename = (
+                "".join(c for c in tab_name if c.isalnum() or c in (" ", "_"))
+                .rstrip()
+                .replace(" ", "_")
+            )
             file_path = os.path.join(dest_folder, f"{safe_filename}.csv")
-            
+
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(response.text)
-            
+
             print(f"Successfully downloaded tab '{tab_name}' to {file_path}.")
         else:
-            print(f"Warning: No content for tab '{tab_name}' from sheet {sheet_id}. It might be empty.")
+            print(
+                f"Warning: No content for tab '{tab_name}' from sheet {sheet_id}. "
+                "It might be empty."
+            )
 
     except requests.exceptions.RequestException as e:
         print(f"Error downloading tab '{tab_name}': {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
+
 # --- Main Execution ---
+
 
 def main():
     """
@@ -154,8 +181,9 @@ def main():
         sheet_destination_folder = os.path.join(BASE_DATA_FOLDER, sheet_name)
         for tab in sheet_info["tabs"]:
             download_google_sheet_tab(sheet_info["id"], tab, sheet_destination_folder)
-            
+
     print("\n--- Data Download Complete ---")
+
 
 if __name__ == "__main__":
     main()
