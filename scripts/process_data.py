@@ -6,13 +6,17 @@ It performs the following main task:
     with their corresponding metadata from the `rcv_database` directory.
 -   It uses an exact match between the filename (without extension) and the `RaceID`
     in the metadata CSVs.
+-   If an exact match is not found, it uses fuzzy matching to suggest possible
+    `RaceID`s to the user, allowing them to select one or more matches interactively.
 
-The script outputs two files into the `data/processed` directory:
+The script outputs two to three files into the `data/processed` directory:
 1.  `elections_database.csv`: A master CSV file containing all successfully matched
     elections, linking each `RaceID` to its election type and the filepath of the
     raw ballot data.
 2.  `unmatched_files.log`: A log file listing all the raw data files that could
     not be matched to a `RaceID`.
+3.  `manual_matches.log`: A log file that records any manual matches made by the user
+    during the fuzzy matching process.
 
 Usage:
     python process_data.py
