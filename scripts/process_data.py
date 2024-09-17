@@ -13,10 +13,10 @@ The script outputs two to three files into the `data/processed` directory:
 1.  `elections_database.csv`: A master CSV file containing all successfully matched
     elections, linking each `RaceID` to its election type and the filepath of the
     raw ballot data.
-2.  `unmatched_files.log`: A log file listing all the raw data files that could
+2.  `unmatched_files.csv`: A log CSV file listing all the raw data files that could
     not be matched to a `RaceID`.
-3.  `manual_matches.log`: A log file that records any manual matches made by the user
-    during the fuzzy matching process.
+3.  `manual_matches.csv`: A log CSV file that records any manual matches made by the
+    user during the fuzzy matching process.
 
 Usage:
     python process_data.py
@@ -207,6 +207,7 @@ def _process_user_choice(
             )
             return False
 
+        # Process valid choices
         for choice in choices:
             chosen_race_id = top_matches[choice - 1][0]
             match_results.newly_matched.append(
@@ -214,6 +215,7 @@ def _process_user_choice(
             )
             match_results.manual_matches_log.append(f"{path},{chosen_race_id}")
             print(f"  -> Match recorded: {os.path.basename(path)} -> {chosen_race_id}")
+
         return True  # Exit the while loop for this file
 
     except ValueError:
@@ -222,6 +224,61 @@ def _process_user_choice(
     except Exception as e:
         print(f"An error occurred: {e}")
         return True
+
+
+def _handle_fuzzy_match_for_file(
+    path: str, top_matches: List[Tuple[str, int]]
+) -> Tuple[List[Dict], bool]:
+    """
+    Handles the interactive fuzzy matching process for a single file.
+
+    Args:
+        path (str): The filepath being matched.
+        top_matches (List[Tuple[str, int]]): A list of potential RaceID matches.
+
+    Returns:
+        A tuple containing a list of new matches and a boolean indicating if the
+        file was skipped.
+    """
+    page = 0
+    newly_matched_for_file = []
+    was_skipped = False
+
+    while True:
+        raw_input, page = _get_user_fuzzy_match_choice(top_matches, page, 5)
+
+        if raw_input.strip() == "":
+            continue
+
+        if raw_input.strip() == "0":
+            print(f"Skipped file: {os.path.basename(path)}")
+            was_skipped = True
+            break
+
+        try:
+            choices = [int(c.strip()) for c in raw_input.split(",")]
+            if any(c < 1 or c > len(top_matches) for c in choices):
+                print(
+                    "Invalid choice. Please enter numbers between 1 and "
+                    f"{len(top_matches)}."
+                )
+                continue
+
+            for choice in choices:
+                chosen_race_id = top_matches[choice - 1][0]
+                match_data = {"filepath": path, "race_id": chosen_race_id}
+                newly_matched_for_file.append(match_data)
+                match_log_message = (
+                    f"  -> Match recorded: {os.path.basename(path)} -> {chosen_race_id}"
+                )
+                print(match_log_message)
+            break  # Exit after successful selection
+
+        except ValueError:
+            print("Invalid input. Please enter numbers separated by commas.")
+            continue
+
+    return newly_matched_for_file, was_skipped
 
 
 def match_elections_fuzzy(
@@ -237,14 +294,14 @@ def match_elections_fuzzy(
 
     Returns:
         A tuple containing a list of newly matched races and a list of files
-    that remain unmatched.
+        that remain unmatched.
     """
-    match_results = MatchResults(
-        newly_matched=[], still_unmatched=[], manual_matches_log=[]
-    )
+    newly_matched = []
+    still_unmatched = []
+    manual_matches = []
 
     if not unmatched_filepaths:
-        return match_results.newly_matched, match_results.still_unmatched
+        return newly_matched, still_unmatched
 
     print("\n--- Starting Interactive Fuzzy Matching ---")
     for path in unmatched_filepaths:
@@ -254,33 +311,30 @@ def match_elections_fuzzy(
         print(f"\nFile: {os.path.basename(path)}")
         print("Could not find an exact match. Here are the best suggestions:")
 
-        page = 0
-        while True:
-            raw_input, page = _get_user_fuzzy_match_choice(top_matches, page, 5)
+        new_matches, skipped = _handle_fuzzy_match_for_file(path, top_matches)
 
-            if raw_input.strip() == "":  # More suggestions already handled
-                continue
+        if skipped:
+            still_unmatched.append(path)
+        else:
+            newly_matched.extend(new_matches)
+            manual_matches.extend(new_matches)
 
-            if _process_user_choice(
-                raw_input,
-                top_matches,
-                path,
-                match_results,
-            ):
-                break
+    if manual_matches:
+        log_path = os.path.join(PROCESSED_DATA_DIR, "manual_matches.csv")
+        manual_matches_df = pd.DataFrame(manual_matches)
 
-    if match_results.manual_matches_log:
-        log_path = os.path.join(PROCESSED_DATA_DIR, "manual_matches.log")
-        # Append to the log file
-        with open(log_path, "a") as f:
-            if f.tell() == 0:  # Write header if file is new/empty
-                f.write("# Manual matches chosen by the user\n")
-                f.write("filepath,race_id\n")
-            for entry in match_results.manual_matches_log:
-                f.write(f"{entry}\n")
-        print(f"\nManual matches logged at: {log_path}")
+        # Check if file exists to append or write new
+        try:
+            existing_df = pd.read_csv(log_path)
+            combined_df = pd.concat([existing_df, manual_matches_df], ignore_index=True)
+            combined_df.drop_duplicates(inplace=True)
+        except FileNotFoundError:
+            combined_df = manual_matches_df
 
-    return match_results.newly_matched, match_results.still_unmatched
+        combined_df.to_csv(log_path, index=False)
+        print(f"\nManual matches saved to: {log_path}")
+
+    return newly_matched, still_unmatched
 
 
 # --- Main Execution ---
