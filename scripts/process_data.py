@@ -11,7 +11,7 @@ It performs the following main task:
 
 The script outputs two to three files into the `data/processed` directory:
 1.  `elections_database.csv`: A master CSV file containing all successfully matched
-    elections, linking each `RaceID` to its election type and the filepath of the
+    elections, linking each `RaceID` to its election type and the CSV name of the
     raw ballot data.
 2.  `unmatched_files.csv`: A log CSV file listing all the raw data files that could
     not be matched to a `RaceID`.
@@ -50,7 +50,7 @@ PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
 
 # Output filenames
 ELECTIONS_DB_FILENAME = "elections_database.csv"
-UNMATCHED_LOG_FILENAME = "unmatched_files.log"
+UNMATCHED_LOG_FILENAME = "unmatched_files.csv"
 
 # Defines the relationship between metadata files and the directories containing
 # the corresponding raw ballot data.
@@ -128,7 +128,9 @@ def match_elections_exact(
         # Extract the filename without extension to match against RaceID
         filename = os.path.splitext(os.path.basename(path))[0]
         if filename in race_id_set:
-            matched_races.append({"filepath": path, "race_id": filename})
+            matched_races.append(
+                {"csv_name": os.path.basename(path), "race_id": filename}
+            )
         else:
             unmatched_filepaths.append(path)
 
@@ -211,9 +213,11 @@ def _process_user_choice(
         for choice in choices:
             chosen_race_id = top_matches[choice - 1][0]
             match_results.newly_matched.append(
-                {"filepath": path, "race_id": chosen_race_id}
+                {"csv_name": os.path.basename(path), "race_id": chosen_race_id}
             )
-            match_results.manual_matches_log.append(f"{path},{chosen_race_id}")
+            match_results.manual_matches_log.append(
+                f"{os.path.basename(path)},{chosen_race_id}"
+            )
             print(f"  -> Match recorded: {os.path.basename(path)} -> {chosen_race_id}")
 
         return True  # Exit the while loop for this file
@@ -266,7 +270,10 @@ def _handle_fuzzy_match_for_file(
 
             for choice in choices:
                 chosen_race_id = top_matches[choice - 1][0]
-                match_data = {"filepath": path, "race_id": chosen_race_id}
+                match_data = {
+                    "csv_name": os.path.basename(path),
+                    "race_id": chosen_race_id,
+                }
                 newly_matched_for_file.append(match_data)
                 match_log_message = (
                     f"  -> Match recorded: {os.path.basename(path)} -> {chosen_race_id}"
@@ -388,7 +395,7 @@ def main():
     if all_matched_races:
         elections_df = pd.DataFrame(all_matched_races)
         # Reorder columns for clarity
-        elections_df = elections_df[["race_id", "election_type", "filepath"]]
+        elections_df = elections_df[["race_id", "election_type", "csv_name"]]
         output_path = os.path.join(PROCESSED_DATA_DIR, ELECTIONS_DB_FILENAME)
         elections_df.to_csv(output_path, index=False)
         print(f"\nSuccessfully created elections database at: {output_path}")
@@ -398,13 +405,10 @@ def main():
     # Create and save the log of unmatched files
     if all_unmatched_files:
         log_path = os.path.join(PROCESSED_DATA_DIR, UNMATCHED_LOG_FILENAME)
-        with open(log_path, "w") as f:
-            f.write(
-                "# The following files from data/raw could not be automatically "
-                "matched to a RaceID.\n"
-            )
-            for filepath in all_unmatched_files:
-                f.write(f"{filepath}\n")
+        unmatched_df = pd.DataFrame(
+            {"csv_name": [os.path.basename(p) for p in all_unmatched_files]}
+        )
+        unmatched_df.to_csv(log_path, index=False)
         print(f"Log of unmatched files saved at: {log_path}")
     else:
         print("No unmatched files found.")
