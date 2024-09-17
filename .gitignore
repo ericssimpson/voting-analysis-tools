@@ -1,2 +1,6 @@
 # Project specific
 data/
+
+# Poetry
+.poetry/
+poetry.lock
