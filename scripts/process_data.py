@@ -175,61 +175,6 @@ def _get_user_fuzzy_match_choice(
     return raw_input, page
 
 
-def _process_user_choice(
-    raw_input: str,
-    top_matches: List[Tuple[str, float, int]],
-    path: str,
-    match_results: MatchResults,
-) -> bool:
-    """
-    Processes the user's choice for fuzzy matching.
-
-    Args:
-        raw_input (str): The raw input from the user.
-        top_matches (List[Tuple[str, float, int]]): Top fuzzy matches.
-        path (str): The filepath of the file being matched.
-        match_results (MatchResults): An object holding the lists for matched,
-                                    unmatched, and logged results.
-
-    Returns:
-        bool: True if the loop for the current file should break, False otherwise.
-    """
-    try:
-        if raw_input.strip() == "0":
-            match_results.still_unmatched.append(path)
-            print(f"Skipped file: {os.path.basename(path)}")
-            return True
-
-        choices = [int(c.strip()) for c in raw_input.split(",")]
-
-        if any(c < 1 or c > len(top_matches) for c in choices):
-            print(
-                "Invalid choice. Please enter numbers between 1 and "
-                f"{len(top_matches)}."
-            )
-            return False
-
-        # Process valid choices
-        for choice in choices:
-            chosen_race_id = top_matches[choice - 1][0]
-            match_results.newly_matched.append(
-                {"csv_name": os.path.basename(path), "race_id": chosen_race_id}
-            )
-            match_results.manual_matches_log.append(
-                f"{os.path.basename(path)},{chosen_race_id}"
-            )
-            print(f"  -> Match recorded: {os.path.basename(path)} -> {chosen_race_id}")
-
-        return True  # Exit the while loop for this file
-
-    except ValueError:
-        print("Invalid input. Please enter numbers, or press Enter.")
-        return False
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return True
-
-
 def _handle_fuzzy_match_for_file(
     path: str, top_matches: List[Tuple[str, int]]
 ) -> Tuple[List[Dict], bool]:
