@@ -11,8 +11,8 @@ It performs the following main task:
 
 The script outputs two to three files into the `data/processed` directory:
 1.  `election_database.csv`: A master CSV file containing all successfully matched
-    elections, linking each `RaceID` to its election type and the CSV name of the
-    raw ballot data.
+    elections, linking each `RaceID` to its `metadata_csv_name` and the
+    `election_csv_name` of the raw ballot data.
 2.  `unmatched_files.csv`: A log CSV file listing all the raw data files that could
     not be matched to a `RaceID`.
 3.  `manual_matches.csv`: A log CSV file that records any manual matches made by the
@@ -395,9 +395,9 @@ def main():
             matched.extend(fuzzy_matched)
             unmatched = still_unmatched  # Update unmatched list
 
-        # Add the election type to the matched data for better categorization
+        # Add the metadata filename to the matched data for better traceability
         for race in matched:
-            race["election_type"] = election_type
+            race["metadata_csv_name"] = metadata_filename
 
         all_matched_races.extend(matched)
         all_unmatched_files.extend(unmatched)
@@ -409,7 +409,9 @@ def main():
     if all_matched_races:
         elections_df = pd.DataFrame(all_matched_races)
         # Reorder columns for clarity
-        elections_df = elections_df[["race_id", "election_type", "election_csv_name"]]
+        elections_df = elections_df[
+            ["race_id", "metadata_csv_name", "election_csv_name"]
+        ]
         output_path = os.path.join(PROCESSED_DATA_DIR, ELECTION_DB_FILENAME)
         elections_df.to_csv(output_path, index=False)
         print(f"\nSuccessfully created election database at: {output_path}")
