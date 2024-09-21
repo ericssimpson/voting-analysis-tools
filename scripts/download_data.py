@@ -149,7 +149,7 @@ def download_google_sheet_tab(sheet_id: str, tab_name: str, dest_folder: str) ->
             print(f"Successfully downloaded tab '{tab_name}' to {file_path}.")
         else:
             print(
-                f"Warning: No content for tab '{tab_name}' from sheet {sheet_id}. "
+                f"Warn: No content for tab '{tab_name}' from sheet {sheet_id}. "
                 "It might be empty."
             )
 

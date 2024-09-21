@@ -11,8 +11,8 @@ It performs the following main task:
 
 The script outputs two to three files into the `data/processed` directory:
 1.  `election_database.csv`: A master CSV file containing all successfully matched
-    elections, linking each `RaceID` to its `metadata_csv_name` and the
-    `election_csv_name` of the raw ballot data.
+    elections, linking each `RaceID` to its `metadata_csv` and the
+    `election_csv` of the raw ballot data.
 2.  `unmatched_files.csv`: A log CSV file listing all the raw data files that could
     not be matched to a `RaceID`.
 3.  `manual_matches.csv`: A log CSV file that records any manual matches made by the
@@ -72,18 +72,18 @@ def load_manual_matches(manual_matches_path: str) -> Dict[str, str]:
         manual_matches_path (str): The path to the manual_matches.csv file.
 
     Returns:
-        Dict[str, str]: A dictionary mapping election_csv_name to race_id.
+        Dict[str, str]: A dictionary mapping election_csv to race_id.
     """
     if not os.path.exists(manual_matches_path):
         return {}
     try:
         df = pd.read_csv(manual_matches_path)
         # Ensure correct column names are used, handling potential errors
-        if "election_csv_name" in df.columns and "race_id" in df.columns:
-            return pd.Series(df.race_id.values, index=df.election_csv_name).to_dict()
+        if "election_csv" in df.columns and "race_id" in df.columns:
+            return pd.Series(df.race_id.values, index=df.election_csv).to_dict()
         else:
             print(
-                "Warning: manual_matches.csv is missing 'election_csv_name' or 'race_id' columns."
+                "Warn: manual_matches.csv missing 'election_csv' or 'race_id' columns."
             )
             return {}
     except Exception as e:
@@ -105,7 +105,7 @@ def get_race_ids(csv_path: str) -> List[str]:
         df = pd.read_csv(csv_path, usecols=["RaceID"])
         return df["RaceID"].dropna().unique().tolist()
     except FileNotFoundError:
-        print(f"Warning: Metadata file not found at {csv_path}")
+        print(f"Warn: Metadata file not found at {csv_path}")
         return []
     except Exception as e:
         print(f"Error reading RaceIDs from {csv_path}: {e}")
@@ -157,7 +157,7 @@ def match_elections_exact(
         filename = os.path.splitext(os.path.basename(path))[0]
         if filename in race_id_set:
             matched_races.append(
-                {"election_csv_name": os.path.basename(path), "race_id": filename}
+                {"election_csv": os.path.basename(path), "race_id": filename}
             )
         else:
             unmatched_filepaths.append(path)
@@ -185,7 +185,7 @@ def match_elections_from_manual_log(
         filename = os.path.basename(path)
         if filename in manual_matches:
             matched_races.append(
-                {"election_csv_name": filename, "race_id": manual_matches[filename]}
+                {"election_csv": filename, "race_id": manual_matches[filename]}
             )
         else:
             unmatched_filepaths.append(path)
@@ -271,7 +271,7 @@ def _handle_fuzzy_match_for_file(
             for choice in choices:
                 chosen_race_id = top_matches[choice - 1][0]
                 match_data = {
-                    "election_csv_name": os.path.basename(path),
+                    "election_csv": os.path.basename(path),
                     "race_id": chosen_race_id,
                 }
                 newly_matched_for_file.append(match_data)
@@ -397,7 +397,7 @@ def main():
 
         # Add the metadata filename to the matched data for better traceability
         for race in matched:
-            race["metadata_csv_name"] = metadata_filename
+            race["metadata_csv"] = metadata_filename
 
         all_matched_races.extend(matched)
         all_unmatched_files.extend(unmatched)
@@ -409,9 +409,7 @@ def main():
     if all_matched_races:
         elections_df = pd.DataFrame(all_matched_races)
         # Reorder columns for clarity
-        elections_df = elections_df[
-            ["race_id", "metadata_csv_name", "election_csv_name"]
-        ]
+        elections_df = elections_df[["race_id", "metadata_csv", "election_csv"]]
         output_path = os.path.join(PROCESSED_DATA_DIR, ELECTION_DB_FILENAME)
         elections_df.to_csv(output_path, index=False)
         print(f"\nSuccessfully created election database at: {output_path}")
@@ -422,7 +420,7 @@ def main():
     if all_unmatched_files:
         log_path = os.path.join(PROCESSED_DATA_DIR, UNMATCHED_LOG_FILENAME)
         unmatched_df = pd.DataFrame(
-            {"election_csv_name": [os.path.basename(p) for p in all_unmatched_files]}
+            {"election_csv": [os.path.basename(p) for p in all_unmatched_files]}
         )
         unmatched_df.to_csv(log_path, index=False)
         print(f"Log of unmatched files saved at: {log_path}")
