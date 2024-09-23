@@ -27,7 +27,7 @@ import subprocess
 from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, Tuple
+from typing import Dict
 
 # --- Constants and Configuration ---
 
@@ -46,36 +46,32 @@ CHECKLIST_PATH = os.path.join(NAPKIN_DIR, "CHECKLIST.md")
 class GitFileInfo:
     """Holds all metadata for a file to be included in the checklist."""
 
-    first_edit_date: str = "N/A"
+    first_commit: datetime = None
     first_committer: str = "N/A"
     median_edit_date: str = "N/A"
     top_committer: str = "N/A"
     commit_count: int = 0
     line_count: int = 0
-    file_size_kb: float = 0.0
 
 
 # --- Function Definitions ---
 
 
-def get_file_stats(file_path: str) -> Tuple[int, float]:
+def get_file_stats(file_path: str) -> int:
     """
-    Gets the line count and file size for a given file.
+    Gets the line count for a given file.
 
     Args:
         file_path (str): The absolute path to the file.
 
     Returns:
-        A tuple containing the line count and file size in kilobytes.
+        The number of lines in the file.
     """
     try:
-        line_count = 0
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-            line_count = len(f.readlines())
-        file_size_kb = os.path.getsize(file_path) / 1024
-        return line_count, file_size_kb
+            return len(f.readlines())
     except OSError:
-        return 0, 0.0
+        return 0
 
 
 def get_git_file_info(file_path: str) -> GitFileInfo:
@@ -138,13 +134,11 @@ def get_git_file_info(file_path: str) -> GitFileInfo:
             first_commit_lines = first_commit_str.splitlines()
             if first_commit_lines:
                 date_str, author = first_commit_lines[-1].split(",", 1)
-                info.first_edit_date = datetime.fromisoformat(date_str).strftime(
-                    "%Y-%m-%d"
-                )
+                info.first_commit = datetime.fromisoformat(date_str)
                 info.first_committer = author
 
-        # Get file line count and size
-        info.line_count, info.file_size_kb = get_file_stats(file_path)
+        # Get file line count
+        info.line_count = get_file_stats(file_path)
 
     except (subprocess.CalledProcessError, FileNotFoundError, ValueError) as e:
         # This can happen for files not tracked by git, or other errors
@@ -240,29 +234,44 @@ def main():
         # Indent files one level deeper than their parent directory
         file_indent = "  " * level
 
-        # List files in the directory
-        for file in sorted(files):
-            # Skip hidden files
+        # Collect and sort files by their first commit date
+        file_details_list = []
+        for file in files:
             if file.startswith("."):
                 continue
 
             full_path = os.path.join(root, file)
-            file_key = os.path.basename(full_path)
-            relative_file_path = os.path.relpath(full_path, ARCHIVE_DIR)
-
-            # Get all the rich metadata for the file
             info = get_git_file_info(full_path)
+            file_details_list.append(
+                {
+                    "file_name": os.path.basename(full_path),
+                    "relative_path": os.path.relpath(full_path, ARCHIVE_DIR),
+                    "info": info,
+                }
+            )
+
+        # Sort by the datetime object, using a very old date for files without one
+        file_details_list.sort(key=lambda x: x["info"].first_commit or datetime.min)
+
+        # List files in the directory
+        for item in file_details_list:
+            info = item["info"]
+            relative_file_path = item["relative_path"]
+            file_key = item["file_name"]
 
             # Get the checkbox state, default to unchecked
             is_checked = existing_states.get(relative_file_path, False)
             checkbox = "[x]" if is_checked else "[ ]"
 
             # Format the detailed checklist item
+            first_commit_date_str = (
+                info.first_commit.strftime("%Y-%m-%d") if info.first_commit else "N/A"
+            )
             details = (
-                f"First: {info.first_edit_date} by {info.first_committer}, "
-                f"Top: {info.top_committer}, Median Date: {info.median_edit_date}, "
+                f"First: {first_commit_date_str} by {info.first_committer}, "
+                f"Top: {info.top_committer}, Median: {info.median_edit_date}, "
                 f"{info.commit_count} commits, "
-                f"{info.line_count} lines, {info.file_size_kb:.2f} KB"
+                f"{info.line_count} lines"
             )
             file_item = f"{file_indent}- {checkbox} `{file_key}` ({details})"
             md_content.append(file_item)
