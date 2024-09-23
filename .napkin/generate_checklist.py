@@ -14,6 +14,9 @@ The purpose of this checklist is to provide a clear and actionable overview of t
 refactoring effort, ensuring that every file in the archive is reviewed and
 either integrated into the new structure or explicitly marked as obsolete.
 
+This script is intended to be a temporary tool to aid in project refactoring and
+will remain in the `/.napkin` directory until it is no longer needed.
+
 Usage:
     python .napkin/generate_checklist.py
 """
@@ -21,14 +24,16 @@ Usage:
 import os
 import re
 import subprocess
+from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Dict, Tuple
 
 # --- Constants and Configuration ---
 
-# Determine the root directory of the project
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Determine the root directory of the project, which is one level up from the
+# directory containing this script.
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARCHIVE_DIR = os.path.join(BASE_DIR, ".archive")
 NAPKIN_DIR = os.path.join(BASE_DIR, ".napkin")
 CHECKLIST_PATH = os.path.join(NAPKIN_DIR, "CHECKLIST.md")
@@ -43,8 +48,8 @@ class GitFileInfo:
 
     first_edit_date: str = "N/A"
     first_committer: str = "N/A"
-    last_edit_date: str = "N/A"
-    last_committer: str = "N/A"
+    median_edit_date: str = "N/A"
+    top_committer: str = "N/A"
     commit_count: int = 0
     line_count: int = 0
     file_size_kb: float = 0.0
@@ -87,31 +92,33 @@ def get_git_file_info(file_path: str) -> GitFileInfo:
     try:
         relative_path = os.path.relpath(file_path, BASE_DIR)
 
-        # Get commit count
-        commit_count_str = subprocess.check_output(
-            ["git", "rev-list", "--count", "HEAD", "--", relative_path],
+        # Get all commit dates and authors for calculating median date and top committer
+        all_commits_str = subprocess.check_output(
+            ["git", "log", "--follow", "--pretty=format:%cI,%an", "--", relative_path],
             cwd=BASE_DIR,
             text=True,
             encoding="utf-8",
             stderr=subprocess.PIPE,
         ).strip()
-        info.commit_count = int(commit_count_str) if commit_count_str else 0
 
-        # Get last commit info (date and author)
-        last_commit_str = subprocess.check_output(
-            ["git", "log", "-1", "--pretty=format:%cI,%an", "--", relative_path],
-            cwd=BASE_DIR,
-            text=True,
-            encoding="utf-8",
-            stderr=subprocess.PIPE,
-        ).strip()
-        if last_commit_str:
-            date_str, author = last_commit_str.split(",", 1)
-            info.last_edit_date = datetime.fromisoformat(date_str).strftime("%Y-%m-%d")
-            info.last_committer = author
+        if all_commits_str:
+            commit_lines = all_commits_str.splitlines()
+            info.commit_count = len(commit_lines)
+
+            # Calculate median date
+            dates = [
+                datetime.fromisoformat(line.split(",", 1)[0]) for line in commit_lines
+            ]
+            dates.sort()
+            median_date = dates[len(dates) // 2]
+            info.median_edit_date = median_date.strftime("%Y-%m-%d")
+
+            # Calculate top committer
+            authors = [line.split(",", 1)[1] for line in commit_lines]
+            if authors:
+                info.top_committer = Counter(authors).most_common(1)[0][0]
 
         # Get first commit info (date and author)
-        # We get all commits and take the last line, which is the first commit
         first_commit_str = subprocess.check_output(
             [
                 "git",
@@ -167,8 +174,13 @@ def preserve_checkbox_states(checklist_path: str) -> Dict[str, bool]:
                 match = re.search(r"^\s*- \[(x| )\] `(.*?)`", line)
                 if match:
                     is_checked = match.group(1).strip() == "x"
-                    # The key is the file path relative to the archive dir
                     file_path_key = match.group(2)
+
+                    # Handle directory entries, which end with a slash
+                    if file_path_key.endswith("/"):
+                        # Normalize by removing markdown and the trailing slash
+                        file_path_key = file_path_key.replace("**", "").strip("/")
+
                     states[file_path_key] = is_checked
     except OSError as e:
         print(f"Error reading existing checklist: {e}")
@@ -203,20 +215,30 @@ def main():
         "- `[ ]` - To Do",
         "- `[x]` - Done (Transferred/Refactored)",
         "",
+        "## Checklist",
+        "",
     ]
 
     # Walk through the archive directory
     for root, dirs, files in os.walk(ARCHIVE_DIR):
         # Skip hidden directories (e.g., .git)
         dirs[:] = [d for d in dirs if not d.startswith(".")]
+        dirs.sort()
 
         level = root.replace(ARCHIVE_DIR, "").count(os.sep)
-        indent = "  " * level
+        indent = "  " * (level - 1) if level > 0 else ""
 
-        # Add directory header
+        # Add directory header as a checkable item for better nesting
         relative_dir_path = os.path.relpath(root, ARCHIVE_DIR)
         if relative_dir_path != ".":
-            md_content.append(f"{indent}### {os.path.basename(root)}")
+            dir_name = os.path.basename(root)
+            is_checked = existing_states.get(dir_name, False)
+            checkbox = "[x]" if is_checked else "[ ]"
+            dir_item = f"{indent}- {checkbox} `{dir_name}/`"
+            md_content.append(dir_item)
+
+        # Indent files one level deeper than their parent directory
+        file_indent = "  " * level
 
         # List files in the directory
         for file in sorted(files):
@@ -225,6 +247,7 @@ def main():
                 continue
 
             full_path = os.path.join(root, file)
+            file_key = os.path.basename(full_path)
             relative_file_path = os.path.relpath(full_path, ARCHIVE_DIR)
 
             # Get all the rich metadata for the file
@@ -237,11 +260,11 @@ def main():
             # Format the detailed checklist item
             details = (
                 f"First: {info.first_edit_date} by {info.first_committer}, "
-                f"Last: {info.last_edit_date} by {info.last_committer}, "
+                f"Top: {info.top_committer}, Median Date: {info.median_edit_date}, "
                 f"{info.commit_count} commits, "
                 f"{info.line_count} lines, {info.file_size_kb:.2f} KB"
             )
-            file_item = f"{indent}- {checkbox} `{relative_file_path}` ({details})"
+            file_item = f"{file_indent}- {checkbox} `{file_key}` ({details})"
             md_content.append(file_item)
 
     # Write the new checklist content
